@@ -1,0 +1,31 @@
+{>"/layouts/main"/}
+
+{<title} Sign Up {/title}
+
+{<main} 
+
+<form class="signup center" autocomplete="on" action="/signup/" method="post">
+	<fieldset>
+		<legend> Sign Up </legend>
+		<ul>
+			<li>
+				<input type="email" name="email" id="email" placeholder="email" title="Enter your email address" autocomplete required />
+			</li>
+			<li>
+				<input type="text" name="username" id="username" placeholder="username" title="Enter your username" autocomplete required />
+			</li>
+			<li>
+				<input type="password" name="password" id="password" placeholder="password" title="Enter your password" required />
+			</li>
+			<li>
+				<input type="password" name="password_confirm" id="password_confirm" placeholder="confirm password" title="please confirm your password" required />
+			</li>
+			<li>
+				<input type="submit" value="Submit" />
+				<input type="reset" value="Reset" />
+			</li>
+		</ul>
+	</fieldset>
+</form>
+
+{/main}

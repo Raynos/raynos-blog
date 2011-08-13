@@ -1,0 +1,534 @@
+.link-style {
+  color: white;
+  padding: 0.5em 20px 0.5em 20px;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: black;
+}
+.link-style:hover {
+  color: #999;
+  text-decoration: underline;
+}
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 48px;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  margin-left: 10px;
+  letter-spacing: 5px;
+  color: black;
+  position: absolute;
+}
+h1:first-letter {
+  font-size: 60px;
+}
+nav {
+  margin-top: 0.25em;
+  padding: 0.5em;
+  text-align: center;
+}
+nav a {
+  color: white;
+  padding: 0.5em 20px 0.5em 20px;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  padding: 0.5em 20px 0.5em 20px;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: black;
+}
+nav a:hover {
+  color: #999;
+  text-decoration: underline;
+}
+nav a:hover {
+  color: #999;
+  text-decoration: underline;
+}
+nav a:first-of-type {
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 25px;
+  -webkit-border-top-left-radius: 25px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 25px;
+  -moz-border-radius-topleft: 25px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 25px;
+  -webkit-border-top-left-radius: 25px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 25px;
+  -moz-border-radius-topleft: 25px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+}
+nav a:last-of-type {
+  -webkit-border-top-right-radius: 25px;
+  -webkit-border-bottom-right-radius: 25px;
+  -webkit-border-bottom-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  -moz-border-radius-topright: 25px;
+  -moz-border-radius-bottomright: 25px;
+  -moz-border-radius-bottomleft: 0px;
+  -moz-border-radius-topleft: 0px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  -webkit-border-top-right-radius: 25px;
+  -webkit-border-bottom-right-radius: 25px;
+  -webkit-border-bottom-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  -moz-border-radius-topright: 25px;
+  -moz-border-radius-bottomright: 25px;
+  -moz-border-radius-bottomleft: 0px;
+  -moz-border-radius-topleft: 0px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+menu li {
+  list-style: none;
+  display: inline;
+}
+menu li:first-of-type a {
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 25px;
+  -webkit-border-top-left-radius: 25px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 25px;
+  -moz-border-radius-topleft: 25px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 25px;
+  -webkit-border-top-left-radius: 25px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 25px;
+  -moz-border-radius-topleft: 25px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+}
+menu li:last-of-type a {
+  -webkit-border-top-right-radius: 25px;
+  -webkit-border-bottom-right-radius: 25px;
+  -webkit-border-bottom-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  -moz-border-radius-topright: 25px;
+  -moz-border-radius-bottomright: 25px;
+  -moz-border-radius-bottomleft: 0px;
+  -moz-border-radius-topleft: 0px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  -webkit-border-top-right-radius: 25px;
+  -webkit-border-bottom-right-radius: 25px;
+  -webkit-border-bottom-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  -moz-border-radius-topright: 25px;
+  -moz-border-radius-bottomright: 25px;
+  -moz-border-radius-bottomleft: 0px;
+  -moz-border-radius-topleft: 0px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+menu li a {
+  color: white;
+  padding: 0.5em 20px 0.5em 20px;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  padding: 0.5em 20px 0.5em 20px;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: black;
+}
+menu li a:hover {
+  color: #999;
+  text-decoration: underline;
+}
+menu li a:hover {
+  color: #999;
+  text-decoration: underline;
+}
+menu {
+  position: absolute;
+  margin: 10px;
+  right: 0px;
+  top: 0px;
+}
+.blog {
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  padding: 20px 30px;
+  margin: 25px 0px;
+}
+.blog h2 {
+  display: inline;
+}
+.blog time {
+  float: right;
+  clear: both;
+}
+/*---------------------------------------------------
+		LESS Elements 0.5
+	---------------------------------------------------
+		A set of useful LESS mixins by Dmitry Fadeyev
+		Special thanks for mixin suggestions to:
+			Kris Van Herzeele,
+			Benoit Adam,
+			Portenart Emile-Victor
+			
+		More info at: http://lesselements.com
+-----------------------------------------------------*/
+.link-style {
+  color: white;
+  padding: 0.5em 20px 0.5em 20px;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: black;
+}
+.link-style:hover {
+  color: #999;
+  text-decoration: underline;
+}
+h1 {
+  font-family: 'Permanent Marker', cursive;
+  font-size: 48px;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  margin-left: 10px;
+  letter-spacing: 5px;
+  color: black;
+  position: absolute;
+}
+h1:first-letter {
+  font-size: 60px;
+}
+nav {
+  margin-top: 0.25em;
+  padding: 0.5em;
+  text-align: center;
+}
+nav a {
+  color: white;
+  padding: 0.5em 20px 0.5em 20px;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  padding: 0.5em 20px 0.5em 20px;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: black;
+}
+nav a:hover {
+  color: #999;
+  text-decoration: underline;
+}
+nav a:hover {
+  color: #999;
+  text-decoration: underline;
+}
+nav a:first-of-type {
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 25px;
+  -webkit-border-top-left-radius: 25px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 25px;
+  -moz-border-radius-topleft: 25px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 25px;
+  -webkit-border-top-left-radius: 25px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 25px;
+  -moz-border-radius-topleft: 25px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+}
+nav a:last-of-type {
+  -webkit-border-top-right-radius: 25px;
+  -webkit-border-bottom-right-radius: 25px;
+  -webkit-border-bottom-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  -moz-border-radius-topright: 25px;
+  -moz-border-radius-bottomright: 25px;
+  -moz-border-radius-bottomleft: 0px;
+  -moz-border-radius-topleft: 0px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  -webkit-border-top-right-radius: 25px;
+  -webkit-border-bottom-right-radius: 25px;
+  -webkit-border-bottom-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  -moz-border-radius-topright: 25px;
+  -moz-border-radius-bottomright: 25px;
+  -moz-border-radius-bottomleft: 0px;
+  -moz-border-radius-topleft: 0px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+menu li {
+  list-style: none;
+  display: inline;
+}
+menu li:first-of-type a {
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 25px;
+  -webkit-border-top-left-radius: 25px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 25px;
+  -moz-border-radius-topleft: 25px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  -webkit-border-bottom-left-radius: 25px;
+  -webkit-border-top-left-radius: 25px;
+  -moz-border-radius-topright: 0px;
+  -moz-border-radius-bottomright: 0px;
+  -moz-border-radius-bottomleft: 25px;
+  -moz-border-radius-topleft: 25px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+}
+menu li:last-of-type a {
+  -webkit-border-top-right-radius: 25px;
+  -webkit-border-bottom-right-radius: 25px;
+  -webkit-border-bottom-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  -moz-border-radius-topright: 25px;
+  -moz-border-radius-bottomright: 25px;
+  -moz-border-radius-bottomleft: 0px;
+  -moz-border-radius-topleft: 0px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+  -webkit-border-top-right-radius: 25px;
+  -webkit-border-bottom-right-radius: 25px;
+  -webkit-border-bottom-left-radius: 0px;
+  -webkit-border-top-left-radius: 0px;
+  -moz-border-radius-topright: 25px;
+  -moz-border-radius-bottomright: 25px;
+  -moz-border-radius-bottomleft: 0px;
+  -moz-border-radius-topleft: 0px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+menu li a {
+  color: white;
+  padding: 0.5em 20px 0.5em 20px;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: black;
+  color: white;
+  padding: 0.5em 20px 0.5em 20px;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+  background-color: black;
+}
+menu li a:hover {
+  color: #999;
+  text-decoration: underline;
+}
+menu li a:hover {
+  color: #999;
+  text-decoration: underline;
+}
+menu {
+  position: absolute;
+  margin: 10px;
+  right: 0px;
+  top: 0px;
+}
+form fieldset {
+  display: inline-block;
+}
+form li {
+  list-style: none;
+}
+form ul {
+  padding: 0;
+}
+form input, form textarea {
+  margin: 2px 20px;
+}
+form.new-blog input[type=text], form.new-blog textarea {
+  width: 90%;
+}
+.blog {
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -moz-border-radius-topleft: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  padding: 20px 30px;
+  margin: 25px 0px;
+}
+.blog h2 {
+  display: inline;
+}
+.blog time {
+  float: right;
+  clear: both;
+}
+body {
+  margin: 0px;
+}
+#content {
+  margin-top: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding: 1%;
+  width: 78%;
+}
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  display: button;
+}
+a:hover {
+  text-decoration: underline;
+}
+h1 a:hover {
+  text-decoration: none;
+}
+.center {
+  text-align: center;
+}
+.inline {
+  display: inline;
+}
+/*---------------------------------------------------
+		LESS Elements 0.5
+	---------------------------------------------------
+		A set of useful LESS mixins by Dmitry Fadeyev
+		Special thanks for mixin suggestions to:
+			Kris Van Herzeele,
+			Benoit Adam,
+			Portenart Emile-Victor
+			
+		More info at: http://lesselements.com
+-----------------------------------------------------*/
+form fieldset {
+  display: inline-block;
+}
+form li {
+  list-style: none;
+}
+form ul {
+  padding: 0;
+}
+form input, form textarea {
+  margin: 2px 20px;
+}
+form.new-blog input[type=text], form.new-blog textarea {
+  width: 90%;
+}

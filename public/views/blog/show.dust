@@ -1,0 +1,9 @@
+{>"/layouts/main"/}
+
+{<title} {blog_title} {/title}
+
+{<main} 
+
+{>"/blog/item"/} 
+
+{/main}

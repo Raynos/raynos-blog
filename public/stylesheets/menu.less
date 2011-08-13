@@ -1,0 +1,68 @@
+.link-style {
+	color: white;
+	padding: 0.5em 20px 0.5em 20px;
+	font-family: 'Varela Round', sans-serif;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: black;
+	&:hover {
+		color: #999;
+		text-decoration: underline;
+	}
+}
+
+h1 {
+	font-family: 'Permanent Marker', cursive;
+	font-size: 48px;
+	top: 0px;
+	left: 0px; 
+	margin: 0px;
+	margin-left: 10px;
+	letter-spacing: 5px;
+	color: black;
+	position: absolute;
+}
+
+h1:first-letter {
+	font-size: 60px;
+}
+
+nav {
+	margin-top: 0.25em;
+	padding: 0.5em;
+	text-align: center;
+}
+
+nav a {
+	.link-style;
+	&:first-of-type {
+		.border-radius(0px, 0px, 25px, 25px);
+	}
+	&:last-of-type {
+		.border-radius(25px, 25px, 0px, 0px);
+		
+	}
+}
+
+menu li {
+	list-style: none;
+	display: inline;
+	&:first-of-type a {
+		.border-radius(0px, 0px, 25px, 25px);
+	}
+	&:last-of-type a {
+		.border-radius(25px, 25px, 0px, 0px);
+		
+	}
+}
+
+menu li a {
+	.link-style;
+}
+
+menu {
+	position: absolute;
+	margin: 10px;
+	right: 0px;
+	top: 0px;
+}

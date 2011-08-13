@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> {+title}Raynos.org{/title} </title>
+		<link href='http://fonts.googleapis.com/css?family=Permanent+Marker|Varela+Round' rel='stylesheet' type='text/css'>
+		<link rel='stylesheet' href='/stylesheets/site.css' type="text/css" />
+	</head>
+	<body>
+		<header id="menu">
+			<h1> <a href="/blog/"> Raynos </a></h1>
+
+			<nav>
+				<a href="/blog/"> Blog </a>
+				<a href="/apps/"> Applications </a>
+				<a href="/games/"> Games </a>
+				<a href="/tuts/"> Tutorials </a>
+				<a href="/protos/"> Prototypes </a>
+			</nav>
+
+			<menu type="list">
+				<li><a href="/signup/"> Sign Up </a></li>
+				<li><a href="/login/"> Log In </a></li>
+			</menu>
+		</header>
+		<section id="content">
+			{+main} Page appears to be empty {/main}
+		</section>
+	</body>
+</html>

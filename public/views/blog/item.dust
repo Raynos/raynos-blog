@@ -1,0 +1,15 @@
+<article class="blog"> 
+	<h2><a href="/blog/{url}"> {title} </a></h2>
+	<time datetime="{datetime}"> {readable_time}</time>
+	<div class="blog-content">
+		{content|s}
+	</div>
+	<form class="inline" method="get" action="/blog/{url}/edit">
+		<input type="submit" value="Edit blog entry" />
+	</form>
+	<form class="inline" method="post" action="/blog/{url}">
+		<input type="hidden" name="_method" value="delete"/>
+		<input type="submit" value="Delete this blog entry" />
+	</form>
+	
+</article>

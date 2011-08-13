@@ -1,0 +1,14 @@
+{>"/layouts/main"/}
+
+{<title} Add new Blog post {/title}
+
+{<main} 
+
+<form class="new-blog" action="/blog/" method="post">
+	<fieldset>
+		<legend> New Post </legend>
+		{>"/blog/item_form"/}
+	</fieldset>
+</form>
+
+{/main}
