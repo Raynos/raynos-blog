@@ -93,7 +93,7 @@ exports.create = function _create(req, res) {
 	}
 
 	save(data, uuid(), function _save() {
-		res.render("blog/" + data.url);
+		res.redirect("blog/" + data.url);
 	});
 };
 
@@ -109,6 +109,7 @@ exports.edit = function _edit(req, res) {
 	var url = req.params.blog
 	
 	get(url, function _get(val) {
+		console.log("test here");
 		res.render("blog/edit", val);
 	});
 };
