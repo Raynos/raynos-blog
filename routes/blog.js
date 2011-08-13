@@ -63,7 +63,7 @@ var get = function(url, cb) {
 		var rows = JSON.parse(body).rows;
 		if (!rows || rows.length === 0) {
 			cb(new Error("no results"));
-		} else if (rows.length === 1) {
+		} else if (url) {
 			cb(null, rows[0].value);	
 		} else {
 			cb(null, rows);
