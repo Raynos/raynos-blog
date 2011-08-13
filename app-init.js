@@ -1,5 +1,4 @@
-var controllers = require("express-controllers"),
-	dust = require("./lib/dust.js"),
+var	dust = require("./lib/dust.js"),
 	lessup = require("lessup")
 
 // temporary error logging
@@ -16,8 +15,10 @@ module.exports = function _init(app) {
 		compileTo: '/public/stylesheets/site.css'
 	});
 
-	// init controllers
-	app.controllers();
+	// set up 404 watcher
+	app.use(function(req, res, next){
+		res.render('404');
+	});
 
 	app.listen(parseInt(process.env.PORT) || 8080);
 	console.log("Express server listening on port %d", app.address().port);	
