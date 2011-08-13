@@ -11,7 +11,7 @@
         "lessup": "0.2.5",
         "node-uuid": "1.2.0",
         "markdown": "0.2.1",
-        "LazyBoy": ""
+        "request": "2.0.3"
     },
     "devDependencies": {
     	"expresso": "0.7.1",
