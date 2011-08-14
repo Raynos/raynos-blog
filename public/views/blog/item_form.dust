@@ -9,6 +9,7 @@
 			{?invalidTitle} 
 				class="error"
 				title="The title is already taken. Please enter a different one" 
+				pattern="^(?!{title}$).*"
 			{:else}
 				title="Enter a blog title" 
 			{/invalidTitle}
