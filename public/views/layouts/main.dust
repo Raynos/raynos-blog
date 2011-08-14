@@ -4,6 +4,11 @@
 		<title> {+title}Raynos.org{/title} </title>
 		<link href='http://fonts.googleapis.com/css?family=Delius|Varela+Round' rel='stylesheet' type='text/css'>
 		<link rel='stylesheet' href='/stylesheets/site.css' type="text/css" />
+
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
 	</head>
 	<body>
 		<header id="menu">
