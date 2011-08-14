@@ -107,7 +107,6 @@ module.exports = function _route(app) {
 		}
 
 		get(function _get(err, rows) {
-			console.log(rows);
 			if (rows.some(function _some(r) {
 				return r.value.title === data.title;
 			})) {
@@ -147,13 +146,28 @@ module.exports = function _route(app) {
 	app.put("/blog/:url", function _update(req, res) {
 		var url = req.params.url;
 		
-		get(url, function _get(err, val) {
-			val.title = req.body.title;
-			val.content = req.body.content;
+		get(function _get(err, rows) {
+			if (rows.some(function _findDuplicateTitles(v) {
+				return v.value.title === req.body.title;
+			})) {
+				res.render("blog/edit", {
+					"title": req.body.title,
+					"content": req.body.content,
+					"url": url,
+					"invalidTitle": true
+				});	
+			} else {
+				var val = rows.filter(function _getCurrentPost(v) {
+					return v.value.url === url;
+				})[0].value;
 
-			save(val, val._id, function _save() {
-				res.redirect("blog/" + val.url);
-			})
+				val.title = req.body.title;
+				val.content = req.body.content;
+
+				save(val, val._id, function _save() {
+					res.redirect("blog/" + val.url);
+				});
+			}
 		});
 	});
 

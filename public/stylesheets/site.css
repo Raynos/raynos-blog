@@ -13,7 +13,7 @@
 h1 {
   font-family: 'Delius', cursive;
   font-size: 48px;
-  top: 10px;
+  top: 20px;
   left: 0px;
   margin: 0px;
   margin-left: 10px;
@@ -79,7 +79,7 @@ menu {
   position: absolute;
   margin: 0px;
   right: 0px;
-  top: 0px;
+  top: 4px;
 }
 .blog {
   border-style: solid;
@@ -122,7 +122,7 @@ menu {
 h1 {
   font-family: 'Delius', cursive;
   font-size: 48px;
-  top: 10px;
+  top: 20px;
   left: 0px;
   margin: 0px;
   margin-left: 10px;
@@ -188,7 +188,7 @@ menu {
   position: absolute;
   margin: 0px;
   right: 0px;
-  top: 0px;
+  top: 4px;
 }
 form {
   text-align: center;
@@ -208,6 +208,7 @@ form input, form textarea {
 form.new-blog {
   background-color: white;
   padding: 10px;
+  border: 1px black solid;
 }
 form.new-blog input[type=text], form.new-blog textarea {
   width: 90%;
@@ -230,6 +231,11 @@ form.new-blog input[type=text], form.new-blog textarea {
 body {
   margin: 0px;
   background-color: #ccc;
+}
+header {
+  background-color: black;
+  padding-top: 4px;
+  padding-bottom: 2px;
 }
 #content {
   margin-top: 50px;
@@ -289,6 +295,7 @@ form input, form textarea {
 form.new-blog {
   background-color: white;
   padding: 10px;
+  border: 1px black solid;
 }
 form.new-blog input[type=text], form.new-blog textarea {
   width: 90%;
