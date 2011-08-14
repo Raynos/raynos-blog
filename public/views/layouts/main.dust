@@ -7,7 +7,7 @@
 	</head>
 	<body>
 		<header id="menu">
-			<h1> <a href="/blog/"> Raynos </a></h1>
+			<h1><a href="/blog/"> Raynos </a></h1>
 
 			<nav>
 				<ul>
@@ -20,8 +20,17 @@
 				</ul>
 			</nav>
 		</header>
-		<section id="content">
+		<section id="main">
 			{+main} Page appears to be empty {/main}
 		</section>
+		<hr/>
+		<footer>
+			<nav> 
+				<ul>
+					<li><a href="#menu"> Back to top </a></li>
+				</ul>
+			</nav>
+			<h5> Copyright © 2011 Jake Verbaten </h5>
+		</footer>
 	</body>
 </html>

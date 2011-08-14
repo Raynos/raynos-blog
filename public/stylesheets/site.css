@@ -27,10 +27,10 @@ h1:first-letter {
 h1 a:hover {
   text-decoration: none;
 }
-nav {
+header nav {
   text-align: center;
 }
-nav a {
+header nav a {
   color: white;
   padding: 2px 20px;
   font-family: 'Varela Round', sans-serif;
@@ -44,23 +44,54 @@ nav a {
   font-weight: bold;
   background-color: black;
 }
-nav a:hover {
+header nav a:hover {
   color: #666;
   text-decoration: underline;
 }
-nav a:hover {
+header nav a:hover {
   color: #666;
   text-decoration: underline;
 }
-nav li {
+header nav li {
   list-style: none;
   display: inline;
 }
-nav li.login {
+header nav li.login {
   float: right;
 }
-nav ul {
+header nav ul {
   margin: 0px;
+}
+article.blog-post {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  padding: 20px 30px;
+  margin: 25px 0px;
+  background-color: white;
+}
+article.blog-post h2 {
+  display: inline;
+}
+article.blog-post time {
+  float: right;
+  clear: both;
+}
+.inline {
+  display: inline;
+}
+.error {
+  color: red;
+}
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  display: button;
+}
+a:hover {
+  text-decoration: underline;
+  color: #666;
 }
 .inline {
   display: inline;
@@ -118,10 +149,10 @@ h1:first-letter {
 h1 a:hover {
   text-decoration: none;
 }
-nav {
+header nav {
   text-align: center;
 }
-nav a {
+header nav a {
   color: white;
   padding: 2px 20px;
   font-family: 'Varela Round', sans-serif;
@@ -135,22 +166,22 @@ nav a {
   font-weight: bold;
   background-color: black;
 }
-nav a:hover {
+header nav a:hover {
   color: #666;
   text-decoration: underline;
 }
-nav a:hover {
+header nav a:hover {
   color: #666;
   text-decoration: underline;
 }
-nav li {
+header nav li {
   list-style: none;
   display: inline;
 }
-nav li.login {
+header nav li.login {
   float: right;
 }
-nav ul {
+header nav ul {
   margin: 0px;
 }
 form {
@@ -168,15 +199,15 @@ form ul {
 form input, form textarea {
   margin: 2px 20px;
 }
-form.new-blog {
+form.blog-post {
   background-color: white;
   padding: 10px;
   border: 1px black solid;
 }
-form.new-blog input[type=text], form.new-blog textarea {
+form.blog-post input[type=text], form.blog-post textarea {
   width: 90%;
 }
-.blog {
+article.blog-post {
   border-style: solid;
   border-color: black;
   border-width: 1px;
@@ -184,10 +215,10 @@ form.new-blog input[type=text], form.new-blog textarea {
   margin: 25px 0px;
   background-color: white;
 }
-.blog h2 {
+article.blog-post h2 {
   display: inline;
 }
-.blog time {
+article.blog-post time {
   float: right;
   clear: both;
 }
@@ -200,43 +231,22 @@ header {
   padding-top: 4px;
   padding-bottom: 2px;
 }
-#content {
+footer {
+  text-align: center;
+}
+footer ul {
+  padding: 0px;
+}
+footer li {
+  list-style: none;
+  display: inline;
+}
+#main {
   margin-top: 50px;
   margin-left: 10%;
   margin-right: 10%;
   padding: 1%;
   width: 78%;
-}
-.blog {
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
-  padding: 20px 30px;
-  margin: 25px 0px;
-  background-color: white;
-}
-.blog h2 {
-  display: inline;
-}
-.blog time {
-  float: right;
-  clear: both;
-}
-.inline {
-  display: inline;
-}
-.error {
-  color: red;
-}
-a {
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-  display: button;
-}
-a:hover {
-  text-decoration: underline;
-  color: #666;
 }
 /*---------------------------------------------------
 		LESS Elements 0.5
@@ -264,11 +274,11 @@ form ul {
 form input, form textarea {
   margin: 2px 20px;
 }
-form.new-blog {
+form.blog-post {
   background-color: white;
   padding: 10px;
   border: 1px black solid;
 }
-form.new-blog input[type=text], form.new-blog textarea {
+form.blog-post input[type=text], form.blog-post textarea {
   width: 90%;
 }

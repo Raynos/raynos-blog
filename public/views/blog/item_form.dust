@@ -5,14 +5,8 @@
 			name="title" 
 			placeholder="Blog Title" 
 			value="{title}" 
+			title="Enter a blog title" 
 			required
-			{?invalidTitle} 
-				class="error"
-				title="The title is already taken. Please enter a different one" 
-				pattern="^(?!{title}$).*"
-			{:else}
-				title="Enter a blog title" 
-			{/invalidTitle}
 		/>	
 	</li>
 	<li>

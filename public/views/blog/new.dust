@@ -4,7 +4,7 @@
 
 {<main} 
 
-<form class="new-blog" action="/blog/" method="post">
+<form class="blog-post" action="/blog/" method="post">
 	<fieldset>
 		<legend> New Post </legend>
 		{>"/blog/item_form"/}
