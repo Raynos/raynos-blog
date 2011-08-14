@@ -2,7 +2,9 @@
 var markdown = require("markdown").markdown,
 	r = require("request").defaults({
 		"headers": {
-			"Authorization": "Basic " + new Buffer(process.env.COUCH_USER + ":" + process.env.COUCH_PWD).toString("base64")
+			"Authorization": "Basic " + 
+				new Buffer(process.env.COUCH_USER + ":" + 
+				process.env.COUCH_PWD).toString("base64")
 		}
 	}),
 	uuid = require("node-uuid");
@@ -10,8 +12,12 @@ var markdown = require("markdown").markdown,
 
 var base_url = "http://raynos.iriscouch.com/raynos";
 
+var createURL = function _createURL(p) {
+	return p.id + "/" + encodeURIComponent(p.title.replace(/\s/, "-"));
+}
+
 var fixURL = function _fixURL(p) {
-	p.url = encodeURIComponent(p.url);
+	p.url = createURL(p);
 	return p;
 }
 
@@ -39,37 +45,44 @@ r({
 	"url": base_url + "/_design/posts"
 }, error(function _callback(err, resp, body) {
 	if (JSON.parse(body).error === "not_found") {
+		var view = {
+			"all": {
+				"map": "function(d) { if (d.type === 'post') emit(d.id, d); }"
+			}
+		};
+
 		r({
 			"url": base_url + "/_design/posts",
 			"method": "PUT",
 			"json": {
 				"_id": "_design/posts",
-				"views": {
-					"all": {
-						"map": "function(d) { if (d.type === 'post') emit(d.url, d); }"
-					}
-				}
+				"views": view
 			}
 		}, noop);
 	}
 }));
 
-var get = function(url, cb) {
-	if (typeof url === "function") {
-		cb = url; 
-		url = null;
+var get = function(id, cb) {
+	if (typeof id === "function") {
+		cb = id; 
+		id = null;
 	}
+
 	var uri = base_url + "/_design/posts/_view/all";
-	if (url) {
-		uri += "?startkey=" + encodeURIComponent(JSON.stringify(url)) + "&endkey=" + encodeURIComponent(JSON.stringify(url))
+	if (id) {
+		uri += "?startkey=" + 
+			encodeURIComponent(JSON.stringify(id)) + 
+			"&endkey=" + 
+			encodeURIComponent(JSON.stringify(id));
 	}
+
 	r({
 		"uri": uri
 	}, error(function _callback(err, resp, body) {
 		var rows = JSON.parse(body).rows;
 		if (!rows || rows.length === 0) {
 			cb(new Error("no results"), []);
-		} else if (url) {
+		} else if (id !== null) {
 			cb(null, rows[0].value);	
 		} else {
 			cb(null, rows);
@@ -108,31 +121,36 @@ module.exports = function _route(app) {
 			"content": req.body.content,
 			"title": req.body.title,
 			"datetime": Date.now(),
-			"url": req.body.title.split(" ").join("-"),
 			"type": "post"
 		}
 
 		get(function _get(err, rows) {
-			if (rows.some(function _some(r) {
-				return r.value.title === data.title;
-			})) {
-				res.render("blog/new", {
-					"title": data.title,
-					"content": data.content,
-					"invalidTitle": true
-				});
-			} else {
-				save(data, uuid(), function _save() {
-					res.redirect("blog/" + encodeURIComponent(data.url));
-				});		
-			}
+			var id = rows.map(function(v) {
+				return v.value.id;
+			}).reduce(function(prev, curr) {
+				return prev < curr ? curr : prev;
+			}, 0);
+
+			data.id = ++id;
+
+			save(data, uuid(), function _save() {
+				res.redirect("blog/" + createURL(data));
+			});		
 		});
 	});
 
-	app.get("/blog/:url", function _show(req, res) {
-		var url = req.params.url;
+	app.get("/blog/:id/edit", function _edit(req, res) {
+		var id = +req.params.id
+		
+		get(id, function _get(err, val) {
+			res.render("blog/edit", fixURL(val));
+		});
+	});
 
-		get(url, function _get(err, val) {
+	app.get("/blog/:id/:title", function _show(req, res) {
+		var id = +req.params.id;
+
+		get(id, function _get(err, val) {
 			if (err && err.message === "no results") {
 				res.redirect("404");
 			} else {
@@ -141,31 +159,23 @@ module.exports = function _route(app) {
 		});
 	});
 
-	app.get("/blog/:url/edit", function _edit(req, res) {
-		var url = req.params.url
+	app.put("/blog/:id", function _update(req, res) {
+		var id = +req.params.id;
 		
-		get(url, function _get(err, val) {
-			res.render("blog/edit", fixURL(val));
-		});
-	});
-
-	app.put("/blog/:url", function _update(req, res) {
-		var url = req.params.url;
-		
-		get(url, function _get(err, val) {
+		get(id, function _get(err, val) {
 			val.title = req.body.title;
 			val.content = req.body.content;
 
 			save(val, val._id, function _save() {
-				res.redirect("blog/" + encodeURIComponent(val.url));
+				res.redirect("blog/" + createURL(val));
 			});
 		});
 	});
 
-	app.delete("/blog/:url", function _destroy(req, res) {
-		var url = req.params.url;
+	app.delete("/blog/:id", function _destroy(req, res) {
+		var id = +req.params.id;
 
-		get(url, function _get(err, val) {
+		get(id, function _get(err, val) {
 			var uri = base_url + "/" + val._id + "?rev=" + val._rev;
 			
 			r({

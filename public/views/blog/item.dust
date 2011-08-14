@@ -4,12 +4,11 @@
 	<div class="blog-content">
 		{content|s}
 	</div>
-	<form class="inline" method="get" action="/blog/{url}/edit">
+	<form class="inline" method="get" action="/blog/{id}/edit">
 		<input type="submit" value="Edit blog entry" />
 	</form>
-	<form class="inline" method="post" action="/blog/{url}">
+	<form class="inline" method="post" action="/blog/{id}">
 		<input type="hidden" name="_method" value="delete"/>
 		<input type="submit" value="Delete this blog entry" />
 	</form>
-	
 </article>

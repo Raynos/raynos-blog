@@ -24,6 +24,9 @@ h1 {
 h1:first-letter {
   font-size: 60px;
 }
+h1 a:hover {
+  text-decoration: none;
+}
 nav {
   text-align: center;
 }
@@ -49,52 +52,31 @@ nav a:hover {
   color: #666;
   text-decoration: underline;
 }
-menu li {
+nav li {
   list-style: none;
   display: inline;
 }
-menu li a {
-  color: white;
-  padding: 2px 20px;
-  font-family: 'Varela Round', sans-serif;
-  text-decoration: none;
-  font-weight: bold;
-  background-color: black;
-  color: white;
-  padding: 2px 20px;
-  font-family: 'Varela Round', sans-serif;
-  text-decoration: none;
-  font-weight: bold;
-  background-color: black;
+nav li.login {
+  float: right;
 }
-menu li a:hover {
-  color: #666;
-  text-decoration: underline;
-}
-menu li a:hover {
-  color: #666;
-  text-decoration: underline;
-}
-menu {
-  position: absolute;
+nav ul {
   margin: 0px;
-  right: 0px;
-  top: 4px;
 }
-.blog {
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
-  padding: 20px 30px;
-  margin: 25px 0px;
-  background-color: white;
-}
-.blog h2 {
+.inline {
   display: inline;
 }
-.blog time {
-  float: right;
-  clear: both;
+.error {
+  color: red;
+}
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  display: button;
+}
+a:hover {
+  text-decoration: underline;
+  color: #666;
 }
 /*---------------------------------------------------
 		LESS Elements 0.5
@@ -133,6 +115,9 @@ h1 {
 h1:first-letter {
   font-size: 60px;
 }
+h1 a:hover {
+  text-decoration: none;
+}
 nav {
   text-align: center;
 }
@@ -158,37 +143,15 @@ nav a:hover {
   color: #666;
   text-decoration: underline;
 }
-menu li {
+nav li {
   list-style: none;
   display: inline;
 }
-menu li a {
-  color: white;
-  padding: 2px 20px;
-  font-family: 'Varela Round', sans-serif;
-  text-decoration: none;
-  font-weight: bold;
-  background-color: black;
-  color: white;
-  padding: 2px 20px;
-  font-family: 'Varela Round', sans-serif;
-  text-decoration: none;
-  font-weight: bold;
-  background-color: black;
+nav li.login {
+  float: right;
 }
-menu li a:hover {
-  color: #666;
-  text-decoration: underline;
-}
-menu li a:hover {
-  color: #666;
-  text-decoration: underline;
-}
-menu {
-  position: absolute;
+nav ul {
   margin: 0px;
-  right: 0px;
-  top: 4px;
 }
 form {
   text-align: center;
@@ -244,6 +207,27 @@ header {
   padding: 1%;
   width: 78%;
 }
+.blog {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  padding: 20px 30px;
+  margin: 25px 0px;
+  background-color: white;
+}
+.blog h2 {
+  display: inline;
+}
+.blog time {
+  float: right;
+  clear: both;
+}
+.inline {
+  display: inline;
+}
+.error {
+  color: red;
+}
 a {
   color: black;
   text-decoration: none;
@@ -253,18 +237,6 @@ a {
 a:hover {
   text-decoration: underline;
   color: #666;
-}
-h1 a:hover {
-  text-decoration: none;
-}
-.center {
-  text-align: center;
-}
-.inline {
-  display: inline;
-}
-.error {
-  color: red;
 }
 /*---------------------------------------------------
 		LESS Elements 0.5

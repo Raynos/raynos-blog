@@ -15,11 +15,6 @@ module.exports = function _init(app) {
 		compileTo: '/public/stylesheets/site.css'
 	});
 
-	// set up 404 watcher
-	app.use(function(req, res, next){
-		res.render('404');
-	});
-
 	app.listen(parseInt(process.env.PORT) || 8080);
 	console.log("Express server listening on port %d", app.address().port);	
 }

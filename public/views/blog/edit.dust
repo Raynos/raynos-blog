@@ -4,7 +4,7 @@
 
 {<main} 
 
-<form class="new-blog" action="/blog/{url}" method="post">
+<form class="new-blog" action="/blog/{id}" method="post">
 	<fieldset>
 		<legend> Edit Post </legend>
 		<input type="hidden" name="_method" value="put"/>
