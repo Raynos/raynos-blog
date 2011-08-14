@@ -13,7 +13,7 @@ var markdown = require("markdown").markdown,
 var base_url = "http://raynos.iriscouch.com/raynos";
 
 var createURL = function _createURL(p) {
-	return p.id + "/" + encodeURIComponent(p.title.replace(/\s/, "-"));
+	return p.id + "/" + encodeURIComponent(p.title.replace(/\s/g, "-"));
 }
 
 var fixURL = function _fixURL(p) {
