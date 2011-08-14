@@ -4,13 +4,6 @@
 		<title> {+title}Raynos.org{/title} </title>
 		<link href='http://fonts.googleapis.com/css?family=Delius|Varela+Round' rel='stylesheet' type='text/css'>
 		<link rel='stylesheet' href='/stylesheets/site.css' type="text/css" />
-
-		<!--[if lt IE 9]>
-			<script>
-				alert("This is a HTML5/CSS3 website. It does not work in IE8 or less.");
-			</script>
-		<![endif]-->
-
 	</head>
 	<body>
 		<header id="menu">
@@ -39,5 +32,11 @@
 			</nav>
 			<h5> Copyright © 2011 Jake Verbaten </h5>
 		</footer>
+
+		<!--[if lt IE 9]>
+			<script>
+				alert("This is a HTML5/CSS3 website. It does not work in IE8 or less.");
+			</script>
+		<![endif]-->
 	</body>
 </html>
