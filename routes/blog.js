@@ -6,12 +6,14 @@ var createURL = function _createURL(p) {
 	return p.id + "/" + encodeURIComponent(p.title.replace(/\s/g, "-"));
 }
 
+// Normalize format (from array & .value) and set the url
 var fixURL = function _fixURL(p) {
 	p = (p[0] || p).value;
 	p.url = createURL(p);
 	return p;
 }
 
+// transform data to be view friendly
 var view = function _view(p) {
 	p = fixURL(p);
 	p.readable_time = new Date(p.datetime).toDateString()
@@ -21,6 +23,7 @@ var view = function _view(p) {
 
 module.exports = function _route(app) {
 
+	// Get all posts
 	app.get("/blog", function _index(req, res) {
 		Posts.get(function _get(err, data) {
 			res.render("blog/index", {
@@ -33,6 +36,7 @@ module.exports = function _route(app) {
 		res.render("blog/new");
 	});
 
+	// create new post
 	app.post("/blog", function _create(req, res) {
 		var data = {
 			"content": req.body.content,
@@ -42,6 +46,7 @@ module.exports = function _route(app) {
 		}
 
 		Posts.get(function _get(err, rows) {
+			// get highest id and make the new id one higher.
 			var id = rows.map(function _pluckId(v) {
 				return v.value.id;
 			}).reduce(function _findMaxId(prev, curr) {
@@ -56,6 +61,7 @@ module.exports = function _route(app) {
 		});
 	});
 
+	// render the edit page
 	app.get("/blog/:id/edit", function _edit(req, res) {
 		var id = +req.params.id
 		
@@ -64,10 +70,12 @@ module.exports = function _route(app) {
 		});
 	});
 
+	// render single post
 	app.get("/blog/:id/:title", function _show(req, res) {
 		var id = +req.params.id;
 
 		Posts.get(id, function _get(err, rows) {
+			// if doc with id does not exist then 404
 			if (err && err.message === "no results") {
 				res.redirect("404");
 			} else {
@@ -76,6 +84,7 @@ module.exports = function _route(app) {
 		});
 	});
 
+	// update document.
 	app.put("/blog/:id", function _update(req, res) {
 		var id = +req.params.id;
 		
