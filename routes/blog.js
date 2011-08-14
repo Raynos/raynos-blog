@@ -10,9 +10,15 @@ var markdown = require("markdown").markdown,
 
 var base_url = "http://raynos.iriscouch.com/raynos";
 
+var fixURL = function _fixURL(p) {
+	p.url = encodeURIComponent(p.url);
+	return p;
+}
+
 var view = function _view(p) {
 	p.readable_time = new Date(p.datetime).toDateString()
 	p.content = markdown.toHTML(p.content);
+	fixURL(p);
 	return p;
 };
 
@@ -117,7 +123,7 @@ module.exports = function _route(app) {
 				});
 			} else {
 				save(data, uuid(), function _save() {
-					res.redirect("blog/" + data.url);
+					res.redirect("blog/" + encodeURIComponent(data.url));
 				});		
 			}
 		});
@@ -139,7 +145,7 @@ module.exports = function _route(app) {
 		var url = req.params.url
 		
 		get(url, function _get(err, val) {
-			res.render("blog/edit", val);
+			res.render("blog/edit", fixURL(val));
 		});
 	});
 
@@ -151,7 +157,7 @@ module.exports = function _route(app) {
 			val.content = req.body.content;
 
 			save(val, val._id, function _save() {
-				res.redirect("blog/" + val.url);
+				res.redirect("blog/" + encodeURIComponent(val.url));
 			});
 		});
 	});
