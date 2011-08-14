@@ -1,6 +1,6 @@
 {>"/layouts/main"/}
 
-{<title} {blog_title} {/title}
+{<title} {title} {/title}
 
 {<main} 
 

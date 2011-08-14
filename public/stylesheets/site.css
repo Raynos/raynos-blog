@@ -7,13 +7,13 @@
   background-color: black;
 }
 .link-style:hover {
-  color: #999;
+  color: #666;
   text-decoration: underline;
 }
 h1 {
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Delius', cursive;
   font-size: 48px;
-  top: 0px;
+  top: 10px;
   left: 0px;
   margin: 0px;
   margin-left: 10px;
@@ -42,11 +42,11 @@ nav a {
   background-color: black;
 }
 nav a:hover {
-  color: #999;
+  color: #666;
   text-decoration: underline;
 }
 nav a:hover {
-  color: #999;
+  color: #666;
   text-decoration: underline;
 }
 menu li {
@@ -68,11 +68,11 @@ menu li a {
   background-color: black;
 }
 menu li a:hover {
-  color: #999;
+  color: #666;
   text-decoration: underline;
 }
 menu li a:hover {
-  color: #999;
+  color: #666;
   text-decoration: underline;
 }
 menu {
@@ -82,35 +82,12 @@ menu {
   top: 0px;
 }
 .blog {
-  -webkit-border-top-right-radius: 10px;
-  -webkit-border-bottom-right-radius: 10px;
-  -webkit-border-bottom-left-radius: 10px;
-  -webkit-border-top-left-radius: 10px;
-  -moz-border-radius-topright: 10px;
-  -moz-border-radius-bottomright: 10px;
-  -moz-border-radius-bottomleft: 10px;
-  -moz-border-radius-topleft: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
-  -webkit-border-top-right-radius: 10px;
-  -webkit-border-bottom-right-radius: 10px;
-  -webkit-border-bottom-left-radius: 10px;
-  -webkit-border-top-left-radius: 10px;
-  -moz-border-radius-topright: 10px;
-  -moz-border-radius-bottomright: 10px;
-  -moz-border-radius-bottomleft: 10px;
-  -moz-border-radius-topleft: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
   border-style: solid;
   border-color: black;
   border-width: 1px;
   padding: 20px 30px;
   margin: 25px 0px;
+  background-color: white;
 }
 .blog h2 {
   display: inline;
@@ -139,13 +116,13 @@ menu {
   background-color: black;
 }
 .link-style:hover {
-  color: #999;
+  color: #666;
   text-decoration: underline;
 }
 h1 {
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Delius', cursive;
   font-size: 48px;
-  top: 0px;
+  top: 10px;
   left: 0px;
   margin: 0px;
   margin-left: 10px;
@@ -174,11 +151,11 @@ nav a {
   background-color: black;
 }
 nav a:hover {
-  color: #999;
+  color: #666;
   text-decoration: underline;
 }
 nav a:hover {
-  color: #999;
+  color: #666;
   text-decoration: underline;
 }
 menu li {
@@ -200,11 +177,11 @@ menu li a {
   background-color: black;
 }
 menu li a:hover {
-  color: #999;
+  color: #666;
   text-decoration: underline;
 }
 menu li a:hover {
-  color: #999;
+  color: #666;
   text-decoration: underline;
 }
 menu {
@@ -212,6 +189,9 @@ menu {
   margin: 0px;
   right: 0px;
   top: 0px;
+}
+form {
+  text-align: center;
 }
 form fieldset {
   display: inline-block;
@@ -225,39 +205,20 @@ form ul {
 form input, form textarea {
   margin: 2px 20px;
 }
+form.new-blog {
+  background-color: white;
+  padding: 10px;
+}
 form.new-blog input[type=text], form.new-blog textarea {
   width: 90%;
 }
 .blog {
-  -webkit-border-top-right-radius: 10px;
-  -webkit-border-bottom-right-radius: 10px;
-  -webkit-border-bottom-left-radius: 10px;
-  -webkit-border-top-left-radius: 10px;
-  -moz-border-radius-topright: 10px;
-  -moz-border-radius-bottomright: 10px;
-  -moz-border-radius-bottomleft: 10px;
-  -moz-border-radius-topleft: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
-  -webkit-border-top-right-radius: 10px;
-  -webkit-border-bottom-right-radius: 10px;
-  -webkit-border-bottom-left-radius: 10px;
-  -webkit-border-top-left-radius: 10px;
-  -moz-border-radius-topright: 10px;
-  -moz-border-radius-bottomright: 10px;
-  -moz-border-radius-bottomleft: 10px;
-  -moz-border-radius-topleft: 10px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-bottom-left-radius: 10px;
-  border-top-left-radius: 10px;
   border-style: solid;
   border-color: black;
   border-width: 1px;
   padding: 20px 30px;
   margin: 25px 0px;
+  background-color: white;
 }
 .blog h2 {
   display: inline;
@@ -268,6 +229,7 @@ form.new-blog input[type=text], form.new-blog textarea {
 }
 body {
   margin: 0px;
+  background-color: #ccc;
 }
 #content {
   margin-top: 50px;
@@ -284,6 +246,7 @@ a {
 }
 a:hover {
   text-decoration: underline;
+  color: #666;
 }
 h1 a:hover {
   text-decoration: none;
@@ -293,6 +256,9 @@ h1 a:hover {
 }
 .inline {
   display: inline;
+}
+.error {
+  color: red;
 }
 /*---------------------------------------------------
 		LESS Elements 0.5
@@ -305,6 +271,9 @@ h1 a:hover {
 			
 		More info at: http://lesselements.com
 -----------------------------------------------------*/
+form {
+  text-align: center;
+}
 form fieldset {
   display: inline-block;
 }
@@ -316,6 +285,10 @@ form ul {
 }
 form input, form textarea {
   margin: 2px 20px;
+}
+form.new-blog {
+  background-color: white;
+  padding: 10px;
 }
 form.new-blog input[type=text], form.new-blog textarea {
   width: 90%;

@@ -62,7 +62,7 @@ var get = function(url, cb) {
 	}, error(function _callback(err, resp, body) {
 		var rows = JSON.parse(body).rows;
 		if (!rows || rows.length === 0) {
-			cb(new Error("no results"));
+			cb(new Error("no results"), []);
 		} else if (url) {
 			cb(null, rows[0].value);	
 		} else {
@@ -85,15 +85,11 @@ module.exports = function _route(app) {
 
 	app.get("/blog", function _index(req, res) {
 		get(function _get(err, data) {
-			if (err && err.message === "no results") { 
-				res.redirect("404");
-			} else {
-				res.render("blog/index", {
-					"posts": data.map(function(p) {
-						return view(p.value);
-					})
-				});
-			}
+			res.render("blog/index", {
+				"posts": data.map(function(p) {
+					return view(p.value);
+				})
+			});
 		});
 	});
 
@@ -110,8 +106,21 @@ module.exports = function _route(app) {
 			"type": "post"
 		}
 
-		save(data, uuid(), function _save() {
-			res.redirect("blog/" + data.url);
+		get(function _get(err, rows) {
+			console.log(rows);
+			if (rows.some(function _some(r) {
+				return r.value.title === data.title;
+			})) {
+				res.render("blog/new", {
+					"title": data.title,
+					"content": data.content,
+					"invalidTitle": true
+				});
+			} else {
+				save(data, uuid(), function _save() {
+					res.redirect("blog/" + data.url);
+				});		
+			}
 		});
 	});
 
