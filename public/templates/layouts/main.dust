@@ -34,7 +34,6 @@
 		<section id="main">
 			{+main} Page appears to be empty {/main}
 		</section>
-		<hr/>
 		<footer>
 			<nav> 
 				<ul>

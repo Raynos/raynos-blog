@@ -4,18 +4,14 @@
 .error {
   color: red;
 }
-a {
+.link-style {
   color: #7593c9;
   font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   font-weight: bold;
 }
-a:hover {
-  color: #415e93;
+.link-style:hover {
   text-decoration: underline;
-}
-a:visited {
-  color: #7593c9;
 }
 /*---------------------------------------------------
 		LESS Elements 0.5
@@ -45,10 +41,6 @@ h1 a {
   font-size: 48px;
   color: black;
 }
-h1 a:hover {
-  text-decoration: none;
-  color: black;
-}
 header nav {
   text-align: center;
 }
@@ -64,6 +56,15 @@ header nav li.login {
 }
 header nav ul {
   margin: 0px;
+}
+header nav a {
+  color: #7593c9;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+}
+header nav a:hover {
+  text-decoration: underline;
 }
 form {
   text-align: center;
@@ -97,6 +98,15 @@ article.blog-post time {
   float: right;
   clear: both;
 }
+article.blog-post a {
+  color: #7593c9;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+}
+article.blog-post a:hover {
+  text-decoration: underline;
+}
 article.blog-post h2 {
   display: inline;
 }
@@ -116,6 +126,15 @@ footer ul {
 footer li {
   list-style: none;
   display: inline;
+}
+footer a {
+  color: #7593c9;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+}
+footer a:hover {
+  text-decoration: underline;
 }
 #main {
   margin-top: 50px;
