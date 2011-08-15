@@ -59,7 +59,7 @@ var Post = Object.create(EventEmitter, Trait({
 			"descending": JSON.stringify(true)
 		};
 		// if id set startkey & endkey to filter view down to single value
-		if (id) {
+		if (id !== null) {
 			uri.query.startkey = uri.query.endkey = JSON.stringify(id);
 		}
 
