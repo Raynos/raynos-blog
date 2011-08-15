@@ -1,34 +1,24 @@
-.link-style {
-	color: white;
-	padding: 2px 20px;
-	font-family: 'Varela Round', sans-serif;
-	text-decoration: none;
-	font-weight: bold;
-	background-color: black;
-	&:hover {
-		color: #666;
-		text-decoration: underline;
-	}
-}
-
 h1 {
-	font-family: 'Delius', cursive;
-	font-size: 48px;
-	top: 20px;
+	top: 0px;
 	left: 0px; 
 	margin: 0px;
-	margin-left: 10px;
-	letter-spacing: 5px;
-	color: black;
+	padding: 10px;
 	position: absolute;
 
 	&:first-letter {
 		font-size: 60px;
 	}
 
-
-	a:hover {
+	a {
+		letter-spacing: 5px;
 		text-decoration: none;
+		font-family: 'Delius', cursive;
+		font-size: 48px;
+		color: black;
+		&:hover {
+			text-decoration: none;
+			color: black;
+		}
 	}
 }
 
@@ -36,7 +26,7 @@ header nav {
 	text-align: center;
 
 	a {
-		.link-style;
+		padding: 2px 20px;
 	}
 
 	li {

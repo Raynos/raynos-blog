@@ -1,6 +1,6 @@
 {>"/layouts/main"/}
 
-{<title} Add new Blog post {/title}
+{<title} Edit Blog post {/title}
 
 {<main} 
 

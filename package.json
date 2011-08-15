@@ -6,11 +6,12 @@
     "dependencies": {
         "express": "2.4.4",
         "dust": "0.3.0",
-        "lessup": "0.2.5",
         "node-uuid": "1.2.0",
         "markdown": "0.2.1",
         "request": "2.0.3",
         "traits": "0.4.0",
+        "watch": "0.3.2",
+        "less": "1.1.4",
         "after": "0.1.0"
     },
     "devDependencies": {

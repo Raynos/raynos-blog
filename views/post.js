@@ -10,7 +10,8 @@ module.exports = {
 	// create the index view
 	"index": function _index(p) {
 		p = this._view(p)
-		p.content = markdown.toHTML(p.content);
+		var tree = markdown.toHTMLTree(p.content).slice(0,2);
+		p.content = markdown.toHTML(tree);
 		return p;
 	},
 	// return an url

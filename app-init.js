@@ -1,8 +1,9 @@
 var	dust = require("./lib/dust.js"),
-	lessup = require("lessup"),
 	configure = require('./app-configure.js'),
 	fs = require("fs"),
-	after = require("after");
+	watch = require("watch"),
+	after = require("after"),
+	exec = require("child_process").exec;
 
 // temporary error logging
 /*process.on('uncaughtException', function (err) {
@@ -21,6 +22,21 @@ var readFolder = function _readFolder(folder) {
 module.exports = function _init(app) {
 	// configure
 	configure(app);
+
+	// watch for less file changes
+	var dir = __dirname + "/public/stylesheets"
+	watch.watchTree(dir, {
+		"filter": function _filterLESS(filename) {
+			
+		}
+	}, function _onchange(f, curr, prev) {
+		if (/.less/.test(f)) {
+			console.log("rewriting less");
+			var cmd = "lessc " + dir + "/site.less > " + dir + "/site.css"
+			var less = exec(cmd);
+		}
+	});
+
 	// Load the routes, models & views
 	var routes = readFolder("/routes/"),
 		models = readFolder("/model/"),
@@ -29,13 +45,6 @@ module.exports = function _init(app) {
 	Object.keys(routes).forEach(function _initRoute(route) {
 		// for each route call it with app and its model & view.
 		routes[route](app, models[route], views[route]);
-	});
-
-	// configure less
-	lessup.Watcher({
-		lessFolders: ['/public/stylesheets'],
-		cwd: __dirname,
-		compileTo: '/public/stylesheets/site.css'
 	});
 
 	// start the applications once all the models have loaded.

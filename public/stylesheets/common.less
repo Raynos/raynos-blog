@@ -7,12 +7,15 @@
 }
 
 a {
-	color: black;
+	color: @main_colour;
+	font-family: 'Varela Round', sans-serif;
 	text-decoration: none;
 	font-weight: bold;
-	display: button;
 	&:hover {
+		color: @hover_colour;
 		text-decoration: underline;
-		color: #666;
+	}
+	&:visited {
+		color: @main_colour;
 	}
 }
