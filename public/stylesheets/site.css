@@ -84,7 +84,6 @@ form input, form textarea {
 form.blog-post {
   background-color: white;
   padding: 10px;
-  border: 1px black solid;
 }
 form.blog-post input[type=text], form.blog-post textarea {
   width: 90%;

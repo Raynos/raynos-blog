@@ -39,11 +39,15 @@ module.exports = function _route(app, model, view) {
 	});
 
 	// render the edit page
-	app.get("/blog/:id/edit", function _edit(req, res) {
+	app.get("/blog/:id/edit", function _edit(req, res, next) {
 		var id = +req.params.id
 		
 		model.get(id, function _get(err, rows) {
-			res.render("blog/edit", view.fixURL(rows));
+			if (err && err.message === "no results") {
+				next();
+			} else {
+				res.render("blog/edit", view.fixURL(rows));	
+			}
 		});
 	});
 
@@ -71,8 +75,10 @@ module.exports = function _route(app, model, view) {
 			"id": id
 		};
 
-		model.save(post, function _save() {
-			res.redirect("blog/" + view.url(post));
+		model.save(post, function _save(err, rows) {
+			if (!err) {
+				res.redirect("blog/" + view.url(post));	
+			}
 		});
 	});
 
