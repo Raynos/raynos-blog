@@ -1,0 +1,24 @@
+{>"/layouts/main"/}
+
+{<title} Blog {/title}
+
+{<main} 
+
+{?posts}
+	{#posts}
+		<article class="blog-post">
+			{>"/blog/item"/} 
+		</article>
+		<hr/>
+	{/posts}
+{:else}
+	<p> There are no posts in the blog. </p>
+
+	<p> Go tell Raynos to blog more. </p>
+{/posts}
+<form action="/blog/new" method="get">
+	<input type="submit" value="Add a new blog entry" />
+</form>
+
+
+{/main}

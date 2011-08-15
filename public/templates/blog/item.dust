@@ -1,0 +1,5 @@
+<h2><a href="/blog/{url}"> {title} </a></h2>
+<time datetime="{datetime}"> {readable_time}</time>
+<div>
+	{content|s}
+</div>

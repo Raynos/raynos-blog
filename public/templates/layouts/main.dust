@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> {+title}Raynos.org{/title} </title>
+		<![if gt IE 8]>
+			<link href='http://fonts.googleapis.com/css?family=Delius|Varela+Round' rel='stylesheet' type='text/css'>
+			<link rel='stylesheet' href='/stylesheets/site.css' type="text/css" />
+		<![endif]>
+			
+	</head>
+	<body>
+		<!--[if lt IE 9]>
+			<p> My website is written using modern HTML5/CSS3/DOM3 technologies.
+				It will not render properly in IE < 9. 
+				To handle legacy browsers I've disabled CSS & JS for you.
+				Please use a modern browser like Chrome or FF5 to see the CSS & JS functionality
+			</p>
+		<![endif]-->
+		<header id="menu">
+			<h1><a href="/blog/"> Raynos </a></h1>
+
+			<nav>
+				<ul>
+					<li><a href="/blog/"> Blog </a></li>
+					<li><a href="/apps/"> Applications </a></li>
+					<li><a href="/games/"> Games </a></li>
+					<li><a href="/tuts/"> Tutorials </a></li>
+					<li><a href="/protos/"> Prototypes </a></li>
+					<li><a href="https://github.com/Raynos/raynos-blog"> Github </a></li>
+					<li class="login"><a href="/login/"> Log In </a></li>
+				</ul>
+			</nav>
+		</header>
+		<section id="main">
+			{+main} Page appears to be empty {/main}
+		</section>
+		<hr/>
+		<footer>
+			<nav> 
+				<ul>
+					<li><a href="#menu"> Back to top </a></li>
+				</ul>
+			</nav>
+			<h5> Copyright © 2011 Jake Verbaten </h5>
+		</footer>
+	</body>
+</html>

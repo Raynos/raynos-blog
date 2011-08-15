@@ -7,7 +7,7 @@ var express = require("express"),
 var configure = function(app) {
 
 	app.configure(function(){
-		app.set('views', __dirname + '/public/views');
+		app.set('views', __dirname + '/public/templates');
 		app.set('view engine', 'dust');
 		app.use(express.bodyParser());
 		app.use(express.methodOverride());
@@ -15,7 +15,10 @@ var configure = function(app) {
 		app.use(express.session({ secret: uuid() }));
 		app.use(app.router);
 		app.use(express.static(__dirname + '/public'));
-		app.use(function(req, res, next) { res.render('404'); });
+		app.use(function(req, res, next) { 
+			res.status(404);
+			res.render('404'); 
+		});
 	});
 
 	app.configure('development', function(){
