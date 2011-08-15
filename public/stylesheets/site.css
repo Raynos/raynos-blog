@@ -62,6 +62,21 @@ header nav li.login {
 header nav ul {
   margin: 0px;
 }
+article.blog-post {
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  padding: 20px 30px;
+  margin: 25px 0px;
+  background-color: white;
+}
+article.blog-post h2 {
+  display: inline;
+}
+article.blog-post time {
+  float: right;
+  clear: both;
+}
 .inline {
   display: inline;
 }
@@ -266,19 +281,4 @@ form.blog-post {
 }
 form.blog-post input[type=text], form.blog-post textarea {
   width: 90%;
-}
-article.blog-post {
-  border-style: solid;
-  border-color: black;
-  border-width: 1px;
-  padding: 20px 30px;
-  margin: 25px 0px;
-  background-color: white;
-}
-article.blog-post h2 {
-  display: inline;
-}
-article.blog-post time {
-  float: right;
-  clear: both;
 }

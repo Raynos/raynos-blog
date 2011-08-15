@@ -1,9 +1,0 @@
-{>"/layouts/main"/}
-
-{<title} {title} {/title}
-
-{<main} 
-
-{>"/blog/item"/} 
-
-{/main}

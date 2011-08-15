@@ -19,13 +19,15 @@ var readFolder = function _readFolder(folder) {
 };
 
 module.exports = function _init(app) {
-	// configure & route
+	// configure
 	configure(app);
+	// Load the routes, models & views
 	var routes = readFolder("/routes/"),
 		models = readFolder("/model/"),
 		views = readFolder("/views/");
 
 	Object.keys(routes).forEach(function _initRoute(route) {
+		// for each route call it with app and its model & view.
 		routes[route](app, models[route], views[route]);
 	});
 
@@ -36,6 +38,8 @@ module.exports = function _init(app) {
 		compileTo: '/public/stylesheets/site.css'
 	});
 
+	// start the applications once all the models have loaded.
+	
 	var start = after(Object.keys(models).length, function _waitForModels() {
 		app.listen(parseInt(process.env.PORT) || 8080);
 		console.log("Express server listening on port %d", app.address().port);
