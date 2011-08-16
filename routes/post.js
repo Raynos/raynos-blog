@@ -10,10 +10,7 @@ module.exports = function _route(app, model, view, secure) {
 		})	
 	};
 
-	app.param("postId", function _parseId(req, res, next, id) {
-		req.postId = parseInt(req.params.postId, 10);
-		next();
-	});
+	app.param("postId", secure.checkId);
 
 	// Get all posts
 	app.get("/blog", function _index(req, res) {
@@ -25,7 +22,9 @@ module.exports = function _route(app, model, view, secure) {
 	});
 
 	app.get("/blog/new", secure.requireLogin, function _new(req, res) {
-		res.render("blog/new");
+		res.render("blog/new", {
+			flash: req.flash()
+		});
 	});
 
 	// create new post
@@ -36,17 +35,19 @@ module.exports = function _route(app, model, view, secure) {
 	});
 
 	// render the edit page
-	app.get("/blog/:postId/edit", secure.requireLogin, secure.checkId, getModel, function _edit(req, res, next) {	
-		res.render("blog/edit", view.fixURL(req.rows));	
+	app.get("/blog/:postId/edit", secure.requireLogin, getModel, function _edit(req, res, next) {
+		var locals = view.fixURL(req.rows);
+		locals.flash = req.flash();
+		res.render("blog/edit", locals);	
 	});
 
 	// render single post
-	app.get("/blog/:postId/:title?", secure.checkId, getModel, function _show(req, res, next) {
+	app.get("/blog/:postId/:title?", getModel, function _show(req, res, next) {
 		res.render("blog/show", view.show(req.rows));
 	});
 
 	// update document.
-	app.put("/blog/:postId", secure.requireLogin, secure.checkId, secure.validatePost, function _update(req, res) {
+	app.put("/blog/:postId", secure.requireLogin, secure.validatePost, function _update(req, res) {
 		model.save(req.postId, req.body, function _save(err, rows) {
 			if (!err) {
 				res.redirect("blog/" + view.url(post));	
@@ -56,7 +57,7 @@ module.exports = function _route(app, model, view, secure) {
 		});
 	});
 
-	app.delete("/blog/:postId", secure.requireLogin, secure.checkId, function _destroy(req, res) {
+	app.delete("/blog/:postId", secure.requireLogin, function _destroy(req, res) {
 		model.destroy(req.postId, function _delete() {
 			res.redirect("/blog/");
 		});	

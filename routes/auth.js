@@ -1,28 +1,23 @@
-module.exports = function(app, model) {
-	app.get("/signup", function(req, res) {
-		res.render("auth/signup")
+module.exports = function _route(app, model, view, secure) {
+	app.get("/signup", function _signUpView(req, res) {
+		res.render("auth/signup", {
+			"flash": req.flash()
+		});
 	});
 
-	app.post("/signup", function(req, res) {
-		// validate
-		if (res.body.password !== res.body.password_confirm) {
+	app.post("/signup", secure.validateUser, function _signUpCreate(req, res) {
+		model.create(req.body, function _create() {
 			
-		}
-
-		var data = {
-			email: res.body.email,
-			password: res.body.password,
-			username: res.body.username,
-		}
+		});
 	});
 
-	app.get("/login/:redir?", function(req, res) {
+	app.get("/login/:redir?", function _loginView(req, res) {
 		res.render("auth/login", {
 			"redir": req.params.redir
 		});
 	});
 
-	app.post("/login", function(req, res) {
+	app.post("/login", function _loginPost(req, res) {
 		
 	});
 }

@@ -1,3 +1,11 @@
+var check = require("validator").check,
+	sanitize = require("validator").sanitize;
+
+var validatePostMessages = {
+	"content": "body content is not set",
+	"title": "body title is not set"
+}
+
 module.exports = {
 	"requireLogin": function _requireLogin(req, res, next) {
 		if (req.session.user) {
@@ -7,28 +15,20 @@ module.exports = {
 		}
 	},
 	"checkId": function _checkId(req, res, next) {
-		if (isNaN(req.postId)) {
-			next(new Error("id is NaN"));
-		} else {
-			next();
-		}
+		var id = sanitize(req.params.postId).toInt();
+		check(id, 'id is not a number').isInt();
+		req.postId = id;
+		next();
 	},
-	"validatePost": function _validatePost(req, res, next) {
-		var valid = true;
-		if (req.body.content === undefined || req.body.content.length === 0) {
-			req.flash("error", "body content is not set");
-			valid = false;
-		} 
-
-		if (req.body.title === undefined || req.body.title.length === 0) {
-			req.flash("error", "body title is not set");
-			valid = false;
-		}
-
-		if (valid) {
+	"validatePost": [
+		function _validatePost(req, res, next) {
+			check(req.body.content, "content").isString().notEmpty();
+			check(req.body.title, "title").isString().notEmpty();
 			next();
-		} else {
+		},
+		function _handleValidationError(req, res, next, err) {
+			req.flash(err.message, validatePostMessages[err.message]);
 			res.redirect("back");
 		}
-	}
+	]
 };

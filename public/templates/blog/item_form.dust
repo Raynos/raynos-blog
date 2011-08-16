@@ -5,18 +5,28 @@
 			name="title" 
 			placeholder="Blog Title" 
 			value="{title}" 
-			title="Enter a blog title" 
 			required
+			{?flash.title}
+				class="error"
+				title={flash.title}
+			{:else}
+				title="Enter a blog title" 
+			{/flash.title}
 		/>	
 	</li>
 	<li>
 		<textarea 
 			name="content" 
 			placeholder="Blog content" 
-			title="Enter blog content" 
 			cols="150" 
 			rows="30" 
 			required
+			{?flash.content}
+				class="error"
+				title={flash.content}
+			{:else}
+				title="Enter blog content"
+			{/flash.content}
 		>{content}</textarea>
 	</li>
 	<li>

@@ -5,6 +5,7 @@
     "author": "Jake Verbaten",
     "dependencies": {
         "express": "2.4.4",
+        "validator": "0.2.7",
         "dust": "0.3.0",
         "node-uuid": "1.2.0",
         "markdown": "0.2.1",
@@ -16,6 +17,8 @@
     },
     "devDependencies": {
     	"expresso": "0.7.1",
-    	"vows": "0.5.9"
+    	"vows": "0.5.9",
+    	"nodemon": "0.5.3",
+    	"node-inspector": "0.1.9"
     }
 }
