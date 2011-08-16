@@ -21,15 +21,12 @@ h1 {
 header nav {
 	text-align: center;
 
-	a {
-		padding: 2px 20px;
-	}
-
 	li {
 		list-style: none;
 		display: inline;
-		&.login {
+		&:last-of-type {
 			float: right;
+			padding-right: 20px;
 		}
 	}
 
@@ -39,5 +36,6 @@ header nav {
 
 	a {
 		.link-style;
+		padding: 0% 2%;
 	}
 }

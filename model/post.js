@@ -81,34 +81,56 @@ var Post = Object.create(EventEmitter, Trait({
 		}).bind(this)));
 	},
 	// save document
-	"save": function _save(data, cb) {
+	"save": function _save(id, data, cb) {
 		// get it from cache
-		this.get(data.id, (function _saveData(err, rows) {
-			// doc changed so empty it from cache
-			delete this._cache[data.id];
+		this.get(id, (function _saveData(err, rows) {
+			if (err && err.message === "no results") {
+				cb(new Error("invalid id"));
+			} else {
+				// doc changed so empty it from cache
+				delete this._cache[data.id];
 
-			// update existing doc with new values
-			Object.keys(data).forEach(function _cloneOverValues(key) {
-				rows[0].value[key] = data[key];
-			});
+				// update existing doc with new values
+				Object.keys(data).forEach(function _cloneOverValues(key) {
+					rows[0].value[key] = data[key];
+				});
 
-			// PUT document in couch
-			request({
-				"uri": this._base_url + "/" + rows[0].value._id,
-				"json": rows[0].value,
-				"method": "PUT"
-			}, this._error(cb));
+				// PUT document in couch
+				request({
+					"uri": this._base_url + "/" + rows[0].value._id,
+					"json": rows[0].value,
+					"method": "PUT"
+				}, this._error(cb));	
+			}
 		}).bind(this));
 	},
 	// create a document
 	"create": function _create(data, cb) {
-		data._id = uuid();
+		var post = {
+			"content": data.content,
+			"title": data.title,
+			"datetime": Date.now(),
+			"type": "post"
+		}
 
-		request({
-			"uri": this._base_url + "/" + data._id,
-			"json": data,
-			"method": "PUT"
-		}, this._error(cb));
+		this.get(function _get(err, rows) {
+			// get highest id and make the new id one higher.
+			var id = rows.map(function _pluckId(v) {
+				return v.value.id;
+			}).reduce(function _findMaxId(prev, curr) {
+				return prev < curr ? curr : prev;
+			}, 0);
+
+			post.id = ++id;
+
+			post._id = uuid();
+
+			request({
+				"uri": this._base_url + "/" + post._id,
+				"json": post,
+				"method": "PUT"
+			}, this._error(cb));
+		});
 	},
 	// destroy document
 	"destroy": function _destroy(id, cb) {

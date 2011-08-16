@@ -36,11 +36,12 @@ module.exports = function _init(app) {
 	// Load the routes, models & views
 	var routes = readFolder("/routes/"),
 		models = readFolder("/model/"),
-		views = readFolder("/views/");
+		views = readFolder("/views/"),
+		security = readFolder("/security/");
 
 	Object.keys(routes).forEach(function _initRoute(route) {
 		// for each route call it with app and its model & view.
-		routes[route](app, models[route], views[route]);
+		routes[route](app, models[route], views[route], security[route]);
 	});
 
 	// start the applications once all the models have loaded.
@@ -51,7 +52,8 @@ module.exports = function _init(app) {
 	});
 
 	Object.keys(models).forEach(function _each(model) {
-		models[model].on("loaded", start)
+		models[model].on("loaded", start);
+		models[model].emit("start");
 	})
 
 	

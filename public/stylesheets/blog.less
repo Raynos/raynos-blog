@@ -1,25 +1,28 @@
-article.blog-post {
-	padding: 20px 30px;
-	margin: 25px 0px;
-	.border-radius(20px, 20px, 20px, 20px);
-	background-color: lighten(@secondary_colour, 32%);
-	
-
-	time {
-		float: right;
-		clear: both;
-	}
-
-	a {
-		.link-style;
-	}
-
-	h2, footer form {
-		display: inline;
-	}
-}
-
 #blog {
+	article {
+		padding: 20px 30px;
+		margin: 25px 0px;
+		.border-radius(20px, 20px, 20px, 20px);
+		background-color: lighten(@secondary_colour, 32%);
+
+		time {
+			float: right;
+			clear: both;
+		}
+
+		a {
+			.link-style;
+		}
+
+		h2, footer form {
+			display: inline;
+		}
+
+		form {
+			background-color: inherit;
+		}
+	}
+
 	hr {
 		width: 50%;
 		border-style: none;

@@ -2,9 +2,11 @@
 
 {<title} Edit Blog post {/title}
 
+{<class}blog{/class}
+
 {<main} 
 
-<form class="blog-post" action="/blog/{id}" method="post">
+<form action="/blog/{id}" method="post">
 	<fieldset>
 		<legend> Edit Post </legend>
 		<input type="hidden" name="_method" value="put"/>

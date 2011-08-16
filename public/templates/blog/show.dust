@@ -2,8 +2,10 @@
 
 {<title} {title} {/title}
 
+{<class}blog{/class}
+
 {<main} 
-<article class="blog-post"> 
+<article> 
 	{>"/blog/item"/}
 	<footer>
 		<form method="get" action="/blog/{id}/edit">

@@ -11,8 +11,7 @@ module.exports = {
 	"index": function _index(p) {
 		p = this._view(p)
 		var tree = markdown.toHTMLTree(p.content);
-		console.log(tree);
-		p.content = markdown.toHTML(tree.slice(0, 2));
+		p.content = markdown.toHTML(tree.slice(0, 3));
 		return p;
 	},
 	// return an url

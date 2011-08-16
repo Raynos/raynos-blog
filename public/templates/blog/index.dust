@@ -8,7 +8,7 @@
 
 {?posts}
 	{#posts}
-		<article class="blog-post">
+		<article>
 			{>"/blog/item"/}
 			<footer>
 				<a href="/blog/{url}"> View full article </a>

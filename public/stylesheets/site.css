@@ -41,15 +41,13 @@ h1 a {
 header nav {
   text-align: center;
 }
-header nav a {
-  padding: 2px 20px;
-}
 header nav li {
   list-style: none;
   display: inline;
 }
-header nav li.login {
+header nav li:last-of-type {
   float: right;
+  padding-right: 20px;
 }
 header nav ul {
   margin: 0px;
@@ -59,6 +57,7 @@ header nav a {
   font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   font-weight: bold;
+  padding: 0% 2%;
 }
 header nav a:hover {
   text-decoration: underline;
@@ -71,6 +70,7 @@ form fieldset {
 }
 form li {
   list-style: none;
+  padding: 2px;
 }
 form ul {
   padding: 0;
@@ -78,14 +78,25 @@ form ul {
 form input, form textarea {
   margin: 2px 20px;
 }
-form.blog-post {
-  background-color: white;
+#blog form {
   padding: 10px;
 }
-form.blog-post input[type=text], form.blog-post textarea {
+#blog form input[type=text], #blog form textarea {
   width: 90%;
 }
-article.blog-post {
+#auth p {
+  text-align: center;
+}
+#auth p a {
+  color: #7593c9;
+  font-family: 'Varela Round', sans-serif;
+  text-decoration: none;
+  font-weight: bold;
+}
+#auth p a:hover {
+  text-decoration: underline;
+}
+#blog article {
   padding: 20px 30px;
   margin: 25px 0px;
   -webkit-border-top-right-radius: 20px;
@@ -102,21 +113,24 @@ article.blog-post {
   border-top-left-radius: 20px;
   background-color: #f7f2ea;
 }
-article.blog-post time {
+#blog article time {
   float: right;
   clear: both;
 }
-article.blog-post a {
+#blog article a {
   color: #7593c9;
   font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   font-weight: bold;
 }
-article.blog-post a:hover {
+#blog article a:hover {
   text-decoration: underline;
 }
-article.blog-post h2, article.blog-post footer form {
+#blog article h2, #blog article footer form {
   display: inline;
+}
+#blog article form {
+  background-color: inherit;
 }
 #blog hr {
   width: 50%;

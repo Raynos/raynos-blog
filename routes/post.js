@@ -1,4 +1,19 @@
-module.exports = function _route(app, model, view) {
+module.exports = function _route(app, model, view, secure) {
+	var getModel = function _getModel(req, res, next) {
+		model.get(req.postId, function _get(err, rows) {
+			if (err && err.message === "no results") {
+				next(err);
+			} else {
+				req.rows = rows;
+				next();
+			}
+		})	
+	};
+
+	app.param("postId", function _parseId(req, res, next, id) {
+		req.postId = parseInt(req.params.postId, 10);
+		next();
+	});
 
 	// Get all posts
 	app.get("/blog", function _index(req, res) {
@@ -9,86 +24,42 @@ module.exports = function _route(app, model, view) {
 		});
 	});
 
-	app.get("/blog/new", function _new(req, res) {
+	app.get("/blog/new", secure.requireLogin, function _new(req, res) {
 		res.render("blog/new");
 	});
 
 	// create new post
-	app.post("/blog", function _create(req, res) {
-		var post = {
-			"content": req.body.content,
-			"title": req.body.title,
-			"datetime": Date.now(),
-			"type": "post"
-		}
-
-		model.get(function _get(err, rows) {
-			// get highest id and make the new id one higher.
-			var id = rows.map(function _pluckId(v) {
-				return v.value.id;
-			}).reduce(function _findMaxId(prev, curr) {
-				return prev < curr ? curr : prev;
-			}, 0);
-
-			post.id = ++id;
-
-			model.create(post, function _save() {
-				res.redirect("blog/" + view.url(post));
-			});
-		});
+	app.post("/blog", secure.requireLogin, secure.validatePost, function _create(req, res) {
+		model.create(req.body, function _save() {
+			res.redirect("blog/" + view.url(post));
+		});	
 	});
 
 	// render the edit page
-	app.get("/blog/:id/edit", function _edit(req, res, next) {
-		var id = +req.params.id
-		
-		model.get(id, function _get(err, rows) {
-			// if doc with id does not exist then 404
-			if (err && err.message === "no results") {
-				next();
-			} else {
-				res.render("blog/edit", view.fixURL(rows));	
-			}
-		});
+	app.get("/blog/:postId/edit", secure.requireLogin, secure.checkId, getModel, function _edit(req, res, next) {	
+		res.render("blog/edit", view.fixURL(req.rows));	
 	});
 
 	// render single post
-	app.get("/blog/:id/:title", function _show(req, res, next) {
-		var id = +req.params.id;
-
-		model.get(id, function _get(err, rows) {
-			// if doc with id does not exist then 404
-			if (err && err.message === "no results") {
-				next();
-			} else {
-				res.render("blog/show", view.show(rows));
-			}
-		});
+	app.get("/blog/:postId/:title?", secure.checkId, getModel, function _show(req, res, next) {
+		res.render("blog/show", view.show(req.rows));
 	});
 
 	// update document.
-	app.put("/blog/:id", function _update(req, res) {
-		var id = +req.params.id;
-		
-		var post = {
-			"title": req.body.title,
-			"content": req.body.content,
-			"id": id
-		};
-
-		model.save(post, function _save(err, rows) {
+	app.put("/blog/:postId", secure.requireLogin, secure.checkId, secure.validatePost, function _update(req, res) {
+		model.save(req.postId, req.body, function _save(err, rows) {
 			if (!err) {
 				res.redirect("blog/" + view.url(post));	
+			} else {
+				next(err);
 			}
 		});
 	});
 
-	app.delete("/blog/:id", function _destroy(req, res) {
-		var id = +req.params.id;
-
-		model.destroy(id, function _delete() {
+	app.delete("/blog/:postId", secure.requireLogin, secure.checkId, function _destroy(req, res) {
+		model.destroy(req.postId, function _delete() {
 			res.redirect("/blog/");
-		});
+		});	
 	});
 
 };
