@@ -25,11 +25,7 @@ module.exports = function _init(app) {
 
 	// watch for less file changes
 	var dir = __dirname + "/public/stylesheets"
-	watch.watchTree(dir, {
-		"filter": function _filterLESS(filename) {
-			
-		}
-	}, function _onchange(f, curr, prev) {
+	watch.watchTree(dir, function _onchange(f, curr, prev) {
 		if (/.less/.test(f)) {
 			console.log("rewriting less");
 			var cmd = "lessc " + dir + "/site.less > " + dir + "/site.css"

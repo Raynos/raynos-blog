@@ -31,7 +31,7 @@
 				</ul>
 			</nav>
 		</header>
-		<section id="main">
+		<section id="{+class}main{/class}">
 			{+main} Page appears to be empty {/main}
 		</section>
 		<footer>

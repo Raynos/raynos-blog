@@ -4,14 +4,16 @@
 
 {<main} 
 <article class="blog-post"> 
-	{>"/blog/item"/} 
-	<form class="inline" method="get" action="/blog/{id}/edit">
-		<input type="submit" value="Edit blog entry" />
-	</form>
-	<form class="inline" method="post" action="/blog/{id}">
-		<input type="hidden" name="_method" value="delete"/>
-		<input type="submit" value="Delete this blog entry" />
-	</form>
+	{>"/blog/item"/}
+	<footer>
+		<form method="get" action="/blog/{id}/edit">
+			<input type="submit" value="Edit blog entry" />
+		</form>
+		<form method="post" action="/blog/{id}">
+			<input type="hidden" name="_method" value="delete"/>
+			<input type="submit" value="Delete this blog entry" />
+		</form>
+	</footer>
 </article>
 
 {/main}

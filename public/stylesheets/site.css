@@ -1,6 +1,3 @@
-.inline {
-  display: inline;
-}
 .error {
   color: red;
 }
@@ -91,7 +88,19 @@ form.blog-post input[type=text], form.blog-post textarea {
 article.blog-post {
   padding: 20px 30px;
   margin: 25px 0px;
-  background-color: white;
+  -webkit-border-top-right-radius: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -webkit-border-top-left-radius: 20px;
+  -moz-border-radius-topright: 20px;
+  -moz-border-radius-bottomright: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  -moz-border-radius-topleft: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  background-color: #f7f2ea;
 }
 article.blog-post time {
   float: right;
@@ -106,8 +115,16 @@ article.blog-post a {
 article.blog-post a:hover {
   text-decoration: underline;
 }
-article.blog-post h2 {
+article.blog-post h2, article.blog-post footer form {
   display: inline;
+}
+#blog hr {
+  width: 50%;
+  border-style: none;
+  color: white;
+  border-bottom: 1px #999 solid;
+  border-top: 1px #999 solid;
+  padding-bottom: 3px;
 }
 body {
   margin: 0px;
@@ -135,7 +152,7 @@ footer a {
 footer a:hover {
   text-decoration: underline;
 }
-#main {
+section {
   margin-top: 50px;
   margin-left: 10%;
   margin-right: 10%;

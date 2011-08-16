@@ -43,6 +43,7 @@ module.exports = function _route(app, model, view) {
 		var id = +req.params.id
 		
 		model.get(id, function _get(err, rows) {
+			// if doc with id does not exist then 404
 			if (err && err.message === "no results") {
 				next();
 			} else {

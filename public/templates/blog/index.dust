@@ -2,15 +2,21 @@
 
 {<title} Blog {/title}
 
+{<class}blog{/class}
+
 {<main} 
 
 {?posts}
 	{#posts}
 		<article class="blog-post">
 			{>"/blog/item"/}
-			<a href="/blog/{url}"> View full article </a>
+			<footer>
+				<a href="/blog/{url}"> View full article </a>
+			</footer>
 		</article>
-		<hr/>
+		{@sep}
+			<hr/>
+		{/sep}
 	{/posts}
 {:else}
 	<p> There are no posts in the blog. </p>
