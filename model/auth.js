@@ -79,6 +79,7 @@ var User = Object.create(EventEmitter, Trait({
 			"_id": "org.couchdb.user:" + data.username,
 			"type": "user",
 			"name": data.username,
+			"email": data.email,
 			"roles": [],
 			"password_sha": hash,
 			"salt": salt
