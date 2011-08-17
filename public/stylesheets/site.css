@@ -48,7 +48,7 @@ header nav li {
 }
 header nav li:last-of-type {
   float: right;
-  padding-right: 20px;
+  margin-right: 20px;
 }
 header nav ul {
   margin: 0px;
@@ -143,6 +143,7 @@ form input, form textarea {
 }
 body {
   margin: 0px;
+  font-family: 'Muli', sans-serif;
 }
 header {
   padding-top: 4px;
