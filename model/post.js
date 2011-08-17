@@ -17,6 +17,8 @@ var Post = Object.create(EventEmitter, Trait({
 	// error wrapper to log all errors
 	"_error": function _error (f) {
 		return function _errorProxy(err, res, body) {
+			console.log("body is : " + body + res.statusCode);
+			console.log(res.headers);
 			if (err) {
 				console.log("error - post");
 				console.log(err);
@@ -157,7 +159,6 @@ var Post = Object.create(EventEmitter, Trait({
 
 		request({
 			"url": url.format(uri),
-			"json": true,
 			"method": "DELETE"
 		}, this._error(cb));	
 	}
