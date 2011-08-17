@@ -3,7 +3,7 @@
   border-color: red;
 }
 .link-style {
-  color: #7593c9;
+  color: #4267aa;
   font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   font-weight: bold;
@@ -54,7 +54,7 @@ header nav ul {
   margin: 0px;
 }
 header nav a {
-  color: #7593c9;
+  color: #4267aa;
   font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   font-weight: bold;
@@ -89,7 +89,7 @@ form input, form textarea {
   text-align: center;
 }
 #auth p a {
-  color: #7593c9;
+  color: #4267aa;
   font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   font-weight: bold;
@@ -119,7 +119,7 @@ form input, form textarea {
   clear: both;
 }
 #blog article a {
-  color: #7593c9;
+  color: #4267aa;
   font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   font-weight: bold;
@@ -160,7 +160,7 @@ footer li {
   display: inline;
 }
 footer a {
-  color: #7593c9;
+  color: #4267aa;
   font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   font-weight: bold;
