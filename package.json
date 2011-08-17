@@ -1,7 +1,7 @@
 {
     "name": "Blaggie-System",
     "description": "Blog in pieces",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "author": "Jake Verbaten",
     "dependencies": {
         "express": "2.4.4",
