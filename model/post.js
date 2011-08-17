@@ -1,4 +1,5 @@
 var request = require("request").defaults({
+		"json": true,
 		"headers": {
 			"Authorization": "Basic " + 
 				new Buffer(process.env.COUCH_USER + ":" + 
@@ -18,11 +19,13 @@ var Post = Object.create(EventEmitter, Trait({
 	"_error": function _error (f) {
 		return function _errorProxy(err, res, body) {
 			if (err) {
-				console.log("error in blog");
+				console.log("error - post");
 				console.log(err);
-			} else {
-				f(err, res, body);
+			} else if (body.error) {
+				console.log("error in body - post");
+				console.log(body.error);
 			}
+			f(err, res, body);
 		};	
 	},
 	// clone the rows object for use with the cache
@@ -63,11 +66,11 @@ var Post = Object.create(EventEmitter, Trait({
 			uri.query.startkey = uri.query.endkey = JSON.stringify(id);
 		}
 
-		// request documents 
+		// request documents
 		request({
 			"uri": url.format(uri)
 		}, this._error((function _callback(err, resp, body) {
-			var rows = JSON.parse(body).rows;
+			var rows = body.rows;
 			// if no rows throw an error
 			if (!rows || rows.length === 0) {
 				cb(new Error("no results"), []);
@@ -156,7 +159,7 @@ request({
 	"url": Post._base_url + "/_design/posts"
 }, Post._error(function _callback(err, resp, body) {
 	// If it does not exist create the view
-	if (JSON.parse(body).error === "not_found") {
+	if (body.error === "not_found") {
 		// The all view returns all posts
 		var view = {
 			"all": {

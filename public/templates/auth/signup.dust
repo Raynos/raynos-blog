@@ -17,56 +17,27 @@
 					placeholder="email" 
 					autocomplete 
 					required
-					{?flash.email_invalid}
+					{?email_invalid}
 						class="error"
-						title="{flash.email_invalid}"
+						title="{email_invalid}"
 					{:else}
 						title="Enter your email address" 
-					{/flash.email_invalid}
+					{/email_invalid}
 				/>
 			</li>
-			<li>
-				<input 
-					type="text" 
-					name="username" 
-					placeholder="username" 
-					
-					autocomplete 
-					required
-					{?flash.username_small}
-						class="error"
-						title="{flash.username_small}"
-					{:else}
-						title="Enter your username" 
-					{/flash.username_small}
-				/>
-			</li>
-			<li>
-				<input 
-					type="password" 
-					name="password" 
-					placeholder="password" 
-					required 
-					{?flash.password_small}
-						class="error"
-						title="{flash.password_small}"
-					{:else}
-						title="Enter your password" 
-					{/flash.password_small}
-				/>
-			</li>
+			{>"/auth/inputs"/}
 			<li>
 				<input 
 					type="password" 
 					name="password_confirm" 
 					placeholder="confirm password" 
 					required 
-					{?flash.password_notsame}
+					{?password_notsame}
 						class="error"
-						title="{flash.password_notsame}"
+						title="{password_notsame}"
 					{:else}
 						title="please confirm your password" 
-					{/flash.password_notsame}
+					{/password_notsame}
 				/>
 			</li>
 			<li>

@@ -1,4 +1,5 @@
-module.exports = function _route(app, model, view, secure) {
+module.exports = function _route(app, model, view, middle) {
+	var m;
 	var getModel = function _getModel(req, res, next) {
 		model.get(req.postId, function _get(err, rows) {
 			if (err && err.message === "no results") {
@@ -9,8 +10,6 @@ module.exports = function _route(app, model, view, secure) {
 			}
 		})	
 	};
-
-	app.param("postId", secure.checkId);
 
 	// Get all posts
 	app.get("/blog", function _index(req, res) {
@@ -27,18 +26,18 @@ module.exports = function _route(app, model, view, secure) {
 		});
 	});
 
-	// create new post
-	app.post("/blog", secure.requireLogin, secure.validatePost, function _create(req, res) {
-		model.create(req.body, function _save() {
-			res.redirect("blog/" + view.url(post));
-		});	
-	});
-
 	// render the edit page
 	app.get("/blog/:postId/edit", secure.requireLogin, getModel, function _edit(req, res, next) {
 		var locals = view.fixURL(req.rows);
 		locals.flash = req.flash();
 		res.render("blog/edit", locals);	
+	});
+
+	// create new post
+	app.post("/blog", secure.requireLogin, secure.validatePost, function _create(req, res) {
+		model.create(req.body, function _save() {
+			res.redirect("blog/" + view.url(post));
+		});	
 	});
 
 	// render single post

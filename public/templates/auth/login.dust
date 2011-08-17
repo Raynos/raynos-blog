@@ -11,12 +11,7 @@
 		<legend> Log in </legend>
 		<input type="hidden" name="redir" value="{redir}" />
 		<ul>
-			<li>
-				<input type="email" name="email" placeholder="email" title="Enter your email address" autocomplete required />
-			</li>
-			<li>
-				<input type="password" name="password" placeholder="password" title="Enter your password" required />
-			</li>
+			{>"/auth/inputs"/}
 			<li>
 				<input type="submit" value="Submit" />
 				<input type="reset" value="Reset" />

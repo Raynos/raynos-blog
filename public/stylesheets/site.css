@@ -1,5 +1,6 @@
 .error {
   color: red;
+  border-color: red;
 }
 .link-style {
   color: #7593c9;

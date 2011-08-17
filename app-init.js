@@ -1,6 +1,8 @@
 var	dust = require("./lib/dust.js"),
 	configure = require('./app-configure.js'),
 	fs = require("fs"),
+	// Remove in 0.6 and use Buffer.prototype.toString("hex") instead
+	buffertools = require("buffertools"),
 	watch = require("watch"),
 	after = require("after"),
 	exec = require("child_process").exec;
@@ -37,11 +39,15 @@ module.exports = function _init(app) {
 	var routes = readFolder("/routes/"),
 		models = readFolder("/model/"),
 		views = readFolder("/views/"),
-		security = readFolder("/security/");
+		middleware = readFolder("/middleware/");
 
 	Object.keys(routes).forEach(function _initRoute(route) {
 		// for each route call it with app and its model & view.
-		routes[route](app, models[route], views[route], security[route]);
+		var m;
+		if (middleware[route]) {
+			m = middleware[route](models[route]);	
+		}
+		routes[route](app, models[route], views[route], m);
 	});
 
 	// start the applications once all the models have loaded.
