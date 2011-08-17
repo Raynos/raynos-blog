@@ -11,7 +11,8 @@ module.exports = function _route(app, view, middle) {
 
 	m = [
 		middle.cleanseUrl,
-		middle.requireLogin
+		middle.requireLogin,
+		middle.beRaynos
 	];
 	app.get("/blog/new", m, function _new(req, res) {
 		res.render("blog/new", view.flash(req.flash()));
@@ -21,6 +22,7 @@ module.exports = function _route(app, view, middle) {
 	m = [
 		middle.cleanseUrl,
 		middle.requireLogin,
+		middle.beRaynos,
 		middle.validate,
 		middle.checkId,
 		middle.getPostById
@@ -43,6 +45,7 @@ module.exports = function _route(app, view, middle) {
 	// create new post
 	m = [
 		middle.requireLogin,
+		middle.beRaynos,
 		middle.validate,
 		middle.validatePost,
 		middle.createPost
@@ -52,6 +55,7 @@ module.exports = function _route(app, view, middle) {
 	// update document.
 	m = [
 		middle.requireLogin,
+		middle.beRaynos,
 		middle.validate,
 		middle.checkId,
 		middle.validatePost,
@@ -63,6 +67,7 @@ module.exports = function _route(app, view, middle) {
 
 	m = [
 		middle.requireLogin,
+		middle.beRaynos,
 		middle.validate,
 		middle.checkId,
 		middle.getPostById,

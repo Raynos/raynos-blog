@@ -27,6 +27,13 @@ module.exports = function _createMiddleware(model, view) {
 			}
 			next();
 		},
+		"beRaynos": function _beRaynos(req, res, next) {
+			if (req.session.user.name === "Raynos") {
+				next();
+			} else {
+				next(new Error("Your not Raynos"));
+			}
+		},
 		"cleanseUrl": function _cleanseUrl(req, res, next) {
 			if (req.url.charAt(req.url.length - 1) === "?") {
 				req.url = req.url.substring(0, req.url.length - 1);
