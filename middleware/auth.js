@@ -54,7 +54,9 @@ module.exports = function _createMiddleware(model, view) {
 			}, next);
 		},
 		"validateLogin": function _validateLogin(req, res, next) {
-			req.validator().run((function _validateLogin(check) {
+			req.validator().on("valid", function _valid() {
+				req.body.username = encodeURIComponent(req.body.username);
+			}).run((function _validateLogin(check) {
 				this._validateInput(check, req);
 			}).bind(this), next);
 		},
