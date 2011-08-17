@@ -1,5 +1,4 @@
 var request = require("request").defaults({
-		"json": true,
 		"headers": {
 			"Authorization": "Basic " + 
 				new Buffer(process.env.COUCH_USER + ":" + 
@@ -21,7 +20,10 @@ var Post = Object.create(EventEmitter, Trait({
 			if (err) {
 				console.log("error - post");
 				console.log(err);
-			} else if (body.error) {
+			} else if (typeof body === "string" && body !== "") {
+				body = JSON.parse(body);
+			}
+			if (body.error) {
 				console.log("error in body - post");
 				console.log(body.error);
 			}
@@ -41,6 +43,13 @@ var Post = Object.create(EventEmitter, Trait({
 			return o;
 		});
 	},
+	"_cloneDoc": function _cloneDoc(doc) {
+		var o = {};
+		Object.keys(doc).forEach(function _cloneValues(key) {
+			o[key] = doc[key];
+		});
+		return o;
+	},
 	// get a document with the id [id] or get all posts if no id is passed
 	"get": function _get(id, cb) {
 		// support get(function() { ... });
@@ -51,10 +60,9 @@ var Post = Object.create(EventEmitter, Trait({
 
 		// check if in cache
 		if (id !== null && this._cache[id]) {
-			cb(null, this._cloneRows(this._cache[id]));
+			cb(null, null, this._cloneDoc(this._cache[id]));
 			return;
 		};
-
 		// point url at view all on couch
 		var uri = url.parse(this._base_url)
 		uri.pathname += "/_design/posts/_view/all";
@@ -70,42 +78,38 @@ var Post = Object.create(EventEmitter, Trait({
 		request({
 			"uri": url.format(uri)
 		}, this._error((function _callback(err, resp, body) {
-			var rows = body.rows;
 			// if no rows throw an error
-			if (!rows || rows.length === 0) {
-				cb(new Error("no results"), []);
+			if (body.rows === undefined || (body.rows.length === 0 && id)) {
+				cb(new Error("not_found"), resp, body);
 			} else {
 				// store in cache if needed
 				if (id) {
-					this._cache[id] = this._cloneRows(rows);
+					this._cache[id] = this._cloneDoc(body.rows[0].value);
+					cb(null, resp, body.rows[0].value);
+				} else {
+					cb(null, resp, body);	
 				}
-				cb(null, rows);
+				
 			}
 		}).bind(this)));
 	},
 	// save document
-	"save": function _save(id, data, cb) {
-		// get it from cache
-		this.get(id, (function _saveData(err, rows) {
-			if (err && err.message === "no results") {
-				cb(new Error("invalid id"));
-			} else {
-				// doc changed so empty it from cache
-				delete this._cache[data.id];
+	"save": function _save(post, cb) {
+		// doc changed so empty it from cache
+		delete this._cache[post.id];
 
-				// update existing doc with new values
-				Object.keys(data).forEach(function _cloneOverValues(key) {
-					rows[0].value[key] = data[key];
-				});
-
-				// PUT document in couch
-				request({
-					"uri": this._base_url + "/" + rows[0].value._id,
-					"json": rows[0].value,
-					"method": "PUT"
-				}, this._error(cb));	
+		// PUT document in couch
+		request({
+			"uri": this._base_url + "/" + post._id,
+			"json": post,
+			"method": "PUT"
+		}, this._error(function _savePost(err, res, body) {
+			if (body) {
+				body.id = post.id;
+				body.title = post.title;
 			}
-		}).bind(this));
+			cb(err, res, body);
+		}));
 	},
 	// create a document
 	"create": function _create(data, cb) {
@@ -116,9 +120,9 @@ var Post = Object.create(EventEmitter, Trait({
 			"type": "post"
 		}
 
-		this.get(function _get(err, rows) {
+		this.get((function _get(err, res, body) {
 			// get highest id and make the new id one higher.
-			var id = rows.map(function _pluckId(v) {
+			var id = body.rows.map(function _pluckId(v) {
 				return v.value.id;
 			}).reduce(function _findMaxId(prev, curr) {
 				return prev < curr ? curr : prev;
@@ -132,25 +136,30 @@ var Post = Object.create(EventEmitter, Trait({
 				"uri": this._base_url + "/" + post._id,
 				"json": post,
 				"method": "PUT"
-			}, this._error(cb));
-		});
+			}, this._error(function _putPost(err, res, body) {
+				if (body) {
+					body.id = post.id;
+					body.title = post.title;
+				} 
+				cb(err, res, body);
+			}));
+		}).bind(this));
 	},
 	// destroy document
-	"destroy": function _destroy(id, cb) {
-		this.get(id, (function _destroyDoc(err, rows) {
-			delete this._cache[id];
-			// send DELETE to couch for doc & rev.
-			var uri = url.parse(this._base_url);
-			uri.pathname += "/" + rows[0].value._id;
-			uri.query = {
-				"rev": rows[0].value._rev
-			};
+	"destroy": function _destroy(post, cb) {
+		delete this._cache[post.id];
+		// send DELETE to couch for doc & rev.
+		var uri = url.parse(this._base_url);
+		uri.pathname += "/" + post._id;
+		uri.query = {
+			"rev": post._rev
+		};
 
-			request({
-				"url": url.format(uri),
-				"method": "DELETE"
-			}, this._error(cb));	
-		}).bind(this));
+		request({
+			"url": url.format(uri),
+			"json": true,
+			"method": "DELETE"
+		}, this._error(cb));	
 	}
 }));
 

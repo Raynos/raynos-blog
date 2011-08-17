@@ -1,13 +1,17 @@
 var crypto = require("crypto");
 
-module.exports = function _route(app, model, view, middle) {
+module.exports = function _route(app, view, middle) {
 	var m;
-	
+
 	app.get("/signup", function _signUpView(req, res) {
 		res.render("auth/signup", req.flash());
 	});
 
-	app.get("/login/:redir?", function _loginView(req, res) {
+	var m = [
+		middle.validate,
+		middle.sanitizeRedir
+	];
+	app.get("/login/:redir?", m, function _loginView(req, res) {
 		res.render("auth/login", view.flash(req.flash(), {
 			"redir": req.params.redir
 		}));
@@ -32,7 +36,7 @@ module.exports = function _route(app, model, view, middle) {
 		middle.validateHash
 	];
 	app.post("/login", m, function _success(req, res) {
-		req.session.user = req.doc;
+		req.session.user = req.user;
 		res.redirect(req.body.redir || "/");
 	});
 }

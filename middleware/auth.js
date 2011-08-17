@@ -11,7 +11,7 @@ var flashMessages = {
 	"username_found": "The username is already taken"
 }
 
-module.exports = function _createMiddleware(model) {
+module.exports = function _createMiddleware(model, view) {
 	return Trait.create(Object.prototype, Trait({
 		"_validateInput": function _validateInput(check, req) {
 			check(req.body.password, "password_small").len(5);
@@ -26,16 +26,32 @@ module.exports = function _createMiddleware(model) {
 			}).bind(this), next);	
 		},
 		"validate": function _validate(req, res, next) {
-			req.validator = function() {
-				return validate({
-					"defaultInvalid": res,
-					"defaultError": {
-						"req": req,
-						"messages": flashMessages
-					}
-				});
+			req.validator = function(defaults) {
+				if (defaults === undefined || defaults === true) {
+					return validate({
+						"redirectOnInvalid": res,
+						"flashOnError": {
+							"req": req,
+							"messages": flashMessages
+						}
+					});	
+				} else if (defaults === false) {	
+					return validate();
+				} else {
+					return validate(defaults);
+				}
 			}
 			next();
+		},
+		"sanitizeRedir": function _sanitizeRedir(req, res, next) {
+			req.validator({
+				"errorNextOnError": next
+			}).on("valid", function _valid() {
+				req.redir = decodeURIComponent(req.params.redir);
+			}).run(function _validateRedir(check) {
+				check(req.params.redir, "redir is not an url")
+					.any("isUrlSegment", "isNotDefined");
+			}, next);
 		},
 		"validateLogin": function _validateLogin(req, res, next) {
 			req.validator().run((function _validateLogin(check) {
@@ -54,15 +70,17 @@ module.exports = function _createMiddleware(model) {
 			});
 		},
 		"getUser": function _getUser(req, res, next) {
-			model.get(req.body.username, function _get(err, doc) {
+			model.get(req.body.username, function _get(err, res, body) {
 				if (err && err.message === "not_found") {
-					req.doc = err.message;
+					req.user = err.message;
 					next();
 				} else if (err) {
 					next(err);
-				} else {
-					req.doc = doc;
+				} else if (body._id !== undefined) {
+					req.user = body;
 					next();
+				} else {
+					next(new Error(body.error));
 				}
 			});
 		},
@@ -70,17 +88,17 @@ module.exports = function _createMiddleware(model) {
 			req.validator().on("valid", function _hashValid() {
 				next();
 			}).run(function _validateHash(check) {
-				var hash = model.createHash(req.doc.salt, req.body.password);
-				check(hash, "username_incorrect").equals(req.doc.password_sha);
+				var hash = model.createHash(req.user.salt, req.body.password);
+				check(hash, "username_incorrect").equals(req.user.password_sha);
 			});
 		},
 		"checkUserExistance": function _checkUserExists(expectToExist) {
 			return function _checkUserExists(req, res, next) {
 				req.validator().run(function _checkUser(check) {
 					if (expectToExist) {
-						check(req.doc, "username_incorrect").notContains("not_found");
+						check(req.user, "username_incorrect").notEquals("not_found");
 					} else {
-						check(req.doc, "username_found").contains("not_found");
+						check(req.user, "username_found").equals("not_found");
 					}
 				}, next);
 			};

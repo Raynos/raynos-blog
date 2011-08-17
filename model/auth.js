@@ -1,5 +1,4 @@
 var request = require("request").defaults({
-		"json": true,
 		"headers": {
 			"Authorization": "Basic " + 
 				new Buffer(process.env.COUCH_USER + ":" + 
@@ -20,12 +19,15 @@ var User = Object.create(EventEmitter, Trait({
 	"_error": function _error (f) {
 		return function _errorProxy(err, res, body) {
 			if (err) {
-				console.log("error - auth");
+				console.log("error - post");
 				console.log(err);
-			} else if (body.error) {
-				console.log("error in body - auth")
-				console.log(body);
-			} 
+			} else if (typeof body === "string") {
+				body = JSON.parse(body);
+			}
+			if (body.error) {
+				console.log("error in body - post");
+				console.log(body.error);
+			}
 			f(err, res, body);
 		};	
 	},
@@ -48,7 +50,7 @@ var User = Object.create(EventEmitter, Trait({
 	"get": function _get(id, cb) {
 		// check if in cache
 		if (id !== null && this._cache[id]) {
-			cb(null, this._cloneDoc(this._cache[id]));
+			cb(null, null, this._cloneDoc(this._cache[id]));
 			return;
 		};	
 
@@ -56,10 +58,10 @@ var User = Object.create(EventEmitter, Trait({
 			"uri": this._base_url + "/org.couchdb.user:" + id
 		}, this._error((function _get(err, res, body) {
 			if (body.error) {
-				cb(new Error(body.error));
+				cb(new Error(body.error), res, body);
 			} else {
 				this._cache[id] = this._cloneDoc(body);
-				cb(null, body);
+				cb(null, res, body);
 			}
 		}).bind(this)));
 	},

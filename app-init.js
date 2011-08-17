@@ -41,13 +41,17 @@ module.exports = function _init(app) {
 		views = readFolder("/views/"),
 		middleware = readFolder("/middleware/");
 
-	Object.keys(routes).forEach(function _initRoute(route) {
+	Object.keys(routes).forEach(function _initRoute(file) {
+		var model = models[file],
+			view = views[file],
+			route = routes[file],
+			middle = middleware[file];
+
 		// for each route call it with app and its model & view.
-		var m;
-		if (middleware[route]) {
-			m = middleware[route](models[route]);	
+		if (middle) {
+			middle = middle(model, view);
 		}
-		routes[route](app, models[route], views[route], m);
+		route(app, view, middle)
 	});
 
 	// start the applications once all the models have loaded.

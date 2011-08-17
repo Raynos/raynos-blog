@@ -1,65 +1,75 @@
-module.exports = function _route(app, model, view, middle) {
+module.exports = function _route(app, view, middle) {
 	var m;
-	var getModel = function _getModel(req, res, next) {
-		model.get(req.postId, function _get(err, rows) {
-			if (err && err.message === "no results") {
-				next(err);
-			} else {
-				req.rows = rows;
-				next();
-			}
-		})	
-	};
 
 	// Get all posts
-	app.get("/blog", function _index(req, res) {
-		model.get(function _get(err, rows) {
-			res.render("blog/index", {
-				"posts": rows.map(view.index.bind(view))
-			});
+	m = [middle.getAllPosts];
+	app.get("/blog", m, function _index(req, res) {
+		res.render("blog/index", {
+			"posts": view.index(req.posts)
 		});
 	});
 
-	app.get("/blog/new", secure.requireLogin, function _new(req, res) {
-		res.render("blog/new", {
-			flash: req.flash()
-		});
+	m = [
+		middle.cleanseUrl,
+		middle.requireLogin
+	];
+	app.get("/blog/new", m, function _new(req, res) {
+		res.render("blog/new", view.flash(req.flash()));
 	});
 
 	// render the edit page
-	app.get("/blog/:postId/edit", secure.requireLogin, getModel, function _edit(req, res, next) {
-		var locals = view.fixURL(req.rows);
-		locals.flash = req.flash();
-		res.render("blog/edit", locals);	
-	});
-
-	// create new post
-	app.post("/blog", secure.requireLogin, secure.validatePost, function _create(req, res) {
-		model.create(req.body, function _save() {
-			res.redirect("blog/" + view.url(post));
-		});	
+	m = [
+		middle.cleanseUrl,
+		middle.requireLogin,
+		middle.validate,
+		middle.checkId,
+		middle.getPostById
+	];
+	app.get("/blog/:postId/edit", m, function _edit(req, res, next) {
+		var locals = view.fixURL(req.post);
+		res.render("blog/edit", view.flash(req.flash(), locals));	
 	});
 
 	// render single post
-	app.get("/blog/:postId/:title?", getModel, function _show(req, res, next) {
-		res.render("blog/show", view.show(req.rows));
+	m = [
+		middle.validate,
+		middle.checkId,
+		middle.getPostById
+	]
+	app.get("/blog/:postId/:title?", m, function _show(req, res, next) {
+		res.render("blog/show", view.show(req.post));
 	});
+
+	// create new post
+	m = [
+		middle.requireLogin,
+		middle.validate,
+		middle.validatePost,
+		middle.createPost
+	]
+	app.post("/blog", m, middle.redirectToPost);
 
 	// update document.
-	app.put("/blog/:postId", secure.requireLogin, secure.validatePost, function _update(req, res) {
-		model.save(req.postId, req.body, function _save(err, rows) {
-			if (!err) {
-				res.redirect("blog/" + view.url(post));	
-			} else {
-				next(err);
-			}
-		});
-	});
+	m = [
+		middle.requireLogin,
+		middle.validate,
+		middle.checkId,
+		middle.validatePost,
+		middle.getPostById,
+		middle.checkPostExistance,
+		middle.savePost
+	];
+	app.put("/blog/:postId", m, middle.redirectToPost);
 
-	app.delete("/blog/:postId", secure.requireLogin, function _destroy(req, res) {
-		model.destroy(req.postId, function _delete() {
-			res.redirect("/blog/");
-		});	
+	m = [
+		middle.requireLogin,
+		middle.validate,
+		middle.checkId,
+		middle.getPostById,
+		middle.deletePost
+	]
+	app.delete("/blog/:postId", m, function _destroy(req, res) {
+		res.redirect("/blog");
 	});
 
 };
