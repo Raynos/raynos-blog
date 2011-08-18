@@ -7,7 +7,6 @@
 			<link rel='stylesheet' href='/stylesheets/site.css' type="text/css" />
 		<![endif]>
 		<meta name="google-site-verification" content="Cqpb9hEqcQuKKmtMcOyjS211kE9ojHnrvzmKyPr0Pmk" />
-			
 	</head>
 	<body>
 		<!--[if lt IE 9]>
@@ -43,5 +42,16 @@
 			</nav>
 			<h6> Copyright © 2011 Jake Verbaten </h6>
 		</footer>
+		<script>
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-25222034-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
 	</body>
 </html>
