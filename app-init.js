@@ -58,6 +58,7 @@ module.exports = function _init(app) {
 	
 	var start = after(Object.keys(models).length, function _waitForModels() {
 		app.listen(parseInt(process.env.PORT) || 8080);
+		app.emit("started", app);
 		console.log("Express server listening on port %d", app.address().port);
 	});
 

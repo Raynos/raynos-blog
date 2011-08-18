@@ -17,8 +17,8 @@
         "buffertools": "1.0.3"
     },
     "devDependencies": {
-    	"expresso": "0.7.1",
-    	"vows": "0.5.9",
+    	"vows": "0.5.10",
+    	"should": "0.2.1",
     	"nodemon": "0.5.3",
     	"node-inspector": "0.1.9"
     }

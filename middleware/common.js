@@ -81,7 +81,7 @@ exports.validate = function(opts) {
 			res.redirect("back");
 		});
 	}
-
+			 
 	if (opts.errorNextOnError) {
 		var next = opts.errorNextOnError;
 

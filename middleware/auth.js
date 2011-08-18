@@ -87,12 +87,10 @@ module.exports = function _createMiddleware(model, view) {
 			});
 		},
 		"validateHash": function _validateHash(req, res, next) {
-			req.validator().on("valid", function _hashValid() {
-				next();
-			}).run(function _validateHash(check) {
+			req.validator().run(function _validateHash(check) {
 				var hash = model.createHash(req.user.salt, req.body.password);
 				check(hash, "username_incorrect").equals(req.user.password_sha);
-			});
+			}, next);
 		},
 		"checkUserExistance": function _checkUserExists(expectToExist) {
 			return function _checkUserExists(req, res, next) {
