@@ -1,4 +1,5 @@
-var markdown = require("markdown").markdown;
+var markdown = require("markdown").markdown,
+	marked = require("marked");
 
 module.exports = {
 	// common code
@@ -38,7 +39,7 @@ module.exports = {
 	// create the show view
 	"show": function _show(p) {
 		p = this._view(p);
-		p.content = markdown.toHTML(p.content);
+		p.content = marked(p.content);
 		return p;
 	}
 }
