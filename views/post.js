@@ -1,5 +1,4 @@
-var markdown = require("markdown").markdown,
-	marked = require("marked");
+var marked = require("marked");
 
 module.exports = {
 	// common code
@@ -21,8 +20,10 @@ module.exports = {
 		p = p.map((function (val) {
 			val = val.value;
 			val = this._view(val);
-			var tree = markdown.toHTMLTree(val.content);
-			val.content = markdown.toHTML(tree.slice(0, 3));
+			var real_tokens = marked.lexer(val.content);
+			var tokens = real_tokens.slice(0, 2);
+			tokens.links = real_tokens.links;
+			val.content = marked.parser(tokens);
 			return val;
 		}).bind(this));
 		return p;
