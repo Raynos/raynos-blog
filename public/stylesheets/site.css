@@ -23,35 +23,38 @@
 		More info at: http://lesselements.com
 -----------------------------------------------------*/
 h1 {
-  top: 0px;
-  left: 0px;
-  margin: 0px;
-  padding: 10px;
-  position: absolute;
+  margin: 0;
+  padding: 0.5em;
+  display: inline;
 }
 h1:first-letter {
-  font-size: 60px;
+  font-size: 1.2em;
 }
 h1 a {
-  letter-spacing: 5px;
+  letter-spacing: 0.1em;
   text-decoration: none;
   font-family: 'Delius', cursive;
-  font-size: 48px;
+  font-size: 2em;
   color: black;
 }
 header nav {
   text-align: center;
+  margin-top: -3em;
+  width: 100%;
 }
 header nav li {
   list-style: none;
   display: inline;
 }
 header nav li:last-of-type {
-  float: right;
-  margin-right: 20px;
+  position: absolute;
+  top: 0.5em;
+  right: 1.4em;
 }
 header nav ul {
-  margin: 0px;
+  text-align: center;
+  margin: 0;
+  display: inline;
 }
 header nav a {
   color: #4267aa;
@@ -72,16 +75,16 @@ form fieldset {
 }
 form li {
   list-style: none;
-  padding: 2px;
+  padding: 0.2%;
 }
 form ul {
   padding: 0;
 }
 form input, form textarea {
-  margin: 2px 20px;
+  margin: 0.5% 1%;
 }
 #blog form {
-  padding: 10px;
+  padding: 1%;
 }
 #blog form input[type=text], #blog form textarea {
   width: 90%;
@@ -99,26 +102,26 @@ form input, form textarea {
   text-decoration: underline;
 }
 #blog article {
-  max-width: 700px;
+  max-width: 50em;
   margin-right: auto;
   margin-left: auto;
-  margin-bottom: 30px;
-  margin-top: 30px;
-  padding: 20px 30px;
+  margin-bottom: 2em;
+  margin-top: 2em;
+  padding: 1.5em 2.5em;
 }
 #blog article, #blog article pre {
-  -webkit-border-top-right-radius: 20px;
-  -webkit-border-bottom-right-radius: 20px;
-  -webkit-border-bottom-left-radius: 20px;
-  -webkit-border-top-left-radius: 20px;
-  -moz-border-radius-topright: 20px;
-  -moz-border-radius-bottomright: 20px;
-  -moz-border-radius-bottomleft: 20px;
-  -moz-border-radius-topleft: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-top-left-radius: 20px;
+  -webkit-border-top-right-radius: 1.5em;
+  -webkit-border-bottom-right-radius: 1.5em;
+  -webkit-border-bottom-left-radius: 1.5em;
+  -webkit-border-top-left-radius: 1.5em;
+  -moz-border-radius-topright: 1.5em;
+  -moz-border-radius-bottomright: 1.5em;
+  -moz-border-radius-bottomleft: 1.5em;
+  -moz-border-radius-topleft: 1.5em;
+  border-top-right-radius: 1.5em;
+  border-bottom-right-radius: 1.5em;
+  border-bottom-left-radius: 1.5em;
+  border-top-left-radius: 1.5em;
   background-color: #f7f2ea;
 }
 #blog article time {
@@ -141,27 +144,23 @@ form input, form textarea {
   background-color: inherit;
 }
 #blog hr {
-  width: 50%;
+  width: 45%;
   border-style: none;
   color: white;
   border-bottom: 1px #999 solid;
   border-top: 1px #999 solid;
-  padding-bottom: 3px;
+  padding-bottom: 0.3%;
 }
 body {
-  margin: 0px;
+  margin: 0;
   font-family: 'Ubuntu', sans-serif;
   font-size: 0.85em;
-}
-header {
-  padding-top: 4px;
-  padding-bottom: 2px;
 }
 footer {
   text-align: center;
 }
 footer ul {
-  padding: 0px;
+  padding: 0;
 }
 footer li {
   list-style: none;
@@ -177,7 +176,6 @@ footer a:hover {
   text-decoration: underline;
 }
 section {
-  margin-top: 50px;
   margin-left: 10%;
   margin-right: 10%;
   padding: 1%;

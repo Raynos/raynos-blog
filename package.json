@@ -14,7 +14,8 @@
         "watch": "0.3.2",
         "less": "1.1.4",
         "after": "0.1.0",
-        "buffertools": "1.0.3"
+        "buffertools": "1.0.3",
+        "connect-gzip": "0.1.0"
     },
     "devDependencies": {
     	"vows": "0.5.10",
