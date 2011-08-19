@@ -1,5 +1,28 @@
 var marked = require("marked");
 
+var twoParagraphs = function(str) {
+	var tokens = marked.lexer(str),
+		line = (tokens[0].line || 0) - 1, 
+		paragraphs = 0;
+
+	for (var i = 0, ii = tokens.length; i < ii; i++) {
+		var token = tokens[i];
+		if (token.type !== 'text') {
+			break;
+		} else if (token.line !== ++line) {
+			if (++paragraphs === 2) {
+				break;
+			}
+			line = token.line;
+		}
+	}
+
+	paragraphs = tokens.slice(0, i);
+	paragraphs.links = tokens.links;
+
+	return marked.parser(paragraphs);
+};
+
 module.exports = {
 	// common code
 	"_view": function _view(p) {
@@ -20,10 +43,7 @@ module.exports = {
 		p = p.map((function (val) {
 			val = val.value;
 			val = this._view(val);
-			var real_tokens = marked.lexer(val.content);
-			var tokens = real_tokens.slice(0, 2);
-			tokens.links = real_tokens.links;
-			val.content = marked.parser(tokens);
+			val.content = twoParagraphs(val.content);
 			return val;
 		}).bind(this));
 		return p;

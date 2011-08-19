@@ -98,8 +98,12 @@ form input, form textarea {
   text-decoration: underline;
 }
 #blog article {
+  max-width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 30px;
+  margin-top: 30px;
   padding: 20px 30px;
-  margin: 25px 0px;
   -webkit-border-top-right-radius: 20px;
   -webkit-border-bottom-right-radius: 20px;
   -webkit-border-bottom-left-radius: 20px;
