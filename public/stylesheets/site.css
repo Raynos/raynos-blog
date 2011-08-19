@@ -58,6 +58,7 @@ header nav a {
   font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   font-weight: bold;
+  font-size: 1.2em;
   padding: 0% 2%;
 }
 header nav a:hover {
@@ -150,6 +151,7 @@ form input, form textarea {
 body {
   margin: 0px;
   font-family: 'Ubuntu', sans-serif;
+  font-size: 0.85em;
 }
 header {
   padding-top: 4px;
