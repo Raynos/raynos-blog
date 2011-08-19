@@ -2,7 +2,8 @@
 // Configuration
 
 var express = require("express"),
-	uuid = require("node-uuid");
+	uuid = require("node-uuid"),
+	gzip = require('connect-gzip');
 
 var configure = function(app) {
 
@@ -15,6 +16,7 @@ var configure = function(app) {
 		app.use(express.session({ secret: uuid() }));
 		app.use(app.router);
 		app.use(express.static(__dirname + '/public'));
+		app.use(gzip.gzip());
 	});
 
 	app.configure('development', function(){
