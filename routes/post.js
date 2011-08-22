@@ -48,9 +48,10 @@ module.exports = function _route(app, view, middle) {
 		middle.beRaynos,
 		middle.validate,
 		middle.validatePost,
-		middle.createPost
+		middle.createPost,
+		middle.redirectToPost
 	]
-	app.post("/blog", m, middle.redirectToPost);
+	app.post("/blog", m);
 
 	// update document.
 	m = [
@@ -61,9 +62,10 @@ module.exports = function _route(app, view, middle) {
 		middle.validatePost,
 		middle.getPostById,
 		middle.checkPostExistance,
-		middle.savePost
+		middle.savePost,
+		middle.redirectToPost
 	];
-	app.put("/blog/:postId", m, middle.redirectToPost);
+	app.put("/blog/:postId", m);
 
 	m = [
 		middle.requireLogin,
