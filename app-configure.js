@@ -11,6 +11,10 @@ var configure = function(app) {
 		app.set('views', __dirname + '/public/templates');
 		app.set('view engine', 'dust');
 		app.use(express.bodyParser());
+		app.use(function(req, res, next) {
+			req.body = req.body || {}
+			next();
+		});
 		app.use(express.methodOverride());
 		app.use(express.cookieParser());
 		app.use(express.session({ secret: uuid() }));

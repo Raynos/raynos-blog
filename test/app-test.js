@@ -17,7 +17,7 @@ is.partial("redirect", function _partial(context, options) {
 
 		.partial("body")
 			.vow.it.should.include.string(options.text)
-			.vow.it.should.include.string("Moved Temporarily")
+				.and.string("Moved Temporarily")
 			.suite();
 });
 
@@ -32,7 +32,7 @@ is.partial("body", function _partial(context) {
 	return context.context("contains a body that")
 		.topic.is.property("body")
 		.vow.it.should.be.ok;
-})
+});
 
 is.suite("app").batch()
 
@@ -50,7 +50,7 @@ is.suite("app").batch()
 
 		.partial("body")
 			.vow.it.should.include.string("blog")
-			.vow.it.should.include.string("Raynos")
+				.and.string("Raynos")
 			.suite()
 
 .batch()
@@ -85,7 +85,59 @@ is.suite("app").batch()
 
 		.partial("body")
 			.vow.it.should.include.string("blog")
-			.vow.it.should.include.string("Building a blog with node.js")
+				.and.string("Building a blog with node.js")
 			.suite()
+
+.batch()
+
+	.context("a request to PUT /blog/1")
+		.topic.is.a.request("PUT /blog/1")
+		.partial("redirect", {
+			"text": "login"
+		})
+
+.batch()
+
+	.context("a request to DELETE /blog/1")
+		.topic.is.a.request("DELETE /blog/1")
+		.partial("redirect", {
+			"text": "login"
+		})
+
+.batch()
+	
+	.context("a request to GET /signup")
+		.topic.is.a.request("GET /signup")
+		.partial("200")
+
+		.partial("body")
+			.vow.it.should.include.string("signup")
+				.and.string("<form")
+				.and.string("username")
+				.and.string("password")
+				.and.string("email")
+				.and.string("confirm password")
+			.suite()
+
+.batch()
+
+	.context("a request to GET /login")
+		.topic.is.a.request("GET /login")
+		.partial("200")
+
+		.partial("body")
+			.vow.it.should.include.string("login")
+				.and.string("<form")
+				.and.string("username")
+				.and.string("password")
+			.suite()
+
+.batch()
+
+	.context("a request to POST /login")
+		.topic.is.a.request("POST /login")
+		.partial("redirect", {
+			"text": ""
+		})
 
 .export(module);
