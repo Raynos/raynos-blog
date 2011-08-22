@@ -4,11 +4,11 @@
     "version": "0.1.0",
     "author": "Jake Verbaten",
     "dependencies": {
-        "express": "2.4.4",
+        "express": "2.4.5",
         "validator": "0.2.7",
         "dust": "0.3.0",
         "node-uuid": "1.2.0",
-        "marked": "0.0.4",
+        "marked": "0.0.5",
         "request": "2.0.3",
         "traits": "0.4.0",
         "watch": "0.3.2",
@@ -18,8 +18,7 @@
         "connect-gzip": "0.1.0"
     },
     "devDependencies": {
-    	"vows": "0.5.10",
-    	"should": "0.2.1",
+    	"vows-is": "0.1.13",
     	"nodemon": "0.5.3",
     	"node-inspector": "0.1.9"
     }
