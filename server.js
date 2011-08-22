@@ -1,14 +1,21 @@
 var express = require('express'),
-	init = require("./app-init.js");
+	init = require("./app-init.js"),
+	app;
 
 if (!module.parent) {
-	var app = module.exports = express.createServer();
+	app = module.exports = express.createServer();
 	init(app);
 } else {
+	var finished = false;
+
 	module.exports = function _createServer(cb) {
-		app = express.createServer();
-		app.on("started", cb)
-		init(app);
+		if (app) {
+			cb(app);
+		} else {
+			app = express.createServer();
+			app.on("started", cb)
+			init(app);			
+		}
 	}
 }
 
