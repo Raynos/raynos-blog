@@ -1,26 +1,25 @@
 var marked = require("marked");
 
 var twoParagraphs = function(str) {
-	var tokens = marked.lexer(str),
-		line = (tokens[0].line || 0) - 1, 
+	var tokens = marked.lexer(str), 
 		paragraphs = 0;
 
 	for (var i = 0, ii = tokens.length; i < ii; i++) {
 		var token = tokens[i];
 		if (token.type !== 'text') {
-			break;
-		} else if (token.line !== ++line) {
-			if (++paragraphs === 2) {
+			if (token.type === 'space') {
+				if (++paragraphs === 2) {
+					break;
+				}
+			} else {
 				break;
 			}
-			line = token.line;
 		}
 	}
+	
+	tokens.length = i;
 
-	paragraphs = tokens.slice(0, i);
-	paragraphs.links = tokens.links;
-
-	return marked.parser(paragraphs);
+	return marked.parser(tokens);
 };
 
 module.exports = {
