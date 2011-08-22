@@ -15,7 +15,7 @@ var configure = function(app) {
 		app.use(express.cookieParser());
 		app.use(express.session({ secret: uuid() }));
 		app.use(app.router);
-		app.use(express.static(__dirname + '/public'));
+		app.use(gzip.staticGzip(__dirname + '/public'));
 		app.use(gzip.gzip());
 	});
 
