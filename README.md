@@ -14,6 +14,6 @@ Make sure your using node 0.4.10+ (only tested on 0.4.10)
 
 Set process environments like the PORT, COUCH_USER & COUCH_PWD
 
-  $ export PORT=4000
-  $ export COUCH_USER=root
-  $ export COUCH_PWD=nice_try
+    $ export PORT=4000
+    $ export COUCH_USER=root
+    $ export COUCH_PWD=nice_try
