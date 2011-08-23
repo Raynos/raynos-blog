@@ -1,6 +1,3 @@
-
-// Configuration
-
 var express = require("express"),
 	uuid = require("node-uuid"),
 	gzip = require('connect-gzip');
@@ -12,7 +9,7 @@ var configure = function(app) {
 		app.set('view engine', 'dust');
 		app.use(express.bodyParser());
 		app.use(function(req, res, next) {
-			req.body = req.body || {}
+			req.body = req.body || {};
 			next();
 		});
 		app.use(express.methodOverride());

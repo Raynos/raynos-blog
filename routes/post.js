@@ -1,83 +1,63 @@
-module.exports = function _route(app, view, middle) {
-	var m;
+module.exports = function _route(app, middle) {
 
-	// Get all posts
-	m = [middle.getAllPosts];
-	app.get("/blog", m, function _index(req, res) {
-		res.render("blog/index", {
-			"posts": view.index(req.posts)
-		});
-	});
+	app.get("/blog", [
+		middle.data.getAllPosts,
+		middle.output.renderPosts
+	]); 
 
-	m = [
-		middle.cleanseUrl,
-		middle.requireLogin,
-		middle.beRaynos
-	];
-	app.get("/blog/new", m, function _new(req, res) {
-		res.render("blog/new", view.flash(req.flash()));
-	});
+	app.get("/blog/new", [
+		middle.input.cleanseUrl,
+		middle.auth.requireLogin,
+		middle.auth.beRaynos,
+		middle.output.renderNewPostForm
+	]);
 
-	// render the edit page
-	m = [
-		middle.cleanseUrl,
-		middle.requireLogin,
-		middle.beRaynos,
-		middle.validate,
-		middle.checkId,
-		middle.getPostById
-	];
-	app.get("/blog/:postId/edit", m, function _edit(req, res, next) {
-		var locals = view.fixURL(req.post);
-		res.render("blog/edit", view.flash(req.flash(), locals));	
-	});
+	app.get("/blog/:postId/edit", [
+		middle.input.cleanseUrl,
+		middle.auth.requireLogin,
+		middle.auth.beRaynos,
+		middle.input.validate,
+		middle.input.checkId,
+		middle.data.getPostById,
+		middle.output.renderPostEditForm
+	]);
 
-	// render single post
-	m = [
-		middle.validate,
-		middle.checkId,
-		middle.getPostById
-	]
-	app.get("/blog/:postId/:title?", m, function _show(req, res, next) {
-		res.render("blog/show", view.show(req.post));
-	});
+	app.get("/blog/:postId/:title?", [
+		middle.input.validate,
+		middle.input.checkId,
+		middle.data.getPostById,
+		middle.output.renderPost
+	]);
 
-	// create new post
-	m = [
-		middle.requireLogin,
-		middle.beRaynos,
-		middle.validate,
-		middle.validatePost,
-		middle.createPost,
-		middle.redirectToPost
-	]
-	app.post("/blog", m);
+	app.post("/blog", [
+		middle.auth.requireLogin,
+		middle.auth.beRaynos,
+		middle.input.validate,
+		middle.input.validatePost,
+		middle.data.createPost,
+		middle.output.redirectToPost
+	]);
 
-	// update document.
-	m = [
-		middle.requireLogin,
-		middle.beRaynos,
-		middle.validate,
-		middle.checkId,
-		middle.validatePost,
-		middle.getPostById,
-		middle.checkPostExistance,
-		middle.savePost,
-		middle.redirectToPost
-	];
-	app.put("/blog/:postId", m);
+	app.put("/blog/:postId", [
+		middle.auth.requireLogin,
+		middle.auth.beRaynos,
+		middle.input.validate,
+		middle.input.checkId,
+		middle.input.validatePost,
+		middle.data.getPostById,
+		middle.input.checkPostExistance,
+		middle.data.savePost,
+		middle.output.redirectToPost
+	]);
 
-	m = [
-		middle.requireLogin,
-		middle.beRaynos,
-		middle.validate,
-		middle.checkId,
-		middle.getPostById,
-		middle.deletePost
-	]
-	app.delete("/blog/:postId", m, function _destroy(req, res) {
-		res.redirect("/blog");
-	});
-
+	app.del("/blog/:postId", [
+		middle.auth.requireLogin,
+		middle.auth.beRaynos,
+		middle.input.validate,
+		middle.input.checkId,
+		middle.data.getPostById,
+		middle.data.deletePost,
+		middle.output.redirectToBlog
+	]);
 };
 

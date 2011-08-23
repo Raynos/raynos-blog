@@ -1,42 +1,29 @@
-var crypto = require("crypto");
+module.exports = function _route(app, middle) {
 
-module.exports = function _route(app, view, middle) {
-	var m;
+	app.get("/signup", middle.output.renderSignup);
 
-	app.get("/signup", function _signUpView(req, res) {
-		res.render("auth/signup", req.flash());
-	});
+	app.get("/login/:redir?", [
+		middle.input.validate,
+		middle.input.sanitizeRedir,
+		middle.output.renderLogin
+	]);
 
-	var m = [
-		middle.validate,
-		middle.sanitizeRedir
-	];
-	app.get("/login/:redir?", m, function _loginView(req, res) {
-		res.render("auth/login", view.flash(req.flash(), {
-			"redir": req.params.redir
-		}));
-	});
+	app.post("/signup", [
+		middle.input.validate, 
+		middle.input.validateSignup, 
+		middle.data.getUser, 
+		middle.input.checkUserExistance(false), 
+		middle.data.createUser,
+		middle.output.redirectHome
+	]);
 
-	m = [
-		middle.validate, 
-		middle.validateSignup, 
-		middle.getUser, 
-		middle.checkUserExistance(false), 
-		middle.createUser
-	];
-	app.post("/signup", m, function _success(req, res) {
-		res.redirect("/");	
-	});
-
-	m = [
-		middle.validate, 
-		middle.validateLogin, 
-		middle.getUser, 
-		middle.checkUserExistance(true),
-		middle.validateHash
-	];
-	app.post("/login", m, function _success(req, res) {
-		req.session.user = req.user;
-		res.redirect(req.body.redir || "/");
-	});
-}
+	app.post("/login", [
+		middle.input.validate, 
+		middle.input.validateLogin, 
+		middle.data.getUser, 
+		middle.input.checkUserExistance(true),
+		middle.input.validateHash,
+		middle.auth.storeUser,
+		middle.output.redirectRedir
+	]);
+};
