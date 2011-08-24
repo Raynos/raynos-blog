@@ -32,7 +32,7 @@ var Post = Object.create(Object.prototype, Trait.compose(Trait({
 		// request documents
 		this._request({
 			"uri": url.format(uri)
-		}, this._error((function _callback(err, resp, body) {
+		}, this._db_error((function _callback(err, resp, body) {
 			// if no rows throw an error
 			if (body.rows === undefined || (body.rows.length === 0 && id)) {
 				cb(new Error("not_found"), resp, body);
@@ -58,7 +58,7 @@ var Post = Object.create(Object.prototype, Trait.compose(Trait({
 			"uri": this._base_url + "/" + post._id,
 			"json": post,
 			"method": "PUT"
-		}, this._error(function _savePost(err, res, body) {
+		}, this._db_error(function _savePost(err, res, body) {
 			if (body) {
 				body.id = post.id;
 				body.title = post.title;
@@ -91,7 +91,7 @@ var Post = Object.create(Object.prototype, Trait.compose(Trait({
 				"uri": this._base_url + "/" + post._id,
 				"json": post,
 				"method": "PUT"
-			}, this._error(function _putPost(err, res, body) {
+			}, this._db_error(function _putPost(err, res, body) {
 				if (body) {
 					body.id = post.id;
 					body.title = post.title;
@@ -113,78 +113,55 @@ var Post = Object.create(Object.prototype, Trait.compose(Trait({
 		this._request({
 			"url": url.format(uri),
 			"method": "DELETE"
-		}, this._error(cb));	
+		}, this._db_error(cb));	
 	},
 	"getAllPosts": function _getAllPosts(req, res, next) {
-		this._get(function _getAll(err, res, body) {
-			if (err) {
-				next(err);
-			} else if (body.rows !== undefined) {
+		this._get(this._error(next, function _getAll(err, res, body) {
+			if (body.rows !== undefined) {
 				req.posts = body;
 				next();	
-			} else {
-				next(new Error(body.error));
-			}
-		});
+			} 
+		}));
 	},
 	"getPostById": function _getModel(req, res, next) {
-		this._get(req.postId, function _get(err, res, body) {
-			if (err) {
-				next(err);
-			} else if (body._id !== undefined) {
+		this._get(req.postId, this._error(next, function _get(err, res, body) {
+			if (body._id !== undefined) {
 				req.post = body;
 				next();
-			} else {
-				next(new Error(body.error));
-			}
-		});
+			} 
+		}));
 	},
 	"createPost": function _createPost(req, res, next) {
-		this._create(req.body, function _save(err, res, body) {
-			if (err) {
-				next(err);
-			} else if (body.ok === true) {
+		this._create(req.body, this._error(next, function _save(err, res, body) {
+			if (body.ok === true) {
 				req.post = body;
 				next();
-			} else {
-				next(new Error(body.error));
-			}
-		});	
+			} 
+		}));	
 	},
 	"savePost": function _savePost(req, res, next) {
 		Object.keys(req.body).forEach(function _copyValues(key) {
 			req.post[key] = req.body[key];
 		});
-		this._save(req.post, function _save(err, res, body) {
-			if (err) {
-				next(err);
-			} else if (body.ok === true) {
+		this._save(req.post, this._error(next, function _save(err, res, body) {
+			if (body.ok === true) {
 				next();
-			} else {
-				next(new Error(body.error));
 			}
-		});
+		}));
 	},
 	"deletePost": function _deletePost(req, res, next) {
-		model.destroy(req.post, function _delete(err, res, body) {
-			if (err) {
-				next(err);
-			} else if (body.ok === true || body === "") {
+		this._destroy(req.post, this._error(next, function _delete(err, res, body) {
+			if (body.ok === true || body === "") {
 				next();
-			} else {
-				next(new Error(body.error));
-			}
-		});	
+			} 
+		}));	
 	}
 }), Trait(Base)));
-
-console.log("making request");
 
 // Create all view
 Post._request({
 	"url": Post._base_url + "/_design/posts"
-}, Post._error(function _callback(err, resp, body) {
-	console.log("request never comes back");
+}, Post._db_error(function _callback(err, resp, body) {
 	// If it does not exist create the view
 	if (body.error === "not_found") {
 		// The all view returns all posts
@@ -202,7 +179,7 @@ Post._request({
 				"_id": "_design/posts",
 				"views": view
 			}
-		}, Post._error(function _emitReady(err, data) {
+		}, Post._db_error(function _emitReady(err, data) {
 			if (!err) {
 				Post.emit("loaded");
 			}

@@ -1,12 +1,11 @@
 var Trait = require("traits").Trait,
 	Base = require("./base.js");
 
-var flashMessages = {
-	"content": "body content is not set",
-	"title": "body title is not set"
-};
-
 module.exports = Object.create(Object.prototype, Trait.compose(Trait({
+	"_flashMessages": {
+		"content": "body content is not set",
+		"title": "body title is not set"
+	},
 	"cleanseUrl": function _cleanseUrl(req, res, next) {
 		if (req.url.charAt(req.url.length - 1) === "?") {
 			req.url = req.url.substring(0, req.url.length - 1);

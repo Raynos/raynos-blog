@@ -1,4 +1,4 @@
-var	dust = require("./lib/dust.js"),
+var	dust = require("../lib/dust.js"),
 	configure = require('./app-configure.js'),
 	fs = require("fs"),
 	// Remove in 0.6 and use Buffer.prototype.toString("hex") instead
@@ -61,13 +61,19 @@ module.exports = function _init(app) {
 			middle = middleware[file];
 
 		if (route && middle && middle.data) {
-			dataList[file] = middle.data
+			dataList[file] = middle.data;
+			Object.keys(middle).forEach(function(key) {
+				var obj = middle[key];
+				Object.keys(obj).forEach(function(method) {
+					if (typeof obj[method] === "function") {
+						obj[method] = obj[method].bind(obj);	
+					}
+				});
+			});
 		}
 
 		route(app, middle);
 	});	
-
-	console.log(dataList);
 
 	// start the applications once all the models have loaded.
 	var start = after(Object.keys(dataList).length, function _waitForData() {
@@ -78,7 +84,6 @@ module.exports = function _init(app) {
 
 	Object.keys(dataList).forEach(function _each(data) {
 		dataList[data].on("loaded", start);
-		console.log("emitting");
 		dataList[data].emit("start");
 	});
 	

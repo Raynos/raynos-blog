@@ -13,9 +13,8 @@ module.exports = Object.create(Object.prototype, Trait.compose(Trait({
 	// cache individual users
 	"_cache": {},
 	// error wrapper to log all errors
-	"_error": function _error (f) {
+	"_db_error": function _db_error (f) {
 		return function _errorProxy(err, res, body) {
-			console.log(arguments);
 			if (err) {
 				console.log("error - post");
 				console.log(err);
@@ -44,5 +43,16 @@ module.exports = Object.create(Object.prototype, Trait.compose(Trait({
 			o[key] = doc[key];
 		});
 		return o;
+	},
+	"_error": function _error (next, f) {
+		return function _errorProxy(err, res, body) {
+			if (err) {
+				next(err);
+			} else if (body.error) {
+				next(new Error(body.error));
+			} else {
+				f(err, res, body);
+			}
+		};
 	}
 }), Trait(EventEmitter)));

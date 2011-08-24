@@ -1,5 +1,17 @@
 module.exports = function _route(app, middle) {
 
+	var authorized = [
+		middle.auth.requireLogin,
+		middle.auth.beRaynos
+	];
+
+	app.param("postId", 
+		middle.input.validate,
+		middle.input.checkId,
+		middle.data.getPostById,
+		middle.input.checkPostExistance
+	);
+
 	app.get("/blog", [
 		middle.data.getAllPosts,
 		middle.output.renderPosts
@@ -7,31 +19,22 @@ module.exports = function _route(app, middle) {
 
 	app.get("/blog/new", [
 		middle.input.cleanseUrl,
-		middle.auth.requireLogin,
-		middle.auth.beRaynos,
+		authorized,
 		middle.output.renderNewPostForm
 	]);
 
 	app.get("/blog/:postId/edit", [
 		middle.input.cleanseUrl,
-		middle.auth.requireLogin,
-		middle.auth.beRaynos,
-		middle.input.validate,
-		middle.input.checkId,
-		middle.data.getPostById,
+		authorized,
 		middle.output.renderPostEditForm
 	]);
 
 	app.get("/blog/:postId/:title?", [
-		middle.input.validate,
-		middle.input.checkId,
-		middle.data.getPostById,
 		middle.output.renderPost
 	]);
 
 	app.post("/blog", [
-		middle.auth.requireLogin,
-		middle.auth.beRaynos,
+		authorized,
 		middle.input.validate,
 		middle.input.validatePost,
 		middle.data.createPost,
@@ -39,23 +42,14 @@ module.exports = function _route(app, middle) {
 	]);
 
 	app.put("/blog/:postId", [
-		middle.auth.requireLogin,
-		middle.auth.beRaynos,
-		middle.input.validate,
-		middle.input.checkId,
+		authorized,
 		middle.input.validatePost,
-		middle.data.getPostById,
-		middle.input.checkPostExistance,
 		middle.data.savePost,
 		middle.output.redirectToPost
 	]);
 
 	app.del("/blog/:postId", [
-		middle.auth.requireLogin,
-		middle.auth.beRaynos,
-		middle.input.validate,
-		middle.input.checkId,
-		middle.data.getPostById,
+		authorized,
 		middle.data.deletePost,
 		middle.output.redirectToBlog
 	]);

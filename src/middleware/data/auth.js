@@ -14,7 +14,7 @@ var Auth = Object.create(Object.prototype, Trait.compose(Trait({
 
 		this._request({
 			"uri": this._base_url + "/org.couchdb.user:" + id
-		}, this._error((function _get(err, res, body) {
+		}, this._db_error((function _get(err, res, body) {
 			if (body.error) {
 				cb(new Error(body.error), res, body);
 			} else {
@@ -47,39 +47,30 @@ var Auth = Object.create(Object.prototype, Trait.compose(Trait({
 			"uri": this._base_url + "/" + user._id,
 			"json": user,
 			"method": "PUT"
-		}, this._error(cb));
+		}, this._db_error(cb));
 	},
 	"createUser": function _createUser(req, res, next) {
-		this._create(req.body, function _create(err, res, body) {
-			if (err) {
-				next(err);
-			} else if (body.ok === true) {
+		this._create(req.body, this._error(next, function _create(err, res, body) {
+			if (body.ok === true) {
 				next();
-			} else {
-				next(new Error(body.error));
 			}
-		});
+		}));
 	},
 	"getUser": function _getUser(req, res, next) {
-		this._get(req.body.username, function _get(err, res, body) {
+		this._get(req.body.username, this._error(next, function _get(err, res, body) {
 			if (err && err.message === "not_found") {
 				req.user = err.message;
 				next();
-			} else if (err) {
-				next(err);
 			} else if (body._id !== undefined) {
 				req.user = body;
 				next();
-			} else {
-				next(new Error(body.error));
-			}
-		});
+			} 
+		}));
 	}
 }), Trait(Base)));
 
 module.exports = Auth;
 
 Auth.on("start", function _start() {
-	console.log("emitted");
 	Auth.emit("loaded");	
 });

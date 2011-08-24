@@ -48,7 +48,7 @@ module.exports = Object.create(Object.prototype, Trait.compose(Trait({
 		}).bind(this));
 		return p;
 	},
-	"show": function _show(p) {
+	"_show": function _show(p) {
 		p = this._view(p);
 		p.content = marked(p.content);
 		return p;

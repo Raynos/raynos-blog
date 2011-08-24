@@ -1,17 +1,16 @@
 var Trait = require("traits").Trait,
 	Base = require("./base.js");
 
-var flashMessages = {
-	"password_small": "The minimum length of the password field is 5",
-	"username_small": "The minimum length of the username field is 3",
-	"username_invalid": "The username needs to be alphanumeric",
-	"email_invalid": "The email address is not valid",
-	"password_notsame": "The passwords are not the same",
-	"username_incorrect": "The username and password are incorrect",
-	"username_found": "The username is already taken"
-};
-
 module.exports = Object.create(Object.prototype, Trait.compose(Trait({
+	"_flashMessages": {
+		"password_small": "The minimum length of the password field is 5",
+		"username_small": "The minimum length of the username field is 3",
+		"username_invalid": "The username needs to be alphanumeric",
+		"email_invalid": "The email address is not valid",
+		"password_notsame": "The passwords are not the same",
+		"username_incorrect": "The username and password are incorrect",
+		"username_found": "The username is already taken"
+	},
 	"_validateInput": function _validateInput(check, req) {
 		check(req.body.password, "password_small").len(5);
 		check(req.body.username, "username_small").len(3);

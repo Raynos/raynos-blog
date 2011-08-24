@@ -2,7 +2,7 @@ var is = require("vows-is");
 
 is.config({
 	"server": {
-		"factory": require("../server.js"),
+		"factory": require("../src/server.js"),
 		"uri": "http://localhost:" + (process.env.PORT || 8080),
 		"defaults": {
 			"followRedirect": false
@@ -64,7 +64,7 @@ is.suite("app").batch()
 .batch()
 
 	.context("a request to GET /blog/1/edit")
-		.topic.is.a.request("GET /blog/0/edit")
+		.topic.is.a.request("GET /blog/1/edit")
 		.partial("redirect", {
 			"url": "/login"
 		})

@@ -3,15 +3,18 @@ var Validator = require("validator").Validator.prototype,
 	Trait = require("traits").Trait,
 	EventEmitter = require("events").EventEmitter.prototype;
 
-module.exports = {
+module.exports = Object.create(Object.prototype, Trait({
 	"validate": function _validate(req, res, next) {
 		req.validator = (function(defaults) {
+			if (!this._flashMessages) {
+				console.log(this);	
+			}
 			if (defaults === undefined || defaults === true) {
 				return this._validate({
 					"redirectOnInvalid": res,
 					"flashOnError": {
 						"req": req,
-						"messages": flashMessages
+						"messages": this._flashMessages
 					}
 				});	
 			} else if (defaults === false) {	
@@ -66,7 +69,7 @@ module.exports = {
 					this.isUrl();
 					this.str = _str;
 					return this;
-				}/*,
+				},
 				"any": function() {
 					var commands = Array.prototype.slice.call(arguments);
 					var _error = this.error;
@@ -86,7 +89,7 @@ module.exports = {
 						return this.error(this.msg || 'A check failed');
 					} 
 					return this;
-				}*/
+				}
 			}),
 			Trait(Validator),
 			Trait(Filter),
@@ -120,4 +123,4 @@ module.exports = {
 
 		return v;
 	}
-};
+}));
