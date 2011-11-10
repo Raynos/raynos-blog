@@ -1,9 +1,9 @@
-var	Trait = require("traits").Trait,
+var	pd = require("pd"),
 	url = require("url"),
 	Base = require("./base.js"),
 	uuid = require("node-uuid");
 
-var Post = Object.create(Object.prototype, Trait.compose(Trait({
+var Post = pd.make(Base, {
 	"_base_url": Base._couch_url + "/raynos",
 	// get a document with the id [id] or get all posts if no id is passed
 	"_get": function _get(id, cb) {
@@ -156,7 +156,7 @@ var Post = Object.create(Object.prototype, Trait.compose(Trait({
 			} 
 		}));	
 	}
-}), Trait(Base)));
+});
 
 // Create all view
 Post._request({

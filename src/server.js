@@ -1,6 +1,8 @@
 var express = require('express'),
-	init = require("./app-init.js"),
+	init = require("./init/app-init.js"),
 	app;
+
+process.chdir(__dirname);
 
 if (!module.parent) {
 	app = module.exports = express.createServer();
@@ -12,7 +14,7 @@ if (!module.parent) {
 		} else {
 			app = express.createServer();
 			app.on("started", cb);
-			init(app);			
+			init(app);
 		}
 	};
 }

@@ -1,9 +1,9 @@
-var	Trait = require("traits").Trait,
+var pd = require("pd"),
 	uuid = require("node-uuid"),
 	Base = require("./base.js"),
 	crypto = require("crypto");
 
-var Auth = Object.create(Object.prototype, Trait.compose(Trait({
+var Auth = pd.make(Base, {
 	"_base_url": Base._couch_url + "/_users",
 	"_get": function _get(id, cb) {
 		// check if in cache
@@ -30,7 +30,7 @@ var Auth = Object.create(Object.prototype, Trait.compose(Trait({
 		return sha.digest("hex");
 	},
 	"_create": function _create(data, cb) {
-		var salt = new Buffer(uuid()).toHex();
+		var salt = new Buffer(uuid(), "hex").toString();
 		var hash = this.createHash(salt, data.password);
 
 		var user = {
@@ -67,7 +67,7 @@ var Auth = Object.create(Object.prototype, Trait.compose(Trait({
 			} 
 		}));
 	}
-}), Trait(Base)));
+});
 
 module.exports = Auth;
 

@@ -1,7 +1,7 @@
-var Trait = require("traits").Trait,
+var pd = require("pd"),
 	Base = require("./base.js");
 
-module.exports = Object.create(Object.prototype, Trait.compose(Trait({
+module.exports = pd.make(Base, {
 	"_flashMessages": {
 		"password_small": "The minimum length of the password field is 5",
 		"username_small": "The minimum length of the username field is 3",
@@ -57,4 +57,4 @@ module.exports = Object.create(Object.prototype, Trait.compose(Trait({
 			}, next);
 		};
 	}
-}), Trait(Base)));
+});

@@ -1,7 +1,7 @@
 var EventEmitter = require("events").EventEmitter.prototype,
-	Trait = require("traits").Trait;
+	pd = require("pd");
 
-module.exports = Object.create(Object.prototype, Trait.compose(Trait({
+module.exports = pd.make(EventEmitter, {
 	"_request": require("request").defaults({
 		"headers": {
 			"Authorization": "Basic " + 
@@ -55,4 +55,4 @@ module.exports = Object.create(Object.prototype, Trait.compose(Trait({
 			}
 		};
 	}
-}), Trait(EventEmitter)));
+});

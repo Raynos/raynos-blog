@@ -1,7 +1,7 @@
-var Trait = require("traits").Trait,
+var pd = require("pd"),
 	Base = require("./base.js");
 
-module.exports = Object.create(Object.prototype, Trait.compose(Trait({
+module.exports = pd.make(Base, {
 	"_flashMessages": {
 		"content": "body content is not set",
 		"title": "body title is not set"
@@ -35,4 +35,4 @@ module.exports = Object.create(Object.prototype, Trait.compose(Trait({
 			check(req.post, "post does not exist").isDefined();
 		}, next);
 	}
-}), Trait(Base)));
+});

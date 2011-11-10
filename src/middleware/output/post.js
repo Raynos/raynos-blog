@@ -1,4 +1,4 @@
-var Trait = require("traits").Trait,
+var pd = require("pd"),
 	Base = require("./base.js"),
 	marked = require("marked");
 
@@ -24,7 +24,7 @@ var twoParagraphs = function(str) {
 	return marked.parser(tokens);
 };
 
-module.exports = Object.create(Object.prototype, Trait.compose(Trait({
+module.exports = pd.make(Base, {
 	"_url": function _createURL(p) {
 		return p.id + "/" + encodeURIComponent(p.title.replace(/\s/g, "-"));
 	},
@@ -74,4 +74,4 @@ module.exports = Object.create(Object.prototype, Trait.compose(Trait({
 	"redirectToBlog": function _redirectToBlog(req, res, next) {
 		res.redirect("/blog");
 	}
-}), Trait(Base)));
+});

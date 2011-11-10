@@ -1,13 +1,13 @@
 var Validator = require("validator").Validator.prototype,
 	Filter = require("validator").Filter.prototype,
-	Trait = require("traits").Trait,
+	pd = require("pd"),
 	EventEmitter = require("events").EventEmitter.prototype;
 
-module.exports = Object.create(Object.prototype, Trait({
+module.exports = {
 	"validate": function _validate(req, res, next) {
 		req.validator = (function(defaults) {
 			if (!this._flashMessages) {
-				console.log(this);	
+				console.log(this);
 			}
 			if (defaults === undefined || defaults === true) {
 				return this._validate({
@@ -22,12 +22,12 @@ module.exports = Object.create(Object.prototype, Trait({
 			} else {
 				return this._validate(defaults);
 			}
-		}).bind(this);
+		}).bind(module.exports);
 		next();
 	},
 	"_validate": function _validate(opts) {
-		var v = Object.create(Object.prototype, Trait.override(
-			Trait({
+		var v = pd.extend(
+			{
 				"run": function(f, next) {
 					this._valid = true;
 					f(this.check.bind(this));
@@ -89,12 +89,12 @@ module.exports = Object.create(Object.prototype, Trait({
 						return this.error(this.msg || 'A check failed');
 					} 
 					return this;
-				}
-			}),
-			Trait(Validator),
-			Trait(Filter),
-			Trait(EventEmitter)
-		));
+				},
+			},
+			Validator,
+			Filter,
+			EventEmitter
+		);
 
 		if (opts.redirectOnInvalid) {
 			var res = opts.redirectOnInvalid;
@@ -123,4 +123,4 @@ module.exports = Object.create(Object.prototype, Trait({
 
 		return v;
 	}
-}));
+};

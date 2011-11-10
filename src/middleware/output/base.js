@@ -1,5 +1,3 @@
-var Trait = require("traits").Trait;
-
 module.exports = {
 	"_flash": function _flash(flash, data) {
 		data = data || {};

@@ -1,7 +1,7 @@
-var Trait = require("traits").Trait,
+var pd = require("pd"),
 	Base = require("./base.js");
 
-module.exports = Object.create(Object.prototype, Trait.compose(Trait({
+module.exports = pd.make(Base, {
 	"renderSignup": function _signUpView(req, res) {
 		res.render("auth/signup", req.flash());
 	},
@@ -16,4 +16,4 @@ module.exports = Object.create(Object.prototype, Trait.compose(Trait({
 	"redirectRedir": function _redirectRedir(req, res) {
 		res.redirect(req.body.redir || "/");
 	}
-}), Trait(Base)));
+});

@@ -1,5 +1,3 @@
-var Trait = require("traits").Trait;
-
 module.exports = {
 	"beRaynos": function _beRaynos(req, res, next) {
 		if (req.session.user.name === "Raynos") {
