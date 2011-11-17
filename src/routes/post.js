@@ -1,4 +1,4 @@
-module.exports = function _route(app, middle) {
+module.exports = function _route(app) {
 
 	var authorized = [
 		middle.auth.requireLogin,

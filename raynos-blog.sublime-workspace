@@ -7,205 +7,169 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/home/raynos/Documents/raynos-blog/routes/auth.js",
-			"settings":
-			{
-				"buffer_size": 661,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/raynos/Documents/raynos-blog/routes/post.js",
-			"settings":
-			{
-				"buffer_size": 1350,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/raynos/Documents/raynos-blog/middleware/output/auth.js",
-			"settings":
-			{
-				"buffer_size": 568,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/home/raynos/Documents/raynos-blog/middleware/output/post.js",
-			"settings":
-			{
-				"buffer_size": 1881,
-				"line_ending": "Unix"
-			}
-		}
 	],
-	"build_system": "",
+	"build_system": "Packages/User/jshint.sublime-build",
 	"command_palette":
 	{
-		"height": 392,
+		"height": 392.0,
 		"selected_items":
 		[
 		],
-		"width": 467
+		"width": 467.0
 	},
 	"console":
 	{
-		"height": 0
+		"height": 0.0
 	},
 	"distraction_free":
 	{
 		"menu_visible": true,
 		"show_minimap": false,
+		"show_open_files": true,
 		"show_tabs": false,
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
 	"file_history":
 	[
-		"/home/raynos/Documents/raynos-blog/middleware/data/post.js",
-		"/home/raynos/Documents/raynos-blog/middleware/input/post.js",
-		"/home/raynos/Documents/raynos-blog/routes/post.js",
-		"/home/raynos/Documents/raynos-blog/middleware/auth/post.js",
-		"/home/raynos/Documents/raynos-blog/middleware/views/post.js",
-		"/home/raynos/Documents/raynos-blog/middleware/post.js",
-		"/home/raynos/Documents/raynos-blog/middleware/input/auth.js",
-		"/home/raynos/Documents/raynos-blog/middleware/auth/auth.js",
-		"/home/raynos/Documents/raynos-blog/middleware/output/post.js",
-		"/home/raynos/Documents/raynos-blog/middleware/output/auth.js",
-		"/home/raynos/Documents/raynos-blog/middleware/input/base.js",
-		"/home/raynos/Documents/raynos-blog/middleware/output/base.js",
-		"/home/raynos/Documents/raynos-blog/middleware/model/post.js",
-		"/home/raynos/Documents/raynos-blog/middleware/data/auth.js",
-		"/home/raynos/Documents/raynos-blog/routes/auth.js",
-		"/home/raynos/Documents/raynos-blog/middleware/render/auth.js",
-		"/home/raynos/Documents/raynos-blog/middleware/views/auth.js",
-		"/home/raynos/Documents/raynos-blog/middleware/data/base.js",
-		"/home/raynos/Documents/raynos-blog/middleware/model/auth.js",
-		"/home/raynos/Documents/raynos-blog/middleware/validate/auth.js",
-		"/home/raynos/Documents/raynos-blog/middleware/validate/base.js",
-		"/home/raynos/Documents/raynos-blog/middleware/common.js",
-		"/home/raynos/Documents/raynos-blog/server.js",
-		"/home/raynos/Documents/raynos-blog/app-init.js",
+		"/home/raynos/Documents/raynos-blog/src/init/app-configure.js",
+		"/home/raynos/Documents/raynos-blog/src/server.js",
+		"/home/raynos/Documents/raynos-blog/node_modules/dust/lib/server.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/output/auth.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/input/base.js",
 		"/home/raynos/Documents/raynos-blog/lib/dust.js",
-		"/home/raynos/Documents/raynos-blog/test/app-test.js",
-		"/home/raynos/Documents/raynos-blog/model/post.js",
-		"/home/raynos/Documents/vows-is/vows-is.js",
-		"/home/raynos/Documents/raynos-blog/routes/home.js",
 		"/home/raynos/Documents/raynos-blog/package.json",
-		"/home/raynos/Documents/raynos-blog/middleware/auth.js",
-		"/home/raynos/Documents/raynos-blog/app-configure.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/express/node_modules/connect/lib/middleware/errorHandler.js",
-		"/home/raynos/Documents/vows-is/package.json",
-		"/home/raynos/Documents/raynos-blog/node_modules/vows-is/vows-is.js",
-		"/home/raynos/Documents/vows-is/test/vows-is-test.js",
-		"/home/raynos/.config/sublime-text-2/Packages/Default/Base File.sublime-settings",
-		"/home/raynos/.config/sublime-text-2/Packages/User/Global.sublime-settings",
-		"/home/raynos/.config/sublime-text-2/Packages/Default/Global.sublime-settings",
-		"/home/raynos/.config/sublime-text-2/Packages/User/Base File.sublime-settings",
-		"/home/raynos/Documents/raynos-blog/node_modules/vows-is/node_modules/should/lib/should.js",
-		"/home/raynos/Documents/vows-is/test/config.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/vows-is/package.json",
-		"/home/raynos/Documents/raynos-blog/node_modules/vows-is/test/vows-is-test.js",
-		"/home/raynos/Documents/vows-is/README.md",
-		"/home/raynos/Documents/raynos-blog/.gitignore",
-		"/home/raynos/Documents/vows-is/lib/traits.js",
-		"/home/raynos/Documents/vows-is/node_modules/traits/lib/traits.js",
-		"/home/raynos/Documents/vows-fluent/test/vows-fluent-test.js",
-		"/home/raynos/Documents/DOM-js/test/test-utils.js",
-		"/home/raynos/Documents/DOM-js/lib/main.js",
-		"/home/raynos/Documents/DOM-js/lib/dom/document.js",
-		"/home/raynos/Documents/DOM-js/lib/dom/dom.js",
-		"/home/raynos/Documents/vows-fluent/vows-fluent.js",
-		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows/suite.js",
-		"/home/raynos/Documents/vows-fluent/node_modules/vows/lib/vows/suite.js",
-		"/home/raynos/Documents/after/package.json",
-		"/home/raynos/Documents/vows-fluent/package.json",
-		"/home/raynos/Documents/vows-fluent/node_modules/vows/lib/vows.js",
-		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/vows-fluent.js",
-		"/home/raynos/Documents/vows-is/vows-is-test.js",
-		"/home/raynos/Documents/raynos-blog/views/post.js",
-		"/home/raynos/Documents/raynos-blog/model/auth.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/vows-fluent/vows-fluent.js",
-		"/home/raynos/Documents/raynos-blog/public/stylesheets/forms.less",
-		"/home/raynos/Documents/raynos-blog/public/stylesheets/site.less",
-		"/home/raynos/Documents/raynos-blog/public/stylesheets/blog.less",
-		"/home/raynos/Documents/raynos-blog/public/stylesheets/menu.less",
+		"/home/raynos/Documents/raynos-blog/src/init/app-init.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/output/base.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/output/post.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/input/post.js",
+		"/home/raynos/Documents/raynos-blog/node_modules/nodemon/nodemon.js",
+		"/home/raynos/Documents/pd/src/pd.js",
+		"/home/raynos/Documents/pd/package.json",
+		"/home/raynos/Documents/pd/README.md",
+		"/home/raynos/Documents/raynos-blog/src/middleware/data/base.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/data/auth.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/input/auth.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/data/post.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/auth/auth.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/auth/post.js",
+		"/home/raynos/Documents/pd/test/pd-test.js",
+		"/home/raynos/Documents/vanilla-node/package.json",
 		"/home/raynos/Documents/after/test/main-test.js",
-		"/home/raynos/Documents/vows-fluent/test/vows-test.js",
-		"/home/raynos/Documents/vows-fluent/README.md",
-		"/home/raynos/Documents/raynos-blog/public/templates/layouts/main.dust",
-		"/home/raynos/Documents/vows-fluent/.gitignore",
-		"/home/raynos/Documents/after/README.md",
-		"/home/raynos/Documents/after/.gitignore",
-		"/home/raynos/Documents/raynos-blog/test/app.test.js",
-		"/home/raynos/Documents/raynos-blog/lib-cov/dust.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/express/node_modules/connect/lib/middleware/cookieParser.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/express/node_modules/connect/lib/middleware/session.js",
-		"/home/raynos/Documents/raynos-blog/views/auth.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/request/main.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/express/lib/router/index.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/express/lib/request.js",
-		"/home/raynos/Documents/raynos-blog/public/templates/auth/inputs.dust",
-		"/home/raynos/Documents/raynos-blog/security/post.js",
-		"/home/raynos/Documents/raynos-blog/security/auth.js",
-		"/home/raynos/Documents/raynos-blog/public/templates/auth/login.dust",
-		"/home/raynos/Documents/raynos-blog/public/templates/auth/signup.dust",
-		"/home/raynos/Documents/raynos-blog/security/common.js",
-		"/home/raynos/Documents/raynos-blog/public/stylesheets/common.less",
-		"/home/raynos/Documents/raynos-blog/node_modules/validator/validator.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/dust/lib/dust.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/dust/lib/compiler.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/express/node_modules/connect/lib/http.js",
-		"/home/raynos/Documents/raynos-blog/public/templates/blog/item_form.dust",
-		"/home/raynos/Documents/raynos-blog/security",
-		"/home/raynos/Documents/raynos-blog/public/templates/blog/show.dust",
-		"/home/raynos/Documents/raynos-blog/public/templates/blog/new.dust",
-		"/home/raynos/Documents/raynos-blog/public/templates/blog/index.dust",
-		"/home/raynos/Documents/raynos-blog/public/templates/blog/edit.dust",
-		"/home/raynos/Documents/raynos-blog/public/templates/blog/item.dust",
-		"/home/raynos/Documents/raynos-blog/public/stylesheets/site.css",
-		"/home/raynos/Documents/raynos-blog/public/stylesheets/elements.less",
-		"/home/raynos/Documents/raynos-blog/after.js",
-		"/home/raynos/Documents/after/after.js",
-		"/home/raynos/Documents/raynos-blog/routes/blog.js",
-		"/home/raynos/Documents/raynos-blog/routes/index.js",
-		"/home/raynos/Documents/raynos-blog/public/model/post.js",
-		"/home/raynos/Documents/raynos-blog/public/views/blog/item.dust",
-		"/home/raynos/Documents/raynos-blog/public/views/blog/show.dust",
-		"/home/raynos/Documents/raynos-blog/public/views/blog/index.dust",
-		"/home/raynos/Documents/raynos-blog/public/views/layouts/main.dust",
-		"/home/raynos/Documents/raynos-blog/public/views/blog/item_form.dust",
-		"/home/raynos/Documents/raynos-blog/public/views/blog/edit.dust",
-		"/home/raynos/Documents/raynos-blog/public/views/blog/new.dust",
-		"/home/raynos/Documents/raynos-blog/node_modules/express-controllers/examples/basic/controllers/home.js",
-		"/home/raynos/Documents/raynos-blog/controllers/blog.js",
-		"/home/raynos/Documents/raynos-blog/public/views/404.dust",
-		"/home/raynos/Documents/raynos-blog/public/views/auth/signup.dust",
-		"/home/raynos/Documents/raynos-blog/lib/model.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/LazyBoy/lib/base.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/LazyBoy/lib/query.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/LazyBoy/lib/model.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/LazyBoy/node_modules/cradle/lib/cradle.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/LazyBoy/specs/remove_specs.js",
-		"/home/raynos/Documents/raynos-blog/node_modules/cradle/lib/cradle.js",
-		"/home/raynos/Documents/raynos-blog/lib/backbone-node.js",
-		"/home/raynos/Documents/raynos-blog/public/views/blog/post_form.dust"
+		"/home/raynos/Documents/ES5-shim/tests/spec/s-date.js",
+		"/home/raynos/Documents/ES5-shim/tests/spec/s-object.js",
+		"/home/raynos/Documents/ES5-shim/README.md",
+		"/home/raynos/Documents/ES5-shim/test/date.js",
+		"/home/raynos/Documents/ES5-shim/es5-shim.js",
+		"/home/raynos/Documents/ES5-shim/tests/helpers/h-kill.js",
+		"/home/raynos/Documents/ES5-shim/tests/index.html",
+		"/home/raynos/Documents/ES5-shim/tests/spec/s-string.js",
+		"/home/raynos/Documents/ES5-shim/tests/spec/s-array.js",
+		"/home/raynos/Documents/ES5-shim/test/array.js",
+		"/home/raynos/Documents/ES5-shim/tests/helpers/h-matchers.js",
+		"/home/raynos/Documents/ES5-shim/tests/helpers/h.js",
+		"/home/raynos/Documents/ES5-shim/tests/spec/s-function.js",
+		"/home/raynos/Documents/ES5-shim/test/index.html",
+		"/home/raynos/Documents/teeshirt-prototype/index.html",
+		"/home/raynos/Documents/vows-is/package.json",
+		"/home/raynos/Documents/vows-is/src/vows-is.js",
+		"/home/raynos/Documents/middleware/test/middleware-test.js",
+		"/home/raynos/Documents/middleware/package.json",
+		"/home/raynos/Documents/middleware/src/middleware.js",
+		"/home/raynos/Documents/middleware/examples/stack-middleware.js",
+		"/home/raynos/Documents/middleware/README.md",
+		"/home/raynos/Documents/connect/lib/http.js",
+		"/home/raynos/Documents/vows-is/examples/simple-test.js",
+		"/home/raynos/Documents/connect/lib/https.js",
+		"/home/raynos/Documents/connect/lib/connect.js",
+		"/home/raynos/Documents/connect/test/connect.test.js",
+		"/home/raynos/Documents/middleware/examples/simple-middleware.js",
+		"/home/raynos/Documents/middleware/.gitignore",
+		"/home/raynos/Documents/middleware/.npmignore",
+		"/home/raynos/Documents/middleware/index.html",
+		"/home/raynos/Documents/connect/test/compiler.test.js",
+		"/home/raynos/Documents/connect/test/session.test.js",
+		"/home/raynos/Documents/connect/test/vhost.test.js",
+		"/home/raynos/Documents/connect/test/bodyParser.test.js",
+		"/home/raynos/Documents/connect/test/basicAuth.test.js",
+		"/home/raynos/Documents/connect/test/cookieParser.test.js",
+		"/home/raynos/Documents/vows-fluent/vows-fluent.js",
+		"/home/raynos/Documents/rob/MYOB_ADMIN/ROVERS/Version17/ROVERS.MYO",
+		"/home/raynos/Documents/pd/src/pd-min.js",
+		"/home/raynos/Documents/vows-fluent/package.json",
+		"/home/raynos/Documents/contracts/README.md",
+		"/home/raynos/Documents/pd/Readme.md",
+		"/home/raynos/Documents/contracts/index.html",
+		"/home/raynos/Documents/pd/index.html",
+		"/home/raynos/Documents/contracts/package.json",
+		"/home/raynos/Documents/stackchat.github.com/index.html",
+		"/home/raynos/Documents/vows-fluent/index.html",
+		"/home/raynos/Documents/contracts/src/contract.js",
+		"/home/raynos/Documents/contracts/examples/bank/bank.js",
+		"/home/raynos/Documents/contracts/examples/bank/contracts/bank.js",
+		"/home/raynos/Documents/vows-is/README.md",
+		"/home/raynos/Documents/contracts/test/contract-test.js",
+		"/home/raynos/Documents/vows-is/src/reporter.js",
+		"/home/raynos/Documents/contracts/node_modules/vows-is/src/reporter.js",
+		"/home/raynos/Documents/contracts/node_modules/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows/reporters/spec.js",
+		"/home/raynos/Documents/vows-is/node_modules/vows/lib/vows/reporters/spec.js",
+		"/home/raynos/Documents/vows-is/examples/simple-http.js",
+		"/home/raynos/.config/sublime-text-2/Packages/Default/Global.sublime-settings",
+		"/home/raynos/.config/sublime-text-2/Packages/Default/Base File.sublime-settings",
+		"/home/raynos/Documents/vows-is/index.html",
+		"/home/raynos/Documents/vows-is/examples/batches.js",
+		"/home/raynos/Documents/vows-is/test/vows-is-test.js",
+		"/home/raynos/Documents/contracts/test/simple-http.js",
+		"/home/raynos/Documents/raynos-blog/test/app-test.js",
+		"/home/raynos/Documents/contracts/node_modules/vows-is/src/vows-is.js",
+		"/home/raynos/Documents/contracts/node_modules/vows-is/package.json",
+		"/home/raynos/Documents/vows-is/test/config.js",
+		"/home/raynos/Documents/raynos-blog/src/routes/post.js",
+		"/home/raynos/Documents/raynos-blog/src/routes/auth.js",
+		"/home/raynos/Documents/contracts/test/test.js",
+		"/home/raynos/Documents/contracts/node_modules/vows/lib/assert/error.js",
+		"/home/raynos/Documents/contracts/contract.js",
+		"/home/raynos/Documents/vows-is/console.js",
+		"/home/raynos/Documents/vows-is/vows-is.js",
+		"/home/raynos/Documents/vows-is/reporter.js",
+		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows/reporters/spec.js",
+		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows/console.js",
+		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows/reporters/json.js",
+		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows.js",
+		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows/reporters/dot-matrix.js",
+		"/home/raynos/Documents/contracts/node_modules/vows-is/node_modules/vows-fluent/node_modules/vows/bin/vows",
+		"/home/raynos/Documents/contracts/node_modules/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows.js",
+		"/home/raynos/Documents/contracts/test/contract.js",
+		"/home/raynos/Documents/ExpressArchTest/src/bootstrap.js",
+		"/home/raynos/Documents/docco2/lib/docco2.js",
+		"/home/raynos/Documents/docco2/resources/docco.jst",
+		"/home/raynos/Documents/docco2/src/docco.coffee",
+		"/home/raynos/Documents/ExpressArchTest/package.json",
+		"/home/raynos/Documents/ExpressArchTest/index.html",
+		"/home/raynos/Documents/stackchat2/README.md",
+		"/home/raynos/Documents/stackchat2/server.js",
+		"/home/raynos/Documents/raynos-blog/Procfile",
+		"/home/raynos/Documents/stackchat2/package.json",
+		"/home/raynos/Documents/ExpressArchTest/.gitignore",
+		"/home/raynos/Documents/ExpressArchTest/src/routines/settings/settings.js",
+		"/home/raynos/Documents/ExpressArchTest/src/routines/server/server.js",
+		"/home/raynos/Documents/ExpressArchTest/src/routines/server/routes/frontpage.js",
+		"/home/raynos/Documents/ExpressArchTest/src/routines/server/routes/errors/404.js",
+		"/home/raynos/Documents/ExpressArchTest/src/routines/server/routes/errors/500.js",
+		"/home/raynos/NODEKNOCKOUT/dev/src/public/views/rooms/transcript.ejs",
+		"/home/raynos/NODEKNOCKOUT/dev/src/public/views/rooms/transcript.2.ejs",
+		"/home/raynos/NODEKNOCKOUT/dev/src/route/rooms.js",
+		"/home/raynos/NODEKNOCKOUT/dev/src/route/messages.js"
 	],
 	"find":
 	{
-		"height": 33
+		"height": 33.0
 	},
 	"find_in_files":
 	{
-		"height": 87,
-		"include_history":
+		"height": 0.0,
+		"where_history":
 		[
-			""
-		],
-		"location_history":
-		[
-			"<open folders>"
 		]
 	},
 	"find_state":
@@ -213,6 +177,72 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"process.env",
+			"hex",
+			"keys",
+			"original",
+			"data",
+			"slice",
+			"layer.route",
+			"console.log",
+			"error",
+			"server",
+			"getServer",
+			"defaults",
+			"partial",
+			"error",
+			"options",
+			"assert",
+			"exports",
+			"console",
+			"options.reporter",
+			"report",
+			"reporter",
+			"_reporter",
+			"reporter",
+			"report",
+			"sys",
+			"reporter",
+			"highlight",
+			"parse",
+			"language",
+			"main",
+			"data",
+			"message.id",
+			"console.log",
+			"messageArray",
+			"createH",
+			"reRenderUserMessage",
+			"buffertools",
+			"top",
+			"console.log",
+			"console.lo",
+			"renderMessage",
+			"addUser",
+			"socket",
+			"renderMessage",
+			"console",
+			"consol",
+			"console",
+			"user.id",
+			"if",
+			"button",
+			"users",
+			"messages",
+			"users",
+			"console",
+			"local",
+			"local.host",
+			"process.env",
+			"	}",
+			"flashMes",
+			"console.log",
+			"Trait(EventEmitter)",
+			"EventEmitter2",
+			"create",
+			"any",
+			"notEquals",
+			"isDefined",
 			"uuid",
 			"url",
 			"getView",
@@ -281,7 +311,7 @@
 		],
 		"reverse": false,
 		"show_context": true,
-		"use_buffer": false,
+		"use_buffer2": true,
 		"whole_word": false,
 		"wrap": true
 	},
@@ -293,123 +323,18 @@
 			]
 		},
 		{
-			"selected": 3,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/home/raynos/Documents/raynos-blog/routes/auth.js",
-					"settings":
-					{
-						"buffer_size": 661,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								623,
-								623
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0,
-						"translation.y": 0,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/home/raynos/Documents/raynos-blog/routes/post.js",
-					"settings":
-					{
-						"buffer_size": 1350,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1309,
-								1309
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0,
-						"translation.y": 240,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/home/raynos/Documents/raynos-blog/middleware/output/auth.js",
-					"settings":
-					{
-						"buffer_size": 568,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								123,
-								123
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0,
-						"translation.y": 0,
-						"zoom_level": 1
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/home/raynos/Documents/raynos-blog/middleware/output/post.js",
-					"settings":
-					{
-						"buffer_size": 1881,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								786,
-								786
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0,
-						"translation.y": 336,
-						"zoom_level": 1
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 0
+		"height": 0.0
 	},
 	"input":
 	{
-		"height": 0
+		"height": 29.0
 	},
 	"layout":
 	{
@@ -430,25 +355,25 @@
 		],
 		"cols":
 		[
-			0,
-			0.498254799302,
-			1
+			0.0,
+			0.468921389397,
+			1.0
 		],
 		"rows":
 		[
-			0,
-			1
+			0.0,
+			1.0
 		]
 	},
 	"menu_visible": true,
 	"replace":
 	{
-		"height": 0
+		"height": 0.0
 	},
 	"save_all_on_build": true,
 	"select_file":
 	{
-		"height": 0,
+		"height": 0.0,
 		"selected_items":
 		[
 			[
@@ -456,11 +381,11 @@
 				"lib/main.js"
 			]
 		],
-		"width": 0
+		"width": 0.0
 	},
 	"select_project":
 	{
-		"height": 500,
+		"height": 500.0,
 		"selected_items":
 		[
 			[
@@ -468,11 +393,12 @@
 				"/home/raynos/Documents/DOM-js/pr.sublime-project"
 			]
 		],
-		"width": 380
+		"width": 380.0
 	},
 	"show_minimap": true,
+	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 201,
+	"side_bar_width": 279.0,
 	"status_bar_visible": true
 }
