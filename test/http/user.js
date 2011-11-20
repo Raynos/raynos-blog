@@ -3,8 +3,7 @@ var server = require("../../src/server.js"),
 	pd = require("pd").extendNatives(true),
 	User = require("../../src/domain/user.js"),
 	UserModel = require("../../src/data/user.js"),
-	request = require("request"),
-	pd = require("pd");
+	request = require("request");
 
 var options = {
 	uri: "http://localhost:8080",

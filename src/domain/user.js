@@ -1,10 +1,9 @@
 var UserModel = require("../data/user.js"),
 	Validator = require("../util.js").Validator,
+	Domain = require("./domain.js"),
 	uuid = require("node-uuid"),
 	crypto = require("crypto"),
 	pd = require("pd");
-
-var prefix = "org.couchdb.user:"
 
 function createHash(salt, password) {
     var sha = crypto.createHash("sha1");
@@ -13,15 +12,7 @@ function createHash(salt, password) {
     return sha.digest("hex");
 }
 
-var User = {
-	get: function _get(id, cb) {
-		UserModel.get(prefix + id, function (err, user) {
-			if (err && err.error === "not_found") {
-				return cb(err, null);
-			}
-			cb(err, User.make(user));
-		});
-	},
+var User = pd.make(Domain, {
 	make: function _make(obj) {
 		var user = Object.create(User);
 		pd.extend(user, obj);
@@ -53,7 +44,7 @@ var User = {
 		var hash = createHash(salt, user.password);
 
 		var obj = {
-			_id: prefix + user.username,
+			_id: this.prefix + user.username,
 			type: "user",
 			name: user.username,
 			email: user.email,
@@ -70,7 +61,9 @@ var User = {
 				cb(null, User.make(user));
 			});
 		});
-	}
-};
+	},
+	Model: UserModel,
+	prefix: "org.couchdb.user:"
+});
 
 module.exports = User;

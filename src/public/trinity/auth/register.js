@@ -1,4 +1,3 @@
-console.log("data", data);
 var inputs = load("auth/inputs", data);
 var form = frag.firstChild;
 

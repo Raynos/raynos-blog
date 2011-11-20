@@ -47,7 +47,6 @@ var createStack = Stak.beget(
 		create(function (err, body) {
 			test.ok(body.id);
 			test.ok(body.ok);
-			that.id = body.id;
 			that.next();
 		});
 	},
@@ -103,12 +102,12 @@ var deleteStack = Stak.beget(
 	empty_create,
 	function _delete(test) {
 		$delete(obj._id, function (err, body) {
-			console.log(body);
+			test.ok(body.ok);
+			test.ok(body.id === obj._id);
+			test.done();
 		});
 	}
 );
-
-var run = false;
 
 UserModel.start();
 
@@ -130,7 +129,8 @@ module.exports = {
 			createStack.handler()(test);
 		},
 		'test delete': function (test) {
-			test.done();
+			test.expect(2);
+			deleteStack.handler()(test);
 		},
 		"test create twice": function (test) {
 			test.expect(2);

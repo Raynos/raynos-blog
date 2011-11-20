@@ -1,4 +1,14 @@
+var Post = require("../domain/post.js"),
+	PostModel = require("../data/post.js"),
+	View = require("../view/post.js");
+
 module.exports = function _route(app) {
+
+	app.get("/blog", function _index(req, res) {
+		Post.all(function _all(err, posts) {
+			res.render("post/index", View.index(posts));
+		});
+	});
 /*
 	var authorized = [
 		middle.auth.requireLogin,
