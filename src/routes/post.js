@@ -1,5 +1,5 @@
 module.exports = function _route(app) {
-
+/*
 	var authorized = [
 		middle.auth.requireLogin,
 		middle.auth.beRaynos
@@ -53,5 +53,6 @@ module.exports = function _route(app) {
 		middle.data.deletePost,
 		middle.output.redirectToBlog
 	]);
+*/
 };
 

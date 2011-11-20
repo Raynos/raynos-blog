@@ -9,7 +9,7 @@ init(app);
 
 module.exports = function _createServer(cb) {
 	if (app.address()) {
-		return app;
+		return cb(app);
 	}
 	app.on("started", cb);
 };

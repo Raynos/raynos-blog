@@ -8,7 +8,7 @@ error.thrower = function (err) {
 	console.log("throw", err);
 };
 
-UserModel.emit("start");
+UserModel.start();
 
 var obj = {
 	_id: "org.couchdb.user:temp_test",
@@ -89,7 +89,7 @@ var testPasswordStack = Stak.beget(
 
 var correct_user = {
 	password: "correct",
-	password_check: "correct",
+	password_confirm: "correct",
 	email: "foo@bar.baz",
 	username: "correctTwo"
 };
@@ -157,7 +157,7 @@ module.exports = {
 				password: "foo",
 				username: "b#",
 				email: "not_valid",
-				password_check: "different",
+				password_confirm: "different",
 			});
 			test.ok(errors.length === 5);
 			test.ok(errors.indexOf("The minimum password length is 5") !== -1);

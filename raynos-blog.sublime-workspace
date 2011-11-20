@@ -7,6 +7,38 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/home/raynos/Documents/trinity/src/trinity.js",
+			"settings":
+			{
+				"buffer_size": 7107,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/raynos/Documents/trinity/README.md",
+			"settings":
+			{
+				"buffer_size": 4126,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/home/raynos/Documents/trinity/examples/simple/trinity/child.html",
+			"settings":
+			{
+				"buffer_size": 7,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "	// base.html\n	<div>\n	  <p> Some content </p>\n	  <p class=\"container\"></p>\n	</div>\n\n	// base.css\n	p {\n		color: blue\n	}\n\n	p.container {\n		color: red\n	}\n\n	// base.js\n	var p = frag.getElementsByClassName(\"container\")[0];\n	p.nodeValue = data.text;\n	load(\"child\", data, function (error, fragment) {\n		var div = frag.firstChild;\n		div.appendChild(fragment);\n	});\n\n	// child.html\n	<p></p>\n\n	// child.js\n	frag.firstChild.textContent = \"Another p that was loaded!\";\n\n	// main.js\n	var trinity = require(\"trinity\");\n	trinity.config(\"path\", __dirname + \"/public/trinity/\");\n\n	app.get(\"/\", function (req, res) {\n		res.render(\"base\", { text: \"win\" });\n	});\n",
+			"settings":
+			{
+				"buffer_size": 643,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "Packages/User/jshint.sublime-build",
 	"command_palette":
@@ -32,14 +64,58 @@
 	},
 	"file_history":
 	[
+		"/home/raynos/Documents/trinity/examples/simple/trinity/server.js",
+		"/home/raynos/Documents/trinity/examples/simple/trinity/child.js",
+		"/home/raynos/Documents/trinity/examples/simple/trinity/base.html",
+		"/home/raynos/Documents/trinity/examples/simple/trinity/basic.css",
+		"/home/raynos/Documents/trinity/examples/simple/trinity/basic.js",
+		"/home/raynos/Documents/trinity/tests/test-trinity.js",
+		"/home/raynos/Documents/stak/src/stack.js",
+		"/home/raynos/Documents/trinity/package.json",
+		"/home/raynos/Documents/trinity/README.md",
+		"/home/raynos/Documents/trinity/tests/trinity/nested.js",
+		"/home/raynos/Documents/trinity/tests/trinity/test.js",
+		"/home/raynos/Documents/trinity/tests/trinity/nested.html",
+		"/home/raynos/Documents/trinity/node_modules/jsdom/lib/jsdom/level1/core.js",
+		"/home/raynos/Documents/trinity/tests/trinity/other.html",
+		"/home/raynos/Documents/trinity/tests/trinity/simple.html",
+		"/home/raynos/Documents/ES5-shim/es5-shim.js",
+		"/home/raynos/Documents/fcombine/src/f.js",
+		"/home/raynos/Documents/trinity/tests/trinity/test.css",
+		"/home/raynos/Documents/trinity/tests/trinity/static.js",
+		"/home/raynos/Documents/trinity/tests/trinity.js/test.html",
+		"/home/raynos/Documents/trinity/LICENCE",
+		"/home/raynos/Documents/trinity/tests/trinity.js/static.html",
+		"/home/raynos/Documents/raynos-blog/test/data/user.js",
+		"/home/raynos/Documents/raynos-blog/raynos-blog.sublime-workspace",
+		"/home/raynos/Documents/raynos-blog/src/routes/auth.js",
+		"/home/raynos/Documents/raynos-blog/test/domain/user.js",
+		"/home/raynos/Documents/raynos-blog/src/domain/user.js",
+		"/home/raynos/Documents/raynos-blog/src/data/user.js",
+		"/home/raynos/Documents/raynos-blog/src/init/everyauth.js",
+		"/home/raynos/Documents/raynos-blog/src/util.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/input/auth.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/data/auth.js",
+		"/home/raynos/Documents/raynos-blog/package.json",
+		"/home/raynos/Documents/error/test/error-test.js",
+		"/home/raynos/Documents/error/src/error.js",
+		"/home/raynos/Documents/error/package.json",
+		"/home/raynos/Documents/error/README.md",
+		"/home/raynos/Documents/raynos-blog/src/middleware/input/base.js",
+		"/home/raynos/Documents/raynos-blog/src/init/app-init.js",
+		"/home/raynos/Documents/raynos-blog/src/middleware/data/base.js",
+		"/home/raynos/Documents/raynos-blog/src/data/model.js",
+		"/home/raynos/Documents/raynos-blog/test/data/model.js",
+		"/home/raynos/Documents/raynos-blog/node_modules/nano/package.json",
+		"/home/raynos/Documents/stak/test/stack-test.js",
+		"/home/raynos/Documents/stak/package.json",
+		"/home/raynos/Documents/fcombine/package.json",
 		"/home/raynos/Documents/raynos-blog/src/init/app-configure.js",
+		"/home/raynos/Documents/raynos-blog/src/routes/post.js",
 		"/home/raynos/Documents/raynos-blog/src/server.js",
 		"/home/raynos/Documents/raynos-blog/node_modules/dust/lib/server.js",
 		"/home/raynos/Documents/raynos-blog/src/middleware/output/auth.js",
-		"/home/raynos/Documents/raynos-blog/src/middleware/input/base.js",
 		"/home/raynos/Documents/raynos-blog/lib/dust.js",
-		"/home/raynos/Documents/raynos-blog/package.json",
-		"/home/raynos/Documents/raynos-blog/src/init/app-init.js",
 		"/home/raynos/Documents/raynos-blog/src/middleware/output/base.js",
 		"/home/raynos/Documents/raynos-blog/src/middleware/output/post.js",
 		"/home/raynos/Documents/raynos-blog/src/middleware/input/post.js",
@@ -47,9 +123,6 @@
 		"/home/raynos/Documents/pd/src/pd.js",
 		"/home/raynos/Documents/pd/package.json",
 		"/home/raynos/Documents/pd/README.md",
-		"/home/raynos/Documents/raynos-blog/src/middleware/data/base.js",
-		"/home/raynos/Documents/raynos-blog/src/middleware/data/auth.js",
-		"/home/raynos/Documents/raynos-blog/src/middleware/input/auth.js",
 		"/home/raynos/Documents/raynos-blog/src/middleware/data/post.js",
 		"/home/raynos/Documents/raynos-blog/src/middleware/auth/auth.js",
 		"/home/raynos/Documents/raynos-blog/src/middleware/auth/post.js",
@@ -60,7 +133,6 @@
 		"/home/raynos/Documents/ES5-shim/tests/spec/s-object.js",
 		"/home/raynos/Documents/ES5-shim/README.md",
 		"/home/raynos/Documents/ES5-shim/test/date.js",
-		"/home/raynos/Documents/ES5-shim/es5-shim.js",
 		"/home/raynos/Documents/ES5-shim/tests/helpers/h-kill.js",
 		"/home/raynos/Documents/ES5-shim/tests/index.html",
 		"/home/raynos/Documents/ES5-shim/tests/spec/s-string.js",
@@ -119,47 +191,7 @@
 		"/home/raynos/Documents/vows-is/index.html",
 		"/home/raynos/Documents/vows-is/examples/batches.js",
 		"/home/raynos/Documents/vows-is/test/vows-is-test.js",
-		"/home/raynos/Documents/contracts/test/simple-http.js",
-		"/home/raynos/Documents/raynos-blog/test/app-test.js",
-		"/home/raynos/Documents/contracts/node_modules/vows-is/src/vows-is.js",
-		"/home/raynos/Documents/contracts/node_modules/vows-is/package.json",
-		"/home/raynos/Documents/vows-is/test/config.js",
-		"/home/raynos/Documents/raynos-blog/src/routes/post.js",
-		"/home/raynos/Documents/raynos-blog/src/routes/auth.js",
-		"/home/raynos/Documents/contracts/test/test.js",
-		"/home/raynos/Documents/contracts/node_modules/vows/lib/assert/error.js",
-		"/home/raynos/Documents/contracts/contract.js",
-		"/home/raynos/Documents/vows-is/console.js",
-		"/home/raynos/Documents/vows-is/vows-is.js",
-		"/home/raynos/Documents/vows-is/reporter.js",
-		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows/reporters/spec.js",
-		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows/console.js",
-		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows/reporters/json.js",
-		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows.js",
-		"/home/raynos/Documents/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows/reporters/dot-matrix.js",
-		"/home/raynos/Documents/contracts/node_modules/vows-is/node_modules/vows-fluent/node_modules/vows/bin/vows",
-		"/home/raynos/Documents/contracts/node_modules/vows-is/node_modules/vows-fluent/node_modules/vows/lib/vows.js",
-		"/home/raynos/Documents/contracts/test/contract.js",
-		"/home/raynos/Documents/ExpressArchTest/src/bootstrap.js",
-		"/home/raynos/Documents/docco2/lib/docco2.js",
-		"/home/raynos/Documents/docco2/resources/docco.jst",
-		"/home/raynos/Documents/docco2/src/docco.coffee",
-		"/home/raynos/Documents/ExpressArchTest/package.json",
-		"/home/raynos/Documents/ExpressArchTest/index.html",
-		"/home/raynos/Documents/stackchat2/README.md",
-		"/home/raynos/Documents/stackchat2/server.js",
-		"/home/raynos/Documents/raynos-blog/Procfile",
-		"/home/raynos/Documents/stackchat2/package.json",
-		"/home/raynos/Documents/ExpressArchTest/.gitignore",
-		"/home/raynos/Documents/ExpressArchTest/src/routines/settings/settings.js",
-		"/home/raynos/Documents/ExpressArchTest/src/routines/server/server.js",
-		"/home/raynos/Documents/ExpressArchTest/src/routines/server/routes/frontpage.js",
-		"/home/raynos/Documents/ExpressArchTest/src/routines/server/routes/errors/404.js",
-		"/home/raynos/Documents/ExpressArchTest/src/routines/server/routes/errors/500.js",
-		"/home/raynos/NODEKNOCKOUT/dev/src/public/views/rooms/transcript.ejs",
-		"/home/raynos/NODEKNOCKOUT/dev/src/public/views/rooms/transcript.2.ejs",
-		"/home/raynos/NODEKNOCKOUT/dev/src/route/rooms.js",
-		"/home/raynos/NODEKNOCKOUT/dev/src/route/messages.js"
+		"/home/raynos/Documents/contracts/test/simple-http.js"
 	],
 	"find":
 	{
@@ -177,6 +209,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"throw",
+			"thrpw",
+			"load",
+			"toString",
+			"_toString",
+			"salf",
+			"console.log",
+			"uuid",
+			"make",
+			"error",
+			"erroor",
+			"pd",
 			"process.env",
 			"hex",
 			"keys",
@@ -292,15 +336,7 @@
 			"http",
 			"express",
 			"delete",
-			"onDocLoad",
-			"rev",
-			"remove",
-			"destroy",
-			"delete",
-			"view",
-			"import-test-a",
-			"encodeURIComponent",
-			"console.log"
+			"onDocLoad"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -318,13 +354,121 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/home/raynos/Documents/trinity/src/trinity.js",
+					"settings":
+					{
+						"buffer_size": 7107,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6613,
+								6613
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4047.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/raynos/Documents/trinity/README.md",
+					"settings":
+					{
+						"buffer_size": 4126,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								606,
+								606
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/raynos/Documents/trinity/examples/simple/trinity/child.html",
+					"settings":
+					{
+						"buffer_size": 7,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7,
+								7
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		},
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 3,
+					"settings":
+					{
+						"buffer_size": 643,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								456,
+								397
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -356,7 +500,7 @@
 		"cols":
 		[
 			0.0,
-			0.468921389397,
+			0.5,
 			1.0
 		],
 		"rows":

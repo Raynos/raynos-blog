@@ -43,7 +43,7 @@ var User = {
 			"The username needs to be alphanumeric").isAlphanumeric();
 		v.check(user.email, "The email is invalid").isEmail();
 		v.check(user.password, 
-			"passwords are not the same").equals(user.password_check);
+			"passwords are not the same").equals(user.password_confirm);
 		if (v.errors && v.errors.length) {
 			return v.errors;
 		}

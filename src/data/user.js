@@ -38,13 +38,13 @@ var UserModel = pd.make(Model,{
                 makeWhitelistCallback("delete", name, cb)
             );
         });
+    },
+    start: function _start() {
+        this.nano = this.nano.use("_users");
+        this.emit("loaded");
     }
 });
 
-UserModel.on("start", function () {
-    UserModel.constructor();
-    UserModel.nano = UserModel.nano.use("_users");
-    UserModel.emit("loaded");
-});
+UserModel.constructor();
 
 module.exports = UserModel;

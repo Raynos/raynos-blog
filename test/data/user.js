@@ -110,7 +110,7 @@ var deleteStack = Stak.beget(
 
 var run = false;
 
-UserModel.emit("start");
+UserModel.start();
 
 module.exports = {
 	'user': {
