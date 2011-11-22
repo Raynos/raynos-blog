@@ -39,7 +39,7 @@ var Post = pd.make(Domain, {
 		}
 
 		function handleGet(err, post) {
-			cb(null, Post.make(post));
+			cb(null, that.make(post));
 		}
 
 		PostModel.all(handleAll);
