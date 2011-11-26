@@ -7,7 +7,7 @@
         "express": "2.5.0",
         "validator": "0.3.5",
         "node-uuid": "1.2.0",
-        "trinity": "0.1.6",
+        "trinity": "0.1.7",
         "everyauth": "0.2.23",
         "error": "0.0.5",
         "marked": "0.1.2",
@@ -21,7 +21,7 @@
     "private": true,
     "devDependencies": {
     	"forever": "0.7.2",
-        "request": "2.2.0",
+        "request": "2.2.5",
         "nodeunit": "0.6.2"
     },
     "engines": { "node": "0.6.x" }

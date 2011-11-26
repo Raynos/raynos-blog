@@ -7,7 +7,8 @@ var server = require("../../src/server.js"),
 
 var options = {
 	uri: "http://localhost:8080",
-	method: "GET"
+	method: "GET",
+	jar: false
 };
 
 var user = {

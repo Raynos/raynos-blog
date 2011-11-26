@@ -5,7 +5,8 @@ section.id = "blog";
 var form = frag.firstChild;
 
 data.forEach(function (post) {
-	var article = load("post/item", post).firstChild;
+	var itemFrag = load("post/item", post);
+	var article = itemFrag.firstChild;
 	var footer = load("post/item-footer", post);
 	article.appendChild(footer);
 	frag.insertBefore(article, form);
