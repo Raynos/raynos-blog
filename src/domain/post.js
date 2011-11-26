@@ -7,6 +7,7 @@ var Post = pd.make(Domain, {
 	make: function _make(obj) {
 		var post = Object.create(Post);
 		pd.extend(post, obj);
+		post.id = post._id.split(":")[1];
 		return post;
 	},
 	create: function _create(post, cb) {
@@ -43,6 +44,26 @@ var Post = pd.make(Domain, {
 		}
 
 		PostModel.all(handleAll);
+	},
+	update: function _update(id, post, cb) {
+		var that = this;
+		post._id = this.prefix + id;
+
+		function _handleGetForRev(err, data) {
+			post._rev = data._rev;
+			PostModel.insert(post, _handleInsert);	
+		}
+
+		function _handleInsert(err, post) {
+			PostModel.get(post.id, _handleGetForCb);
+		}
+
+		function _handleGetForCb(err, post) {
+			cb(null, that.make(post));
+		}
+
+		this.get(id, _handleGetForRev);
+		
 	},
 	validate: function _validate(post) {
 		var v = Object.create(Validator);

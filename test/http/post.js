@@ -28,6 +28,7 @@ function correct_post_delete(test) {
 function correct_post_create() {	
 	var that = this;
 	Post.create(correct_post, function (err, body) {
+		that.id = body.id;
 		that.next();
 	});
 }
@@ -37,6 +38,24 @@ var postBlogStack = Stak.beget(
 		var that = this;
 		request.post(pd.make(options, {
 			uri: options.uri + "/blog",
+			json: correct_post
+		}), function _callback(err, res, body) {
+			test.ok(res.statusCode === 302);
+			that.id = res.headers.location.split("/")[4];
+			var title = res.headers.location.split("/")[5];
+			test.ok(title === encodeURIComponent(correct_post.title.replace(/\s/g, "-")));
+			that.next();
+		});
+	},
+	correct_post_delete
+);
+
+var putBlogPostStack = Stak.beget(
+	correct_post_create,
+	function (test) {
+		var that = this;
+		request.put(pd.make(options, {
+			uri: options.uri + "/blog/" + that.id,
 			json: correct_post
 		}), function _callback(err, res, body) {
 			test.ok(res.statusCode === 302);

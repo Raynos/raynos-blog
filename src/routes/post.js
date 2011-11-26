@@ -21,13 +21,22 @@ module.exports = function _route(app) {
 		}	
 	];
 
-	app.param("postId", function _prefetch(req, res, next) {
+	function fetchPost(req, res, next) {
 		var id = parseInt(req.params.postId, 10);
 		Post.get(id, function _get(err, post) {
 			req.post = post;
 			next();
 		});
-	});
+	}
+
+	function validatePost(req, res, next) {
+		var errors = Post.validate(req.body);
+		if (errors) {
+			req.body.errors = errors;
+			return res.render("post/edit", View.view(req.body));
+		}
+		next();
+	}
 
 	app.get("/blog", function _index(req, res) {
 		Post.all(function _all(err, posts) {
@@ -39,33 +48,36 @@ module.exports = function _route(app) {
 		res.render("post/new");
 	});
 
-	app.get("/blog/:postId/edit", function _edit(req, res) {
+	app.get("/blog/:postId/edit", fetchPost, function _edit(req, res) {
 		res.render("post/edit", View.view(req.post));
 	});
 
-	app.get("/blog/:postId/:title?", function _view(req, res) {
+	app.get("/blog/:postId/:title?", fetchPost, function _view(req, res) {
 		res.render("post/view", View.view(req.post));
 	});
 
-	app.post("/blog", authorized, function _create(req, res) {
-		var errors = Post.validate(req.body);
-		if (errors) {
-			req.body.errors = errors;
-			return res.render("post/edit", View.view(req.body));
+	app.post("/blog", [
+		authorized, 
+		validatePost, 
+		function _create(req, res) {
+			Post.create(req.body, function (err, post) {
+				res.redirect("/blog/" + View.makeUrl(post));
+			});
 		}
-		Post.create(req.body, function (err, post) {
-			res.redirect("/blog/" + View.makeUrl(post));
-		});
-	});
+	]);
 	
-/*
 	app.put("/blog/:postId", [
-		authorized,
-		middle.input.validatePost,
-		middle.data.savePost,
-		middle.output.redirectToPost
+		authorized, 
+		validatePost, 
+		function _update(req, res) {
+			var id = parseInt(req.params.postId, 10);
+			Post.update(id, req.body, function (err, post) {
+				res.redirect("/blog/" + View.makeUrl(post));
+			});
+		}
 	]);
 
+/*
 	app.del("/blog/:postId", [
 		authorized,
 		middle.data.deletePost,
