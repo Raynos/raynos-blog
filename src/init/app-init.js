@@ -53,9 +53,10 @@ function loadModules() {
 }
 
 function startServer(app) {
-	app.listen(parseInt(process.env.PORT, 10) || 8080);
+	var l = app.listen(parseInt(process.env.PORT, 10) || 8080);
 	app.emit("started", app);
-	console.log("Express server listening on port %d", app.address().port);
+
+	console.log("Express server listening on port %d", app.address().port);	
 }
 
 module.exports = function _init(app) {
