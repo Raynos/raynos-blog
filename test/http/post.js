@@ -9,7 +9,7 @@ var jar = request.jar()
 request = request.defaults({jar:jar})
 
 var options = {
-	uri: "http://localhost:8080",
+	uri: "http://localhost:" + process.env.PORT,
 	method: "GET"
 };
 
@@ -66,6 +66,21 @@ var putBlogPostStack = Stak.beget(
 		});
 	},
 	correct_post_delete
+);
+
+var deleteBlogPostStack = Stak.beget(
+	correct_post_create,
+	function (test) {
+		request(pd.make(options, {
+			method: "DELETE",
+			followRedirect: false,
+			uri: options.uri + "/blog/" + this.id
+		}), function _callback(err, res, body) {
+			test.ok(res.statusCode === 302);
+			test.ok(res.headers.location = "/blog");
+			test.done();
+		})
+	}
 );
 
 var user = {
@@ -125,8 +140,10 @@ module.exports = {
 			request(pd.make(options, {
 				"uri": options.uri + "/blog/new"
 			}), function _callback(err, res, body) {
-				test.ok(body.indexOf("<form") > -1);
-				test.ok(body.indexOf("New Post") > -1);
+				test.ok(body.indexOf("<form") > -1, 
+					"new page does not contain a form");
+				test.ok(body.indexOf("New Post") > -1, 
+					"new page does not contain the words New post");
 				test.done();
 			});
 		});
@@ -150,5 +167,9 @@ module.exports = {
 	"test PUT /blog/:id": function (test) {
 		test.expect(2);
 		putBlogPostStack.handler()(test);
+	},
+	"test DELETE /blog/:id": function (test) {
+		test.expect(2);
+		deleteBlogPostStack.handler()(test);
 	}
 };

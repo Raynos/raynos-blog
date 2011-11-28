@@ -6,7 +6,7 @@ var server = require("../../src/server.js"),
 	request = require("request");
 
 var options = {
-	uri: "http://localhost:8080",
+	uri: "http://localhost:" + process.env.PORT,
 	method: "GET",
 	jar: false
 };
@@ -75,6 +75,7 @@ module.exports = {
 		request(pd.make(options, {
 			"uri": options.uri + "/login"
 		}), function _callback(err, res, body) {
+			console.log(err);
 			test.ok(res.statusCode === 200, "statusCode is incorrect");
 			test.ok(body.indexOf("Log in") > -1);
 			test.ok(body.indexOf("<form") > -1);

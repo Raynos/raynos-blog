@@ -4,13 +4,16 @@ var document = frag.ownerDocument,
 section.id = "blog";
 
 var editForm = frag.firstChild;
-
-editForm.action="/blog/" + data.id + "/edit";
-
 var deleteForm = frag.childNodes[2];
 
-deleteForm.action="/blog/" + data.id;
+if (data.user) {
+	editForm.action="/blog/" + data.id + "/edit";
+	deleteForm.action="/blog/" + data.id;	
+} else {
+	frag.removeChild(editForm);
+	frag.removeChild(deleteForm);
+}
 
 var articleFrag = load("post/item", data);
 var article = articleFrag.firstChild;
-frag.insertBefore(article, editForm);
+frag.appendChild(article);

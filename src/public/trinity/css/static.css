@@ -46,11 +46,6 @@ header nav li {
   list-style: none;
   display: inline;
 }
-header nav li:last-of-type {
-  position: absolute;
-  top: 0.5em;
-  right: 1.4em;
-}
 header nav ul {
   text-align: center;
   margin: 0;

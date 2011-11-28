@@ -28,7 +28,9 @@ module.exports = {
 			post.content = twoParagraphs(post.content);
 			this.makePost(post);
 			return post;
-		}, this).reverse();
+		}, this).sort(function (a, b) {
+			return +a.id < +b.id ? 1 : -1;
+		});
 	},
 	view: function _view(post) {
 		post.content = marked(post.content);

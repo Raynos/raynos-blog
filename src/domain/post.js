@@ -45,6 +45,9 @@ var Post = pd.make(Domain, {
 
 		PostModel.all(handleAll);
 	},
+	delete: function _delete(id, cb) {
+		PostModel.delete(this.prefix + id, cb);	
+	},
 	update: function _update(id, post, cb) {
 		var that = this;
 		post._id = this.prefix + id;

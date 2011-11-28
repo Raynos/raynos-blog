@@ -40,7 +40,9 @@ module.exports = function _route(app) {
 
 	app.get("/blog", function _index(req, res) {
 		Post.all(function _all(err, posts) {
-			res.render("post/index", View.index(posts));
+			var data = View.index(posts);
+			data.user = req.user;
+			res.render("post/index", data);
 		});
 	});
 
@@ -53,7 +55,9 @@ module.exports = function _route(app) {
 	});
 
 	app.get("/blog/:postId/:title?", fetchPost, function _view(req, res) {
-		res.render("post/view", View.view(req.post));
+		var data = View.view(req.post);
+		data.user = req.user;
+		res.render("post/view", data);
 	});
 
 	app.post("/blog", [
@@ -76,6 +80,16 @@ module.exports = function _route(app) {
 			});
 		}
 	]);
+
+	app.del("/blog/:postId", [
+		authorized,
+		function _delete(req, res) {
+			var id = parseInt(req.params.postId, 10);
+			Post.delete(id, function (err, post) {
+				res.redirect("/");
+			});
+		}
+	])
 
 /*
 	app.del("/blog/:postId", [

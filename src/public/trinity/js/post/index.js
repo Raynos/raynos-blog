@@ -4,11 +4,17 @@ var document = frag.ownerDocument,
 section.id = "blog";
 var form = frag.firstChild;
 
-data.forEach(function (post) {
+if (!data.user) {
+	frag.removeChild(form);
+}
+
+data.forEach(function (post, index) {
 	var itemFrag = load("post/item", post);
 	var article = itemFrag.firstChild;
 	var footer = load("post/item-footer", post);
 	article.appendChild(footer);
-	frag.insertBefore(article, form);
-	frag.insertBefore(document.createElement("hr"), form);
+	frag.appendChild(article);
+	if (index !== data.length - 1) {
+		frag.appendChild(document.createElement("hr"));	
+	}
 });
