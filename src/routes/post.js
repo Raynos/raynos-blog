@@ -1,102 +1,17 @@
-var Post = require("../domain/post.js"),
-	PostModel = require("../data/post.js"),
-	View = require("../view/post.js");
+module.exports = route;
 
-module.exports = function _route(app) {
+function route(app, controller) {
+	app.get("/blog", controller.index);
 
-	var authorized = [
-		function _requireLogin(req, res, next) {
-			if (req.user) {
-				next();
-			} else {
-				res.redirect('/login/');
-			}
-		},
-		function _beRaynos(req, res, next) {
-			if (req.user.name === "Raynos") {
-				next();
-			} else {
-				next(new Error("Your not Raynos"));
-			}
-		}	
-	];
+	app.get("/blog/new", controller.renderCreate);
 
-	function fetchPost(req, res, next) {
-		var id = parseInt(req.params.postId, 10);
-		Post.get(id, function _get(err, post) {
-			req.post = post;
-			next();
-		});
-	}
+	app.get("/blog/:postId/edit", controller.renderEdit);
 
-	function validatePost(req, res, next) {
-		var errors = Post.validate(req.body);
-		if (errors) {
-			req.body.errors = errors;
-			return res.render("post/edit", View.view(req.body));
-		}
-		next();
-	}
+	app.get("/blog/:postId/:title?", controller.view);
 
-	app.get("/blog", function _index(req, res) {
-		Post.all(function _all(err, posts) {
-			var data = View.index(posts);
-			data.user = req.user;
-			res.render("post/index", data);
-		});
-	});
-
-	app.get("/blog/new", authorized, function _new(req, res) {
-		res.render("post/new");
-	});
-
-	app.get("/blog/:postId/edit", fetchPost, function _edit(req, res) {
-		res.render("post/edit", View.view(req.post));
-	});
-
-	app.get("/blog/:postId/:title?", fetchPost, function _view(req, res) {
-		var data = View.view(req.post);
-		data.user = req.user;
-		res.render("post/view", data);
-	});
-
-	app.post("/blog", [
-		authorized, 
-		validatePost, 
-		function _create(req, res) {
-			Post.create(req.body, function (err, post) {
-				res.redirect("/blog/" + View.makeUrl(post));
-			});
-		}
-	]);
+	app.post("/blog", controller.createPost);
 	
-	app.put("/blog/:postId", [
-		authorized, 
-		validatePost, 
-		function _update(req, res) {
-			var id = parseInt(req.params.postId, 10);
-			Post.update(id, req.body, function (err, post) {
-				res.redirect("/blog/" + View.makeUrl(post));
-			});
-		}
-	]);
+	app.put("/blog/:postId", controller.updatePost);
 
-	app.del("/blog/:postId", [
-		authorized,
-		function _delete(req, res) {
-			var id = parseInt(req.params.postId, 10);
-			Post.delete(id, function (err, post) {
-				res.redirect("/");
-			});
-		}
-	])
-
-/*
-	app.del("/blog/:postId", [
-		authorized,
-		middle.data.deletePost,
-		middle.output.redirectToBlog
-	]);
-*/
-};
-
+	app.del("/blog/:postId", controller.deletePost);
+}

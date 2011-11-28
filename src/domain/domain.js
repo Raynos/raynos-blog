@@ -15,20 +15,12 @@ var Domain = {
 		this.Model.all(function (err, data) {
 			if (err) return cb(err);
 			var rows = data.rows;
-				
-			var next = after(rows.length, function _next() {
-				var items = [].slice.call(arguments).sort(function (a, b) {
-					return +a.id > +b.id;
-				});
-				
-				cb(null, items);
-			});
 
-			rows.forEach(function (row) {
-				that.Model.get(row.id, function (err, item) {
-					next(item);
-				});	
-			});
+			cb(null, rows.map(function (item) {
+				return item.doc;
+			}).sort(function (a, b) {
+				return +a.id < +b.id ? 1 : -1;
+			}));
 		});
 	}
 }

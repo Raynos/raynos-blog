@@ -1,8 +1,8 @@
-module.exports = function(app) {
-	app.get('/', function(req, res) {
-		res.redirect("/blog/");
-	});	
-};
+module.exports = route;
+
+function route(app, controller) {
+	app.get('/', controller.home);
+}
 
 
 

@@ -10,7 +10,9 @@ var Model = pd.make(EventEmitter, {
         );
     },
     all: function _all(cb) {
-    	this.nano.list(this.makeWhitelistCallback("all", null, cb));
+    	this.nano.list({
+            "include_docs": true
+        },this.makeWhitelistCallback("all", null, cb));
     },
     insert: function _create(json, cb) {
         this.nano.insert(json, json._id, 

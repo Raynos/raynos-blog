@@ -4,20 +4,33 @@ var express = require("express"),
 	uuid = require("node-uuid"),
 	gzip = require('connect-gzip');
 
-var configure = function(app) {
+function configure(app) {
 
-	app.configure(function() {
-		trinity.set("path", __dirname + "/../public/trinity/");
+	app.configure(configure);
+
+	app.configure('development', development);
+
+	app.configure('production', production);
+
+	function production(){
+		app.use(express.errorHandler());
+
+		process.on("uncaughtException", uncaughtException);
+
+		function uncaughtException(err) {
+			console.log("error happened : ", err);
+		}
+	}
+
+	function development(){
+		app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+	}
+
+	function configure() {
+		trinity.set("path", __dirname + "/../trinity/");
 		trinity.punchExpress();
 
-		trinity.send = function _send(res, error, frag) {
-			if (error) throw error;
-			
-			var doc = frag.ownerDocument;
-			var section = doc.body.getElementsByTagName("section")[0];
-			section.appendChild(frag);
-			res.send(doc.innerHTML);
-		};
+		trinity.send = send;
 
 		app.use(express.bodyParser());
 		// Fixes PUT & DELETE on ajax
@@ -26,21 +39,18 @@ var configure = function(app) {
 		app.use(express.session({ secret: uuid() }));
 		app.use(everyauth.middleware());
 		app.use(app.router);
-		app.use(express.static(__dirname + '/../public'));
+		app.use(express.static(__dirname + '/../trinity'));
 		app.use(gzip.gzip());
-	});
 
-	app.configure('development', function(){
-		app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-	});
-
-	app.configure('production', function(){
-		app.use(express.errorHandler());
-
-		process.on("uncaughtException", function (err) {
-			console.log("error happened : ", err);
-		})
-	});
+		function send(res, error, frag) {
+			if (error) throw error;
+			
+			var doc = frag.ownerDocument;
+			var section = doc.body.getElementsByTagName("section")[0];
+			section.appendChild(frag);
+			res.send(doc.innerHTML);
+		}
+	}
 };
 
 module.exports = configure;
