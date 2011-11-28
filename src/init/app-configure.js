@@ -36,6 +36,10 @@ var configure = function(app) {
 
 	app.configure('production', function(){
 		app.use(express.errorHandler());
+
+		process.on("uncaughtException", function (err) {
+			console.log("error happened : ", err);
+		})
 	});
 };
 
