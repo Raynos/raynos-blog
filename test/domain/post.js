@@ -14,7 +14,7 @@ var obj = {
 	_id: "post:42",
 	content: "foobar",
 	datetime: Date.now(),
-	id: 42,
+	id: "42",
 	title: "foo",
 	type: "post"
 };
@@ -60,8 +60,9 @@ var getStack = Stak.beget(
 			test.ok(post);
 			test.ok(obj.content === post.content);
 			test.ok(obj.title === post.title);
-			test.ok(obj.id === post.id);
-			test.ok(obj.datetime === post.datetime);
+			console.log(obj.id, post.id);
+			test.ok(obj.id === post.id, "ids not the same");
+			test.ok(obj.datetime === post.datetime, "datetime failed");
 			that.next();
 		});
 	},
