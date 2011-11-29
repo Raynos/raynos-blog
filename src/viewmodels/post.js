@@ -21,6 +21,7 @@ module.exports = {
 	makePost: function _makePost(post) {
 		post.readable_time = new Date(post.datetime).toDateString();
 		post.url = this.makeUrl(post);
+		return post;
 	}
 };
 
