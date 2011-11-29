@@ -39,13 +39,15 @@ var Domain = {
 
 			var rows = data.rows;
 			
-			var id = rows.reduce(function (memo, item) {
-				var id = +(item.id.split(":")[1]);
-				return id > memo ? id : memo;
-			}, 0);
+			var id = rows.reduce(findLargest, 0);
 			id++;
 
 			cb(null, id);
+		}
+
+		function findLargest(memo, item) {
+			var id = +(item.id.split(":")[1]);
+			return id > memo ? id : memo;
 		}
 	},
 	create: function _create(obj, cb) {

@@ -7,9 +7,11 @@ process.chdir(__dirname);
 app = module.exports = express.createServer();
 init(app);
 
-module.exports = function _createServer(cb) {
+module.exports = createServer;
+
+function createServer(cb) {
 	if (app.address()) {
 		return cb(app);
 	}
 	app.on("started", cb);
-};
+}

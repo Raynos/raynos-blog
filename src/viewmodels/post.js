@@ -2,11 +2,13 @@ var marked = require("marked");
 
 module.exports = {
 	index: function _index(posts) {
-		return posts.map(function (post) {
+		return posts.map(makePost, this);
+
+		function makePost(post) {
 			post.content = twoParagraphs(post.content);
 			this.makePost(post);
 			return post;
-		}, this);
+		}
 	},
 	view: function _view(post) {
 		post.content = marked(post.content);

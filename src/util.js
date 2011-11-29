@@ -3,7 +3,7 @@ var Validator = require("validator").Validator.prototype,
 
 module.exports = {
 	Validator: pd.make(Validator, {
-		error: function (e) {
+		error: function _error(e) {
 			if (!this.errors) {
 				this.errors = [];
 			}

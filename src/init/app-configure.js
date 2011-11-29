@@ -28,6 +28,7 @@ function configure(app) {
 
 	function configure() {
 		trinity.set("path", __dirname + "/../trinity/");
+		trinity.set("publicPath", "/");
 		trinity.punchExpress();
 
 		trinity.send = send;

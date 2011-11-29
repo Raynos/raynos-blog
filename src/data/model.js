@@ -49,15 +49,17 @@ var Model = pd.Base.make(EventEmitter, {
 	makeWhitelistCallback: function _makeWhitelistCallback(method, thing, cb) {
 	    var that = this;
 
-	    return error.whitelist(function _errors(err) {
-	        if (err.syscall === "getaddrinfo") {
-	            that[method](thing, cb);
-	        } else if (that.whitelistMap[method].indexOf(err.error) !== -1) {
-	            return true;
-	        } else {
-	            return false;
-	        }
-	    }, cb);
+	    return error.whitelist(errors, cb);
+
+        function errors(err) {
+            if (err.syscall === "getaddrinfo") {
+                that[method](thing, cb);
+            } else if (that.whitelistMap[method].indexOf(err.error) !== -1) {
+                return true;
+            } else {
+                return false;
+            }
+        }
 	},
 	start: function _start() {
 		this.emit("loaded");
