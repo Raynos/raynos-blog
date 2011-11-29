@@ -131,6 +131,7 @@ form input, form textarea {
 }
 #blog > a {
   text-align: center;
+  display: block;
 }
 #blog article a:hover {
   text-decoration: underline;
