@@ -123,11 +123,14 @@ form input, form textarea {
   float: right;
   clear: both;
 }
-#blog article a {
+#blog article a, #blog > a {
   color: #4267aa;
   font-family: 'Varela Round', sans-serif;
   text-decoration: none;
   font-weight: bold;
+}
+#blog > a {
+  text-align: center;
 }
 #blog article a:hover {
   text-decoration: underline;
