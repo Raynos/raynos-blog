@@ -38,6 +38,6 @@ function convertToItem(post) {
 		description: post.content,
 		link: "http://raynos.org/blog/" + post.url,
 		guid: "http://raynos.org/blog/" + post.url,
-		pubDate: post.readable_time
+		pubDate: new Date(post.datetime).toISOString()
 	};		
 }
