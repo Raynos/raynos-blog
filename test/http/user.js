@@ -15,19 +15,20 @@ var user = {
 	username: "bob",
 	email: "bob@bob.com",
 	password: "secret",
+	type: "user",
 	password_confirm: "secret"
 };
 
 function empty_create() {
 	var that = this;
-	User.create(user, function () {
+	User.construct(user, function () {
 		that.next();
 	})
 }
 
 function empty_delete(test) {
 	var that = this;
-	UserModel.delete("org.couchdb.user:bob", function (err) {
+	UserModel.delete("bob", function (err) {
 		test.done();
 	});
 }
@@ -75,7 +76,6 @@ module.exports = {
 		request(pd.make(options, {
 			"uri": options.uri + "/login"
 		}), function _callback(err, res, body) {
-			console.log(err);
 			test.ok(res.statusCode === 200, "statusCode is incorrect");
 			test.ok(body.indexOf("Log in") > -1);
 			test.ok(body.indexOf("<form") > -1);

@@ -12,12 +12,10 @@ function createHash(salt, password) {
     return sha.digest("hex");
 }
 
-var User = pd.make(Domain, {
-	make: function _make(obj) {
-		var user = Object.create(User);
-		pd.extend(user, obj);
-		user.id = user._id.split(":")[1];
-		return user;
+var User = UserModel.make(Domain, {
+	constructor: function _constructor(obj) {
+		pd.extend(this, obj)
+		this.id = this._id.split(":")[1];	
 	},
 	validatePassword: function _validate(password) {
 		var hash = createHash(this.salt, password);
@@ -39,7 +37,7 @@ var User = pd.make(Domain, {
 			return v.errors;
 		}
 	},
-	create: function _create(user, cb) {
+	construct: function _construct(user, cb) {
 		var salt = new Buffer(uuid(), "hex").toString();
 		var hash = createHash(salt, user.password);
 
@@ -47,23 +45,25 @@ var User = pd.make(Domain, {
 			_id: this.prefix + user.username,
 			type: "user",
 			name: user.username,
+			id: user.username,
 			email: user.email,
 			roles: [],
 			password_sha: hash,
 			salt: salt
 		};
 
-		UserModel.insert(obj, function _cb(err, user) {
+		this.create(obj, handleCreate);
+
+		function handleCreate(err, user) {
 			if (err && err.error === "conflict") {
 				return cb(["The user name is already taken"]);
+			} else if (err) {
+				return cb([err]);
 			}
-			UserModel.get(user.id, function (err, user) {
-				cb(null, User.make(user));
-			});
-		});
+			cb(null, user);
+		}
 	},
-	Model: UserModel,
-	prefix: "org.couchdb.user:"
+	Model: UserModel
 });
 
 module.exports = User;

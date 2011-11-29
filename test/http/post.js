@@ -20,14 +20,14 @@ var correct_post = {
 
 function correct_post_delete(test) {
 	var id = this.id
-	PostModel.delete("post:" + id, function (err, data) {
+	PostModel.delete(id, function (err, data) {
 		test.done();
 	});
 }
 
 function correct_post_create() {	
 	var that = this;
-	Post.create(correct_post, function (err, body) {
+	Post.construct(correct_post, function (err, body) {
 		that.id = body.id;
 		that.next();
 	});

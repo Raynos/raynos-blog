@@ -3,9 +3,9 @@ var nano = require("nano")
 	error = require("error"),
 	EventEmitter = require("events").EventEmitter.prototype;
 
-var Model = pd.make(EventEmitter, {
+var Model = pd.Base.make(EventEmitter, {
 	get: function _get(id, cb) {
-        this.nano.get(id, 
+        this.nano.get(this.prefix + id, 
             this.makeWhitelistCallback("get", id, cb)
         );
     },
@@ -14,18 +14,32 @@ var Model = pd.make(EventEmitter, {
             "include_docs": true
         },this.makeWhitelistCallback("all", null, cb));
     },
-    insert: function _create(json, cb) {
+    create: function _create(json, cb) {
         this.nano.insert(json, json._id, 
             this.makeWhitelistCallback("insert", json, cb)
         );
     },
-    delete: function _delete(name, cb) {
+    update: function _update(id, json, cb) {
         var that = this;
-        this.get(name, function _getRev(err, body) {
-            that.nano.destroy(name, body._rev, 
-                that.makeWhitelistCallback("delete", name, cb)
+        json._id = this.prefix + id;
+        this.get(id, getRev);
+
+        function getRev(err, body) {
+            json._rev = body._rev;
+            that.nano.insert(json, json._id, 
+                that.makeWhitelistCallback("insert", json, cb)
             );
-        });
+        }        
+    },
+    delete: function _delete(id, cb) {
+        var that = this;
+        this.get(id, getRev);
+
+        function getRev(err, body) {
+            that.nano.destroy(that.prefix + id, body._rev, 
+                that.makeWhitelistCallback("delete", id, cb)
+            );
+        }
     },
 	constructor: function _constructor() {
 		this._events = [];

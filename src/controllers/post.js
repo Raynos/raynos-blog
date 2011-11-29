@@ -1,6 +1,6 @@
 var Post = require("../domain/post.js"),
 	PostModel = require("../data/post.js"),
-	View = require("../view/post.js");
+	ViewModel = require("../viewmodels/post.js");
 
 var authorized = [requireLogin, beRaynos];
 
@@ -18,7 +18,7 @@ function index(req, res) {
 	Post.all(all);
 
 	function all(err, posts) {
-		var data = View.index(posts);
+		var data = ViewModel.index(posts);
 		data.user = req.user;
 		res.render("post/index", data);
 	}
@@ -29,20 +29,20 @@ function renderCreate(req, res) {
 }
 
 function renderEdit(req, res) {
-	res.render("post/edit", View.view(req.post));
+	res.render("post/edit", ViewModel.view(req.post));
 }
 
 function view(req, res) {
-	var data = View.view(req.post);
+	var data = ViewModel.view(req.post);
 	data.user = req.user;
 	res.render("post/view", data);
 }
 
 function createPost(req, res) {
-	Post.create(req.body, handleCreate);
+	Post.construct(req.body, handleCreate);
 
 	function handleCreate(err, post) {
-		res.redirect("/blog/" + View.makeUrl(post));
+		res.redirect("/blog/" + ViewModel.makeUrl(post));
 	}
 }
 
@@ -51,7 +51,7 @@ function updatePost(req, res) {
 	Post.update(id, req.body, handleUpdate);
 
 	function handleUpdate(err, post) {
-		res.redirect("/blog/" + View.makeUrl(post));
+		res.redirect("/blog/" + ViewModel.makeUrl(post));
 	}
 }
 

@@ -3,26 +3,15 @@ var PostModel = require("../data/post.js"),
 	Validator = require("../util.js").Validator,
 	pd = require("pd");
 
-var Post = pd.make(Domain, {
-	make: function _make(obj) {
-		var post = Object.create(Post);
-		pd.extend(post, obj);
-		post.id = post._id.split(":")[1];
-		return post;
+var Post = PostModel.make(Domain, {
+	constructor: function _constructor(obj) {
+		pd.extend(this, obj);
+		this.id = this._id.split(":")[1];
 	},
-	create: function _create(post, cb) {
+	construct: function _construct(post, cb) {
 		var that = this;
 
-		function handleAll(err, data) {
-			var rows = data.rows;
-			
-			var id = rows.reduce(function (memo, item) {
-				var id = +item.id.split(":")[1];
-				return id > memo ? id : memo;
-			}, 0);
-			id++;
-
-
+		function createObject(err, id) {
 			var obj = {
 				title: post.title,
 				content: post.content,
@@ -32,41 +21,10 @@ var Post = pd.make(Domain, {
 				type: "post"
 			}
 
-			PostModel.insert(obj, handleInsert);
+			that.create(obj, cb);
 		}
 
-		function handleInsert(err, post) {
-			PostModel.get(post.id, handleGet);
-		}
-
-		function handleGet(err, post) {
-			cb(null, that.make(post));
-		}
-
-		PostModel.all(handleAll);
-	},
-	delete: function _delete(id, cb) {
-		PostModel.delete(this.prefix + id, cb);	
-	},
-	update: function _update(id, post, cb) {
-		var that = this;
-		post._id = this.prefix + id;
-
-		function _handleGetForRev(err, data) {
-			post._rev = data._rev;
-			PostModel.insert(post, _handleInsert);	
-		}
-
-		function _handleInsert(err, post) {
-			PostModel.get(post.id, _handleGetForCb);
-		}
-
-		function _handleGetForCb(err, post) {
-			cb(null, that.make(post));
-		}
-
-		this.get(id, _handleGetForRev);
-		
+		this.nextId(createObject);
 	},
 	validate: function _validate(post) {
 		var v = Object.create(Validator);
@@ -78,7 +36,6 @@ var Post = pd.make(Domain, {
 			return v.errors;
 		}
 	},
-	prefix: "post:",
 	Model: PostModel
 });
 

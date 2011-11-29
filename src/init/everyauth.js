@@ -52,7 +52,7 @@ function initEveryAuth(app) {
 		})
 		.registerUser(function (user) {
 			var promise = this.Promise();
-			User.create(user, function (err, user) {
+			User.construct(user, function (err, user) {
 				if (err) return promise.fulfill(err);
 				promise.fulfill(user);
 			});
