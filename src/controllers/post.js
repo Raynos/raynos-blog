@@ -29,7 +29,7 @@ function renderCreate(req, res) {
 }
 
 function renderEdit(req, res) {
-	res.render("post/edit", ViewModel.view(req.post));
+	res.render("post/edit", ViewModel.makePost(req.post));
 }
 
 function view(req, res) {
