@@ -114,6 +114,16 @@ module.exports = {
 			test.done();
 		});
 	},
+	"test GET /rss": function (test) {
+		test.expect(2);
+		request(pd.make(options, {
+			uri: options.uri + "/rss"
+		}), function _callback(err, res, body) {
+			test.ok(body.indexOf("xml") > -1);
+			test.ok(body.indexOf("Raynos") > -1);
+			test.done();
+		});
+	},
 	"test GET /blog": function (test) {
 		test.expect(2);
 		request(pd.make(options, {
