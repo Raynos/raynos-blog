@@ -27,7 +27,7 @@ function rss(req, res) {
 
 		var xml = data2xml('rss', data);
 
-		res.contentType('rss')
+		res.contentType('rss');
 		res.send(xml);
 	}
 }
@@ -36,8 +36,8 @@ function convertToItem(post) {
 	return {
 		title: post.title,
 		description: post.content,
-		link: post.url,
-		guid: post.id,
-		pubData: post.readable_time
+		link: "http://raynos.org/blog/" + post.url,
+		guid: "http://raynos.org/blog/" + post.url,
+		pubDate: post.readable_time
 	};		
 }
