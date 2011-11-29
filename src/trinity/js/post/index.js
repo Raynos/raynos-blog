@@ -3,12 +3,11 @@ var document = frag.ownerDocument,
 
 section.id = "blog";
 var form = frag.firstChild;
+var link = frag.childNodes[2];
 
 if (!data.user) {
 	frag.removeChild(form);
 }
-
-var link = frag.childNodes[2];
 
 data.forEach(function (post, index) {
 	var itemFrag = load("post/item", post);
