@@ -4,6 +4,8 @@ This is a learning experience for me.
 
 I will use this code to run a blog at http://www.raynos.org
 
+## Status: running in production but still beta
+
 ## Vague cloning instructions.
 
 Fork / clone the code. 
