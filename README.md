@@ -6,6 +6,34 @@ I will use this code to run a blog at http://www.raynos.org
 
 ## Status: running in production but still beta
 
+## Architecture overview
+
+ - /test contains unit tests
+
+Unit tests are currently /http which is HTTP integration tests, these pass.
+The other tests are incomplete / non-passing domain object and data object unit tests
+
+As for architecture `/src/server.js` is the entry point which goes and calls `/init/app-init.js`
+
+App init loads modules, routes, configuration and sets up everyauth. 
+
+ - Module loading involves starting the data objects (by opening db connections)
+ - Routes involves loading routing files, then loading the controller with the same name, then pass the controller object to the router
+ - Configuration just sets up the express http stack and sets up dev environments and other config
+ - Everyauth is a seperate login routes controller thats activated on it's own.
+
+### HTTP flow
+
+A http request comes in and is handled by one of the routes in the routes folder.
+
+The route delegates to a controller method.
+
+The controller asks the domain for some data, the domain in turn asks the data object for data.
+
+The controller wraps the returned domain object in a ViewModel and then calls `res.render` to pass it to a trinity template
+
+The trinity template takes the domain object and constructs a jsdom Document which is then converted to HTML and send to the browser
+
 ## Vague cloning instructions.
 
 Fork / clone the code. 
