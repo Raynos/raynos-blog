@@ -1,0 +1,13 @@
+{
+    "requestHandler.js": {
+        "server": "server.js",
+        "router": "router.js"
+    },
+    "routes": {
+        "router": "router.js",
+        "domains": ["domains"]
+    },
+    "domains": {
+        "dataSources": ["dataSources"]
+    }
+}

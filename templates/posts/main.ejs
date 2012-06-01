@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <ul>
+        <% for (var i = 0; i < posts.length; i++) { var post = posts[i] %>
+            <li>
+                <article>
+                    <header>
+                        <h2><%= post.title %></h2>
+                        <time></time>
+                    </header>
+                    <div><%= post.content %></div>
+                </article>
+            </li>
+        <% } %>
+        </ul>
+    </body>
+</html>

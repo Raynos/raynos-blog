@@ -1,0 +1,1 @@
+require("ncore/modules/core")()
