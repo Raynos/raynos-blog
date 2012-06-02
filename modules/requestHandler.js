@@ -1,4 +1,4 @@
-var routil = require("../lib/routil")
+var routil = require("routil")
 
 module.exports = {
     setup: function () {
@@ -13,6 +13,6 @@ module.exports = {
             return routil.errorPage(req, res, 404)
         } 
 
-        route.fn(req, res, route.params)
+        route.fn(req, res, route.params, route.splats)
     }
 }

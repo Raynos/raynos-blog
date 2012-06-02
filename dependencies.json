@@ -5,9 +5,16 @@
     },
     "routes": {
         "router": "router.js",
-        "domains": ["domains"]
+        "controller": "controllers"
+    },
+    "controllers": {
+        "domain": "domains"
     },
     "domains": {
-        "dataSources": ["dataSources"]
+        "dataSources": ["dataSources"],
+        "domains": ["domains"]
+    },
+    "dataSources": {
+        "mongodb": "mongodb.js"
     }
 }

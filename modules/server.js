@@ -1,4 +1,5 @@
-var http = require("http")
+var http = require("http"),
+    debug = require("debug")("http")
 
 module.exports =  {
     port: process.env.PORT || 8080,
@@ -9,7 +10,7 @@ module.exports =  {
         var server = this.server
         this.emit("created", server)
         server.listen(this.port, this.onListen)
-        console.log("server listening on port: ", this.port)
+        debug("server listening on port: ", this.port)
     },
     onListen: function () {
         this.emit("listening", this.port)
