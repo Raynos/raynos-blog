@@ -20,8 +20,12 @@ test-http:
 test-zombie:
 	$(TEST_COMMAND) ./tests/zombie
 
+test-unit:
+	$(TEST_COMMAND) ./tests/unit
+
 test:
 	make test-http
 	make test-zombie
+	make test-unit
 
 .PHONY: start test-http test
