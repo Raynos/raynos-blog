@@ -30,7 +30,7 @@ function getPost(req, res, params) {
                 routil.sendJson(res, post)
             },
             default: function () {
-                routil.template("/posts/view.ejs", post)
+                routil.template(req, res, "posts/view.ejs", post)
             }
         })()
     }

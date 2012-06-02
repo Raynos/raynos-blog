@@ -50,10 +50,10 @@ function addPost(req, res) {
         self.domain.createPost(sanitized, renderPost)
     }
 
-    function renderPost(err, post) {
+    function renderPost(err, posts) {
         if (err) {
             return routil.errorPage(req, res, [500, err])
         }
-        routil.redirect(req, res, "/posts/" + post._id)
+        routil.redirect(req, res, "/posts/" + posts[0]._id)
     }
 }

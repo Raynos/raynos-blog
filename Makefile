@@ -22,5 +22,6 @@ test-zombie:
 
 test:
 	make test-http
+	make test-zombie
 
 .PHONY: start test-http test

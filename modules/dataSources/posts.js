@@ -8,7 +8,7 @@ module.exports = {
         this.collection = this.mongodb("Posts")
     },
     getAll: function (callback) {
-        this.collection.find({}).toArray(callback)
+        this.collection.find().toArray(callback)
     },
     getPost: function (_id, callback) {
         this.collection.findOne({
