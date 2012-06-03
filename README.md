@@ -20,6 +20,7 @@ The architecture is build on ncore and the [depencencies][1] are shown.
  - controllers implement HTTP logic for a particular uri
  - domains implement domain logic
  - dataSources abstract database interactions
+ - viewModels map domain objects to objects that can be passed to templates.
 
 ### HTTP flow
 
