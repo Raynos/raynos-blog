@@ -6,12 +6,12 @@ describe("routes posts", function () {
     it("should add routes when setup", function () {
         var main = {},
             _new = {},
-            postId = {},
+            item = {},
             edit = {},
             controller = {
                 main: main,
                 new: _new,
-                ":postId": postId,
+                item: item,
                 edit: edit
             },
             addRouteSpy = sinon.spy()
@@ -28,7 +28,7 @@ describe("routes posts", function () {
             "posts did not add the correct controller under the /posts route")
         assert(addRouteSpy.calledWith("/posts/new", _new),
             "posts did not set the correct controller for /posts/new")
-        assert(addRouteSpy.calledWith("/posts/:postId/:title?", postId),
+        assert(addRouteSpy.calledWith("/posts/:postId/:title?", item),
             "posts did not set the correct controller for /posts/:postId")
         assert(addRouteSpy.calledWith("/posts/:postId/edit", edit),
             "posts did not set the correct controller for /posts/:postId/edit")
