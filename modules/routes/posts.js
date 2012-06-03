@@ -5,6 +5,7 @@ module.exports = {
 
         router.addRoute("/posts", controller.main)
         router.addRoute("/posts/new", controller.new)
-        router.addRoute("/posts/:postId", controller[":postId"])
+        router.addRoute("/posts/:postId/edit", controller.edit)
+        router.addRoute("/posts/:postId/:title?", controller[":postId"])
     }
 }

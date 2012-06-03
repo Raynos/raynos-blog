@@ -9,7 +9,9 @@ var GetSchema = {
 }
 
 var self = module.exports = routil.methods({
-    "GET": getPost
+    "GET": getPost,
+    "PUT": putPost,
+    "DELETE": deletePost
 })
 
 function getPost(req, res, params) {
@@ -34,4 +36,12 @@ function getPost(req, res, params) {
             }
         })()
     }
+}
+
+function putPost(req, res) {
+    routil.errorPage(req, res, 501)
+}
+
+function deletePost(req, res) {
+    routil.errorPage(req, res, 501)
 }
