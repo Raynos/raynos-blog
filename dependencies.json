@@ -16,6 +16,7 @@
         "viewModels": ["viewModels"]
     },
     "domains": {
+        "dataSource": "dataSources",
         "dataSources": ["dataSources"],
         "domains": ["domains"]
     },

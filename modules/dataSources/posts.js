@@ -14,7 +14,7 @@ module.exports = {
     setup: function () {
         this.collection = this.mongodb("Posts")
     },
-    getAll: function (callback) {
+    getAllPosts: function (callback) {
         this.collection.find().toArray(callback)
     },
     getPost: function (_id, callback) {
