@@ -12,7 +12,7 @@ var self = module.exports = routil.methods({
     "GET": getPost,
     "PUT": putPost,
     "DELETE": deletePost
-})
+}, true)
 
 function getPost(req, res, params) {
     var sanitized = validate(GetSchema, params)

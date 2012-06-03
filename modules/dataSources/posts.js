@@ -3,6 +3,13 @@ var DEFAULT_OPTIONS = {
     },
     ObjectID = require("mongodb").ObjectID
 
+var PostDefinition = {
+    _id: ObjectID,
+    title: String,
+    content: String,
+    datetime: Number
+}
+
 module.exports = {
     setup: function () {
         this.collection = this.mongodb("Posts")

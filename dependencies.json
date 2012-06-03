@@ -8,7 +8,11 @@
         "controller": "controllers"
     },
     "controllers": {
-        "domain": "domains"
+        "domain": "domains",
+        "viewModel": "viewModels"
+    },
+    "viewModels": {
+        "viewModels": ["viewModels"]
     },
     "domains": {
         "dataSources": ["dataSources"],

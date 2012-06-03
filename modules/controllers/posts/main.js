@@ -22,7 +22,7 @@ function showPosts(req, res) {
 
     function renderPosts(err, posts) {
         if (err) {
-            return routil.errorPage(req, res, [500, err])
+            return routil.errorPage(req, res, err)
         }
 
         routil.mediaTypes(req, res, {
@@ -44,7 +44,7 @@ function addPost(req, res) {
     function sanitizeBody(data) {
         var sanitized = validate(PostSchema, data)
         if (Array.isArray(sanitized)) {
-            return routil.errorPage(req, res, [500, sanitized[0]])
+            return routil.errorPage(req, res, sanitized[0])
         }
 
         self.domain.createPost(sanitized, renderPost)
@@ -52,7 +52,7 @@ function addPost(req, res) {
 
     function renderPost(err, posts) {
         if (err) {
-            return routil.errorPage(req, res, [500, err])
+            return routil.errorPage(req, res, err)
         }
         routil.redirect(req, res, "/posts/" + posts[0]._id)
     }

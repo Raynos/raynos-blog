@@ -1,20 +1,20 @@
-var rss = require("../../../modules/routes/rss"),
+var blog = require("../../../modules/routes/blog"),
     assert = require("assert"),
     sinon = require("sinon")
 
-describe("routes rss", function () {
+describe("routes blog", function () {
     it("should add a route when setup", function () {
         var controller = {},
             addRouteSpy = sinon.spy()
 
-        rss.router = {
+        blog.router = {
             addRoute: addRouteSpy
         }
-        rss.controller = controller
-        rss.setup()
+        blog.controller = controller
+        blog.setup()
 
         assert(addRouteSpy.calledOnce, "addRoute was not called")
-        assert(addRouteSpy.calledWith("/rss", controller),
-            "rss did not add the controller under the /rss route")
+        assert(addRouteSpy.calledWith("/blog", controller),
+            "blog did not add the controller under the /blog route")
     })
 })
