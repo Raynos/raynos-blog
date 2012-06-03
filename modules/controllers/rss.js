@@ -4,8 +4,12 @@ var self = module.exports = routil.methods({
     "GET": getRss
 })
 
+self.setup = function () {
+    self.domain = self.domains.posts
+}
+
 function getRss(req, res) {
-    self.domain.getPosts(returnRSS)
+    self.domain.getAllPosts(returnRSS)
 
     function returnRSS(err, posts) {
         if (err) {
