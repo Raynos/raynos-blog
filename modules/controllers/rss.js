@@ -4,7 +4,9 @@ var self = module.exports = routil.methods({
     "GET": getRss
 })
 
-self.setup = function () {
+self.setup = setup
+
+function setup() {
     self.domain = self.domains.posts
 }
 
