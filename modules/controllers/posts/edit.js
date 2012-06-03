@@ -1,31 +1,29 @@
 var routil = require("routil"),
     validate = require("validate")
 
-var GetSchema = {
-    postId: {
-        required: true,
-        type: "string"
-    }
-}
-
 var self = module.exports = routil.methods({
     "GET": viewEditPage
 })
 
 function viewEditPage(req, res, params) {
-    var sanitized = validate(GetSchema, params)
-    if (Array.isArray(sanitized)) {
-        return routil.errorPage(req, res, sanitized[0])
-    }
-
-    self.domain.getPost(sanitized.postId, renderEditPage)
+    self.domain.getPost(params.postId, renderEditPage)
 
     function renderEditPage(err, post) {
         if (err) {
+            if (err.message === "Argument passed in must be a single String" +
+                " of 12 bytes or a string of 24 hex characters"
+            ) {
+                return routil.errorPage(req, res, 404)
+            }
+            
             return routil.errorPage(req, res, err)
         }
 
+        if (post === null) {
+            return routil.errorPage(req, res, 404)
+        }
+
         routil.template(req, res, "posts/edit.ejs", 
-            self.viewModel.viewOne(post))
+            self.viewModel.viewOneRaw(post))
     }
 }

@@ -2,34 +2,40 @@ var app = require("../../core"),
     assert = require("assert"),
     after = require("after"),
     request = require("request"),
-    FeedParser = require("feedparser"),
-    Posts
+    FeedParser = require("feedparser")
 
 before(function (done) {
-    done = after(2, done)
     app(done)
-    Posts = require("mongo-col")("Posts", "raynos-blog-test", 
-        function (collection) {
-            collection.drop(done)
-        })
 })
 
 describe("GET /rss", function () {
     var date = Date.now(),
+        Posts,
         _id
 
     before(function (done) {
-        Posts.insert({
-            title: "foo",
-            content: "bar",
-            datetime: date
-        }, { 
-            safe: true
-        }, function (err, docs) {
-            _id = docs[0]._id
-            done()
+        Posts = require("mongo-col")(
+            "Posts", "raynos-blog-test", function (collection) 
+        {
+            collection.drop(function (err) {
+                if (err) {
+                    return done(err)
+                }
+
+                Posts.insert({
+                    title: "foo",
+                    content: "bar",
+                    datetime: date
+                }, { 
+                    safe: true
+                }, function (err, docs) {
+                    _id = docs[0]._id
+                    done()
+                })
+            })
         })
     })
+
     it("should return rss", function (done) {
         request({
             uri: "http://localhost:8080/rss"

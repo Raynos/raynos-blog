@@ -3,18 +3,19 @@ var app = require("../../../core"),
     after = require("after"),
     request = require("request"),
     Browser = require("zombie"),
-    Posts
+    mongoCol = require("mongo-col")
 
 before(function (done) {
-    done = after(2, done)
     app(done)
-    Posts = require("mongo-col")("Posts", "raynos-blog-test", 
-        function (collection) {
-            collection.drop(done)
-        })
 })
 
 describe("Submitting new posts", function () {
+    before(function (done) {
+        mongoCol("Posts", "raynos-blog-test", function (collection) {
+            collection.drop(done)
+        })
+    })
+
     it("should work", function (done) {
         var browser = new Browser
         browser.visit("http://localhost:8080/posts/new", function () {

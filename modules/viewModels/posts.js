@@ -8,6 +8,9 @@ module.exports = {
     viewOne: function (post) {
         post.content = marked(post.content)
         return writeTimeAndUrl(post)
+    },
+    viewOneRaw: function (post) {
+        return writeTimeAndUrl(post)
     }
 }
 
@@ -23,7 +26,6 @@ function writeTimeAndUrl(post) {
 }
 
 function createUrl(post) {
-    
-    return post._id.toString() + "/" + encodeURIComponent(
+    return "/posts/" + post._id.toString() + "/" + encodeURIComponent(
         post.title.replace(whitespace, "-"))
 }

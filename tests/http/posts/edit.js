@@ -39,4 +39,28 @@ describe("GET /posts/:postId/edit", function () {
             done()
         })
     })
+
+    it("should 404 for a wrong post", function (done) {
+        request({
+            uri: "http://localhost:8080/posts/foo"
+        }, function (err, res, body) {
+            assert.equal(err, null, "error is not null")
+            assert.equal(res.statusCode, 404, "status code is incorrect")
+            assert(body.indexOf("Not Found") !== -1,
+                "body does not contain not found message")
+            done()
+        })
+    })
+
+    it("should 404 for a non existant post", function (done) {
+        request({
+            uri: "http://localhost:8080/posts/foofoofoofoo"
+        }, function (err, res, body) {
+            assert.equal(err, null, "error is not null")
+            assert.equal(res.statusCode, 404, "status code is incorrect")
+            assert(body.indexOf("Not Found") !== -1,
+                "body does not contain not found message")
+            done()
+        })
+    })
 })
