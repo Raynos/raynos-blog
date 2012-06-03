@@ -7,7 +7,6 @@
     "ncore": "2.2.1",
     "routes": "0.1.1",
     "mongo-col": "0.1.17",
-    "xtend": "1.0.3",
     "ejs": "0.7.1",
     "validate": "0.1.3",
     "routil": "0.0.13",
