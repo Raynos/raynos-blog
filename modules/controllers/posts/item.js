@@ -30,9 +30,7 @@ function getPost(req, res, params) {
             }
 
             return routil.errorPage(req, res, err)
-        }
-
-        if (post === null) {
+        } else if (post === null) {
             return routil.errorPage(req, res, 404)
         }
 
@@ -74,6 +72,8 @@ function deletePost(req, res, params) {
     function redirectToPosts(err, updated) {
         if (err) {
             return routil.errorPage(req, res, err)
+        } else if (updated === 0) {
+            return routil.errorPage(req, res, new Error("post not deleted"))
         }
 
         routil.redirect(req, res, "/posts")
