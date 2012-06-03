@@ -76,10 +76,6 @@ function deletePost(req, res, params) {
             return routil.errorPage(req, res, err)
         }
 
-        if (updated === 0) {
-            return routil.errorPage(req, res, new Error("post not deleted"))
-        }
-
         routil.redirect(req, res, "/posts")
     }
 }
