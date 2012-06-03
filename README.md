@@ -1,3 +1,5 @@
+# Raynos-Blog
+
 A blog that's running on node.js.
 
 This is a learning experience for me.
@@ -8,67 +10,25 @@ I will use this code to run a blog at http://www.raynos.org
 
 ## Architecture overview
 
- - /test contains unit tests
+ - /tests/unit contains unit tests
+ - /tests/http contains HTTP level integration tests
+ - /tests/zombie contains HTML forms tests
 
-Unit tests are currently /http which is HTTP integration tests, these pass.
-The other tests are incomplete / non-passing domain object and data object unit tests
+The architecture is build on ncore and the [depencencies][1] are shown.
 
-As for architecture `/src/server.js` is the entry point which goes and calls `/init/app-init.js`
-
-App init loads modules, routes, configuration and sets up everyauth. 
-
- - Module loading involves starting the data objects (by opening db connections)
- - Routes involves loading routing files, then loading the controller with the same name, then pass the controller object to the router
- - Configuration just sets up the express http stack and sets up dev environments and other config
- - Everyauth is a seperate login routes controller thats activated on it's own.
+ - routes register HTTP uris on the router
+ - controllers implement HTTP logic for a particular uri
+ - domains implement domain logic
+ - dataSources abstract database interactions
 
 ### HTTP flow
 
-A http request comes in and is handled by one of the routes in the routes folder.
+A http request comes and the router is called to return a single controller 
+based on the uri.
 
-The route delegates to a controller method.
+The controller function is invoked and does logic including calls to domains.
 
-The controller asks the domain for some data, the domain in turn asks the data object for data.
-
-The controller wraps the returned domain object in a ViewModel and then calls `res.render` to pass it to a trinity template
-
-The trinity template takes the domain object and constructs a jsdom Document which is then converted to HTML and send to the browser
-
-## Vague cloning instructions.
-
-Fork / clone the code. 
-
-`$ npm link`
-
-Make sure your using node 0.6.3 (only tested on 0.6.3)
-
-I have a Makefile that looks like
-
-	env:
-        export PORT=8000
-        export COUCH_USER=root # couch user
-        export COUCH_PWD=<strip> # couch password
-        export USER_PWD=<strip> # unit test login password. 
-
-	start:
-        node src/server.js > out.log &
-
-	test:
-	    nodeunit test/http
-
-	.PHONY: env start test
-
-Change [data Model][1] to point at your own CouchDB database.
-
-You can set one up at iriscouch.com, Make sure to turn off admin party through futon
-
-You can access futon by "http://url.iriscouch.com/_utils/" (but you can't access mine). 
-
-You will need to create a database to store your data. I named mine "posts"
-
-You will also need to create a login user in the _users database. You will probably also want to change the [beRaynos][2] rule
-
-Apart from setting permissions, user accounts & creating the database couchDB should be good to go.
+Routil is used to do req/res manipulation utilities and to minimize the amount
+of common code that is run for every single request.
   
-  [1]: https://github.com/Raynos/raynos-blog/blob/4be2309c5de824e8e4b377d635136e612ee6c74b/src/data/model.js#L47
-  [2]: https://github.com/Raynos/raynos-blog/blob/dcf6c4837b47b4f70edeec8ace648ad97b102f25/src/controllers/post.js#L94
+  [1]: https://github.com/Raynos/raynos-blog/blob/master/dependencies.json
