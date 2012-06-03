@@ -3,7 +3,7 @@ var marked = require("marked"),
 
 module.exports = {
     viewAll: function (posts) {
-        return posts.map(viewAllPost)
+        return posts.map(this.viewOne)
     },
     viewOne: function (post) {
         post.content = marked(post.content)
@@ -14,13 +14,8 @@ module.exports = {
     }
 }
 
-function viewAllPost(post) {
-    post.content = marked(post.content)
-    return writeTimeAndUrl(post)
-}
-
 function writeTimeAndUrl(post) {
-    post.readable_time = new Date(post.datetime).toDateString()
+    post.readableTime = new Date(post.datetime).toDateString()
     post.url = createUrl(post)
     return post
 }
