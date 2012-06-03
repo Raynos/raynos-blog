@@ -17,14 +17,14 @@ var self = module.exports = routil.methods({
 function getPost(req, res, params) {
     var sanitized = validate(GetSchema, params)
     if (Array.isArray(sanitized)) {
-        return routil.errorPage(req, res, [500, sanitized[0]])
+        return routil.errorPage(req, res, sanitized[0])
     }
 
     self.domain.getPost(sanitized.postId, renderPost)
 
     function renderPost(err, post) {
         if (err) {
-            return routil.errorPage(req, res, [500, err])
+            return routil.errorPage(req, res, err)
         }
 
         routil.mediaTypes(req, res, {

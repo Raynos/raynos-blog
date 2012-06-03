@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <form action="<%= url %>" method="POST">
+            <fieldset>
+                <legend> New Post </legend>
+                <input type="hidden" name="_method" value="PUT" />
+                <ul>
+                    <li>
+                        <input
+                            name="title"
+                            placeholder="Blog Title"
+                            required
+                            title="Enter a blog title"
+                            value="<%= title %>"
+                        />
+                    </li>
+                    <li>
+                        <textarea 
+                            name="content" 
+                            placeholder="Blog content"
+                            cols="150"
+                            rows="30"
+                            required
+                            title="Enter blog content"
+                        ><%= content %></textarea>
+                    </li>
+                    <li>
+                        <input type="submit" value="Submit" />
+                        <input type="reset" value="Reset" />
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+        <form action="<%= url %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="submit" value="Delete post" />
+        </form>
+    </body>
+<html>
