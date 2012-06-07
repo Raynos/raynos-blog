@@ -1,11 +1,5 @@
-var core = require("ncore")
-
-if (module.parent) {
-    module.exports = invokeCore
-} else {
-    core()
-}
+module.parent ? module.exports = invokeCore : invokeCore()
 
 function invokeCore(cb) {
-    core({}, cb)    
+    require("ncore")({}, cb)    
 }
