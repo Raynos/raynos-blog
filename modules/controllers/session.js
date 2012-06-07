@@ -98,6 +98,22 @@ function (req, res) {
     })
 }
 
+function getSessionDate(req, res, callback) {
+    getSession(req, res, returnErrorIfNull)
+
+    function returnErrorIfNull(err, user) {
+        if (err)  {
+            return callback(err)
+        }
+
+        if (user === null) {
+            redirect(req, res, "/login")
+        }
+
+        callback(null, user)
+    }
+}
+
 */
 
 function setup() {

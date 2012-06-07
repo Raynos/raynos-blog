@@ -7,7 +7,8 @@ TEST_COMMAND = @NODE_ENV=test \
 	--recursive \
 	
 start:
-	nodemon \
+	@DEBUG=http \
+		nodemon \
 		--watch ./modules \
 		--watch ./lib \
 		--watch ./node_modules \
