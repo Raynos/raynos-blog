@@ -1,4 +1,4 @@
-var core = require("ncore/modules/core")
+var core = require("ncore")
 
 if (module.parent) {
     module.exports = invokeCore

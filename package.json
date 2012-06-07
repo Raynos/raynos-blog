@@ -4,7 +4,7 @@
   "version": "0.3.0",
   "author": "Jake Verbaten",
   "dependencies": {
-    "ncore": "2.2.1",
+    "ncore": "2.2.2",
     "routes": "0.1.1",
     "mongo-col": "0.1.17",
     "ejs": "0.7.1",
