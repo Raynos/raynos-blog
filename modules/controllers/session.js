@@ -107,7 +107,7 @@ function getSessionDate(req, res, callback) {
         }
 
         if (user === null) {
-            redirect(req, res, "/login")
+            redirect(req, res, "/session")
         }
 
         callback(null, user)
