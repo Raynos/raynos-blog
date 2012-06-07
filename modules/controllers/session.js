@@ -82,7 +82,7 @@ function deleteSession(req, res, params) {
             return errorPage(req, res, err)
         }
 
-        redirect(req, res, "/")
+        redirect(req, res, params.redir || "/")
     }
 }
 
