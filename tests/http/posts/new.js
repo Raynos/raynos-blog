@@ -1,4 +1,4 @@
-var app = require("../../../core"),
+var app = require("ncore"),
     assert = require("assert"),
     request = require("request")
 
