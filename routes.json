@@ -1,0 +1,4 @@
+{
+    "/": "./home/routes"
+    , "/rss": "./posts/routes/rss"
+}

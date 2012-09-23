@@ -4,26 +4,16 @@
   "version": "0.3.0",
   "author": "Jake Verbaten",
   "dependencies": {
-    "ncore": "2.2.3",
-    "routes": "0.1.1",
-    "mongo-col": "0.1.17",
-    "ejs": "0.7.1",
-    "validate": "0.1.3",
-    "routil": "0.0.13",
-    "debug": "0.7.0",
-    "after": "0.5.0",
-    "data2xml": "~0.4.0",
-    "marked": "~0.2.5"
+    "mapleTree": "~0.4.0",
+    "error-page": "0.0.5",
+    "templar": "~0.1.2",
+    "ejs": "~0.8.3",
+    "redirecter": "~0.1.0",
+    "mongo-col": "~0.2.2",
+    "http-methods": "~0.1.0"
   },
   "main": "core",
   "private": true,
-  "devDependencies": {
-    "mocha": "~1.1.0",
-    "sinon": "git://github.com/cjohansen/Sinon.JS.git",
-    "feedparser": "~0.9.7",
-    "request": "2.9.202"
-  },
-  "engines": {
-    "node": "0.6.x"
-  }
+  "devDependencies": {},
+  "engines": {}
 }
