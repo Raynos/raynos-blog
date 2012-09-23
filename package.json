@@ -10,10 +10,15 @@
     "ejs": "~0.8.3",
     "redirecter": "~0.1.0",
     "mongo-col": "~0.2.2",
-    "http-methods": "~0.1.0"
+    "http-methods": "~0.1.0",
+    "iterators": "~0.3.0"
   },
   "main": "core",
   "private": true,
-  "devDependencies": {},
-  "engines": {}
+  "devDependencies": {
+    "nodemon": "~0.6.23"
+  },
+  "scripts": {
+    "start": "DEBUG=http nodemon --watch ./node_modules --watch ./posts index.js"
+  }
 }
